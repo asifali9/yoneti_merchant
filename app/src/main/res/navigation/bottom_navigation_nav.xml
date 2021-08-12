@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/bottom_navigation_nav"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/completeProfileNavigation">
+    <fragment
+        android:id="@+id/addServiceDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.AddServiceDialogFragment"
+        android:label="AddServiceDialogFragment" />
+    <fragment
+        android:id="@+id/spinnerCategoryItemsDialog"
+        android:name="com.example.yonetimerchant.dialog_fragment.SpinnerCategoryItemsDialog"
+        android:label="SpinnerCategoryItemsDialog"
+        tools:layout="@layout/dialog_spinner_category_items"/>
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/service">
+        <fragment
+            android:id="@+id/service"
+            android:name="com.example.yonetimerchant.fragments.creating_service.CreateServiceFragment"
+            android:label="CreateServiceFragment"
+            tools:layout="@layout/fragment_create_service" />
+        <action
+            android:id="@+id/action_global_spinnerCategoryItemsDialog"
+            app:destination="@id/spinnerCategoryItemsDialog" />
+    </navigation>
+    <fragment
+        android:id="@+id/profileSettingsFragment"
+        android:name="com.example.yonetimerchant.profile.ProfileSettingsFragment"
+        android:label="ProfileSettingsFragment"
+        tools:layout="@layout/fragment_profile_options_revised">
+        <action
+            android:id="@+id/action_profileSettingsFragment_to_changePasswordDialogFragment"
+            app:destination="@id/changePasswordDialogFragment" />
+        <action
+            android:id="@+id/action_profileSettingsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_profileSettingsFragment_to_aboutYonetiFragment"
+            app:destination="@id/aboutYonetiFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/changePasswordDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.ChangePasswordDialogFragment"
+        android:label="ChangePasswordDialogFragment"
+        tools:layout="@layout/fragment_change_password_dialog"/>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.yonetimerchant.profile.ProfileFragment"
+        tools:layout="@layout/fragment_profile_revised"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_changePhoneDialogFragment"
+            app:destination="@id/changePhoneDialogFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changeEmailDialogFragment"
+            app:destination="@id/changeEmailDialogFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changeAddressDialogFragment"
+            app:destination="@id/changeAddressDialogFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/aboutYonetiFragment"
+        android:name="com.example.yonetimerchant.profile.AboutYonetiFragment"
+        tools:layout="@layout/fragment_about_yoneti"
+        android:label="AboutFragment" />
+    <fragment
+        android:id="@+id/feedbackSupportFragment"
+        android:name="com.example.yonetimerchant.profile.FeedbackSupportFragment"
+        tools:layout="@layout/fragment_feedback_support"
+        android:label="FeedbackFragment" />
+    <navigation android:id="@+id/completeProfileNavigation"
+        app:startDestination="@id/home">
+        <fragment
+            android:id="@+id/home"
+            android:name="com.example.yonetimerchant.fragments.complete_profile.CompleteProfileFragment"
+            android:label="CompleteProfileFragment"
+            tools:layout="@layout/fragment_complete_profile" />
+        <action
+            android:id="@+id/action_global_profileSettingsFragment"
+            app:destination="@id/profileSettingsFragment" />
+    </navigation>
+    <dialog
+        android:id="@+id/changePhoneDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.ChangePhoneDialogFragment"
+        android:label="ChangePhoneDialogFragment"
+        tools:layout="@layout/fragment_change_phone_dialog"/>
+    <dialog
+        android:id="@+id/changeEmailDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.ChangeEmailDialogFragment"
+        android:label="ChangeEmailDialogFragment"
+        tools:layout="@layout/fragment_change_email_dialog"/>
+    <dialog
+        android:id="@+id/changeAddressDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.ChangeAddressDialogFragment"
+        android:label="ChangeAddressDialogFragment"
+        tools:layout="@layout/fragment_change_address_dialog"/>
+    <dialog
+        android:id="@+id/editTabDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.EditTabDialogFragment"
+        android:label="EditTabDialogFragment"
+        tools:layout="@layout/fragment_edit_service_dialog">
+        <action
+            android:id="@+id/action_editTabDialogFragment_to_createAlbumDialogFragment"
+            app:destination="@id/createAlbumDialogFragment" />
+        <action
+            android:id="@+id/action_editTabDialogFragment_to_editAlbumDialogFragment"
+            app:destination="@id/editAlbumDialogFragment" />
+    </dialog>
+
+        <fragment
+            android:id="@+id/discovery"
+            android:name="com.example.yonetimerchant.fragments.fragment_service_location.ServiceLocationFragment"
+            android:label="ServiceLocationFragment"
+            tools:layout="@layout/fragment_service_location" />
+    <navigation android:id="@+id/profileNav"
+        app:startDestination="@id/profile">
+        <fragment
+            android:id="@+id/profile"
+            android:name="com.example.yonetimerchant.fragments.photos_fragment.BusinessPhotosGridViewFragment"
+            android:label="BusinessPhotosGridViewFragment"
+            tools:layout="@layout/fragment_service_photos_grid_view" />
+        <action
+            android:id="@+id/action_global_editTabDialogFragment2"
+            app:destination="@id/editTabDialogFragment" />
+        <action
+            android:id="@+id/action_global_merchantSinglePhotoFragment"
+            app:destination="@id/merchantSinglePhotoFragment" />
+    </navigation>
+    <dialog
+        android:id="@+id/createAlbumDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.CreateAlbumDialogFragment"
+        android:label="CreateAlbumDialogFragment"
+        tools:layout="@layout/fragment_create_album_dialog"/>
+    <dialog
+        android:id="@+id/editAlbumDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.EditAlbumDialogFragment"
+        android:label="EditAlbumDialogFragment"
+        tools:layout="@layout/fragment_edit_album_dialog"/>
+    <fragment
+        android:id="@+id/merchantSinglePhotoFragment"
+        android:name="com.example.yonetimerchant.fragments.single_photo.MerchantSinglePhotoFragment"
+        android:label="MerchantSinglePhotoFragment"
+        tools:layout="@layout/fragment_service_provider_single_photo">
+        <action
+            android:id="@+id/action_merchantSinglePhotoFragment_to_photoCommentsDialogFragment"
+            app:destination="@id/photoCommentsDialogFragment" />
+        <action
+            android:id="@+id/action_merchantSinglePhotoFragment_to_likesDialogFragment"
+            app:destination="@id/likesDialogFragment" />
+        <action
+            android:id="@+id/action_merchantSinglePhotoFragment_to_contextualMenuDialogFragment"
+            app:destination="@id/contextualMenuDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/photoCommentsDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.PhotoCommentsDialogFragment"
+        android:label="PhotoCommentsDialogFragment"
+        tools:layout="@layout/dialog_fragment_photo_comments"/>
+    <dialog
+        android:id="@+id/likesDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.LikesDialogFragment"
+        android:label="LikesDialogFragment"
+        tools:layout="@layout/fragment_like_dialog"/>
+    <dialog
+        android:id="@+id/contextualMenuDialogFragment"
+        android:name="com.example.yonetimerchant.dialog_fragment.ContextualMenuDialogFragment"
+        android:label="ContextualMenuDialogFragment" />
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.example.yonetimerchant.fragments.orders.OrderDetailsFragment"
+        android:label="OrderDetailsFragment"
+        tools:layout="@layout/fragment_active_orders_details"/>
+    <navigation android:id="@+id/listOrdersNav"
+        app:startDestination="@id/orders">
+        <fragment
+            android:id="@+id/orders"
+            android:name="com.example.yonetimerchant.fragments.orders.ListOfOrdersFragment"
+            android:label="ListOfOrdersFragment"
+            tools:layout="@layout/fragment_list_of_orders" />
+        <action
+            android:id="@+id/action_global_orderDetailsFragment2"
+            app:destination="@id/orderDetailsFragment" />
+    </navigation>
+</navigation>

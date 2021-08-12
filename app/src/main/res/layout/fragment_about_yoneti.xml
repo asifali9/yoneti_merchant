@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView22"
+            app:layout_constraintEnd_toStartOf="@+id/textView22"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView22"
+            app:srcCompat="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/textView22"
+            style="@style/tvheading3StyleBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="32dp"
+            android:text="About Yoneti"
+            app:layout_constraintStart_toEndOf="@+id/imageView16"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:elevation="@dimen/_15sdp"
+            android:translationZ="@dimen/_15sdp"
+            app:cardCornerRadius="20dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/darkCardView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView22">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="20dp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvPaymentOptions"
+                    style="@style/tvContentWhite15sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="Visit our Website"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline28"
+                    app:layout_constraintStart_toStartOf="@+id/guideline27"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/paymentLine"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline28"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/guideline27"
+                    app:layout_constraintTop_toBottomOf="@id/tvPaymentOptions" />
+                <!--            more settings-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvMoreSettigs"
+                    style="@style/tvContentWhite15sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="Terms of Services"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline28"
+                    app:layout_constraintStart_toStartOf="@+id/guideline27"
+                    app:layout_constraintTop_toBottomOf="@id/paymentLine" />
+
+                <View
+                    android:id="@+id/moresettingsLine"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+
+                    app:layout_constraintEnd_toStartOf="@+id/guideline28"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/guideline27"
+                    app:layout_constraintTop_toBottomOf="@id/tvMoreSettigs" />
+
+                <!--            change password-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvChangePassword"
+                    style="@style/tvContentWhite15sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="Privacy Policy"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline28"
+                    app:layout_constraintStart_toStartOf="@+id/guideline27"
+                    app:layout_constraintTop_toBottomOf="@id/moresettingsLine" />
+
+                <View
+                    android:id="@+id/changePasswordLine"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline28"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/guideline27"
+                    app:layout_constraintTop_toBottomOf="@id/tvChangePassword" />
+
+                <!--            sign out-->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvFeedbackSupport"
+                    style="@style/tvContentWhite15sp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:drawablePadding="10dp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="License"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline28"
+                    app:layout_constraintStart_toStartOf="@+id/guideline27"
+                    app:layout_constraintTop_toBottomOf="@id/changePasswordLine" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="40dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:elevation="@dimen/_17sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline40"
+            android:background="@color/darkCardView"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

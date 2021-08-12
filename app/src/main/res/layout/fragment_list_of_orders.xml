@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="listOfOrdersViewModel"
+            type="com.example.yonetimerchant.fragments.orders.ListOfOrdersViewModel" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/completedOrders"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/circular_background"
+                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+                <ImageView
+                    android:id="@+id/ivCompleteOrders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/activeOrderGuideline"
+                    app:layout_constraintTop_toBottomOf="@id/activeOrderTopGuideline"
+                    tools:layout_editor_absoluteY="1dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/activeOrderGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/activeOrderTopGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <TextView
+                    android:id="@+id/tvCompletedOrdersNumbers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="No"
+                    style="@style/whiteTextViewThree"
+                    app:layout_constraintStart_toStartOf="@+id/activeOrderGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/ivCompleteOrders" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Completed Orders"
+                    android:textScaleX="1.3"
+                    android:id="@+id/tvcompletedOrdersStatus"
+                    style="@style/whiteTextViewOne"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/activeOrderGuideline"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCompletedOrdersNumbers" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activeOrders"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/unselected_circular_background"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+
+                <ImageView
+                    android:id="@+id/ivActiveOrders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/guideline9"
+                    app:layout_constraintTop_toBottomOf="@id/guideline10"
+
+                    tools:layout_editor_absoluteY="1dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <TextView
+                    android:id="@+id/tvActiveOrdersNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="No"
+                    style="@style/greenTextViewThree"
+                    app:layout_constraintStart_toStartOf="@+id/guideline9"
+                    app:layout_constraintTop_toBottomOf="@+id/ivActiveOrders" />
+
+                <TextView
+                    style="@style/greenTextViewOne"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Active Orders"
+                    android:textScaleX="1.3"
+                    android:id="@+id/tvActiveOrderHeadline"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline9"
+                    app:layout_constraintTop_toBottomOf="@+id/tvActiveOrdersNumber" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ivNotification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_simple_bell" />
+
+                    <ImageView
+                        android:id="@+id/ivSchedule"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivNotification"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_extend_time" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        style="@style/greenTextViewTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:text="List of Orders"
+                        android:gravity="center_vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/circular_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintTop_toBottomOf="@+id/completedOrders">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/leftGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/rightGuideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="20dp" />
+
+                <TextView
+                    android:id="@+id/tvOrderStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Completed Orders"
+                    android:textAllCaps="true"
+                    style="@style/whiteTextViewTwo"
+                    app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etSearchOrders"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="@dimen/_20sdp"
+                    android:paddingTop="@dimen/_6sdp"
+                    android:paddingBottom="@dimen/_6sdp"
+                    android:background="@drawable/et_background"
+                    android:hint="Type to search order"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                    app:layout_constraintTop_toBottomOf="@id/tvOrderStatus" />
+
+                <ImageView
+                    android:id="@+id/ivSearchOrder"
+                    android:layout_width="48dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="8dp"
+                    android:padding="3dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/etSearchOrders"
+                    app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                    app:layout_constraintTop_toTopOf="@+id/etSearchOrders"
+                    app:srcCompat="@drawable/ic_search"
+                    app:tint="@color/borderColor" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/borderColor"
+                    app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                    app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                    app:layout_constraintTop_toBottomOf="@id/etSearchOrders" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvOrders"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    android:scrollbarSize="@dimen/_1sdp"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/completed_orders_item_layout" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvActiveOrders"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:scrollbarSize="@dimen/_1sdp"
+                    android:scrollbars="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                    app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                    app:layout_constraintTop_toBottomOf="@id/divider"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/active_orders_item_layout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

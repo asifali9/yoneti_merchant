@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="proflieViewModel"
+            type="com.example.yonetimerchant.profile.ProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivCoverPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/yoneti_test_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvOptions"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:elevation="@dimen/_15sdp"
+            android:translationZ="@dimen/_15sdp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline41">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tvBio"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="California"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvFullName" />
+
+                    <View
+                        android:id="@+id/profileLine"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="24dp"
+                        android:background="@color/rvBackground"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvBio" />
+
+                    <TextView
+                        android:id="@+id/tvFullName"
+                        style="@style/tvheading3StyleBlack"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:gravity="center"
+                        android:text="Yoneti"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline31"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="30dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_end="30dp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ilName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="32dp"
+                        android:hint="full Name"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@id/profileLine">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:id="@+id/etFullName"
+                            android:layout_height="match_parent"
+                            android:text="@={proflieViewModel.fullName}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/iluserName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="user name"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@+id/ilName">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/userName"
+                            android:text="@={proflieViewModel.userName}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ilWebiste"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="web site"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@id/iluserName">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etWebsite"
+                            android:text="@={proflieViewModel.website}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ilBio"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Your Bio"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@+id/ilWebiste">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/ilYourBio"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@={proflieViewModel.bio}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/tvBioMessage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Max 250 words tell people  who"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@+id/ilBio" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ilDob"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Date Of Birth"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@+id/tvBioMessage">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etDob"
+                            android:text="@={proflieViewModel.dob}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ilEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Email"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@+id/ilPhone">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etEmail"
+                            android:text="@={proflieViewModel.email}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/ivChangeEmail"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/ic_close"
+                        app:layout_constraintBottom_toBottomOf="@id/ilEmail"
+                        app:layout_constraintEnd_toEndOf="@id/guideline32"
+                        app:layout_constraintTop_toBottomOf="@id/ilEmail"
+                        app:layout_constraintTop_toTopOf="@id/ilEmail" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ilPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Phone"
+                        app:endIconDrawable="@drawable/ic_close"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@+id/ilDob">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etPhone"
+                            android:text="@={proflieViewModel.phone}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/ivChangePhone"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/ic_close"
+                        app:layout_constraintBottom_toBottomOf="@id/ilPhone"
+                        app:layout_constraintEnd_toEndOf="@id/guideline32"
+                        app:layout_constraintTop_toBottomOf="@id/ilPhone"
+                        app:layout_constraintTop_toTopOf="@id/ilPhone" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ilAddress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Enter Address"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@+id/ilEmail">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/etAddress"
+                            android:text="@={proflieViewModel.address}"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <ImageView
+                        android:id="@+id/ivChangeAddress"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/ic_close"
+                        app:layout_constraintBottom_toBottomOf="@id/ilAddress"
+                        app:layout_constraintEnd_toEndOf="@id/guideline32"
+                        app:layout_constraintTop_toBottomOf="@id/ilAddress"
+                        app:layout_constraintTop_toTopOf="@id/ilAddress" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/ilGender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Gender"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@+id/ilAddress">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="270dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ilGender" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/ivCoverPhoto"
+            app:layout_constraintGuide_begin="205dp" />
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnUpdateCover"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnUpdateCover"
+            app:srcCompat="@drawable/ic_back" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUpdateCover"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:alpha=".45"
+            android:textSize="10sp"
+            android:background="@android:color/white"
+            android:text="Update Cover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivUserAvatar"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="110dp"
+            android:elevation="50dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/facebook"/>
+
+        <ImageView
+            android:id="@+id/ivUpdateUserImage"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:elevation="60dp"
+            android:rotation="178"
+            app:layout_constraintEnd_toEndOf="@+id/ivUserAvatar"
+            app:layout_constraintTop_toTopOf="@+id/ivUserAvatar"
+            app:srcCompat="@drawable/ic_edit_profile"
+            app:tint="@color/social_media_color" />
+
+        <!--        <androidx.constraintlayout.widget.Guideline-->
+        <!--            android:id="@+id/guideline42"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintGuide_end="0dp"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/cvOptions"-->
+        <!--            app:layout_constraintStart_toStartOf="parent" />-->
+        <!--        <TextView-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="70dp"-->
+        <!--            android:background="@android:color/black"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@id/cvOptions"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/guideline42"-->
+        <!--            />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

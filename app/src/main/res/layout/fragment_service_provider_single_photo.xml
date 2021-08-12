@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="singlePhotoViewModel"
+            type="com.example.yonetimerchant.fragments.single_photo.MerchantSinglePhotoModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+        <ImageView
+            android:id="@+id/ivSinglePhotoBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline36"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back"
+            app:tint="@color/black" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:text="Photo"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/ivSinglePhotoBack"
+            app:layout_constraintStart_toEndOf="@+id/ivSinglePhotoBack"
+            app:layout_constraintTop_toTopOf="@+id/ivSinglePhotoBack" />
+
+
+        <ImageView
+            android:id="@+id/ivMerchant"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivUserProfile" />
+
+        <ImageView
+            android:id="@+id/ivLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline36"
+            app:layout_constraintTop_toBottomOf="@+id/ivMerchant"
+            app:srcCompat="@drawable/ic_like" />
+
+        <ImageView
+            android:id="@+id/ivShare"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            app:tint="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/ivChat"
+            app:layout_constraintStart_toEndOf="@+id/ivChat"
+            app:layout_constraintTop_toTopOf="@+id/ivChat"
+            app:srcCompat="@drawable/ic_share" />
+
+        <ImageView
+            android:id="@+id/ivChat"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            app:tint="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/ivLike"
+            app:layout_constraintStart_toEndOf="@+id/ivLike"
+            app:layout_constraintTop_toTopOf="@+id/ivLike"
+            app:srcCompat="@drawable/ic_chat_icon" />
+
+        <TextView
+            android:id="@+id/tvComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={singlePhotoViewModel.commentsCount}"
+            tools:text="23 comments"
+            app:layout_constraintBottom_toBottomOf="@+id/ivShare"
+            app:layout_constraintEnd_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toTopOf="@+id/ivShare" />
+
+        <TextView
+            android:id="@+id/tvLikes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            tools:text="23 Likes"
+            android:text="@={singlePhotoViewModel.likesCount}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvComment"
+            app:layout_constraintEnd_toStartOf="@+id/tvComment"
+            app:layout_constraintTop_toTopOf="@+id/tvComment" />
+
+
+        <View
+            android:id="@+id/textView46"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/rvBackground"
+            app:layout_constraintBottom_toTopOf="@+id/ivMerchant"
+            app:layout_constraintEnd_toStartOf="@+id/guideline37"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline36"
+            app:layout_constraintTop_toBottomOf="@+id/textView20"
+            app:layout_constraintVertical_bias="0.014" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivUserProfile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/profile_placeholder"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
+            app:layout_constraintBottom_toTopOf="@+id/ivMerchant"
+            app:layout_constraintStart_toStartOf="@+id/guideline36"
+            app:layout_constraintTop_toBottomOf="@+id/textView46" />
+
+        <TextView
+            android:id="@+id/textView47"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            tools:text="Hashim Amla"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/ivUserProfile"
+            app:layout_constraintStart_toEndOf="@+id/ivUserProfile"
+            app:layout_constraintTop_toTopOf="@+id/ivUserProfile"
+            app:layout_constraintVertical_bias="0.17000002" />
+
+        <TextView
+            android:id="@+id/textView48"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="2 Days ago"
+            app:layout_constraintBottom_toBottomOf="@+id/ivUserProfile"
+            app:layout_constraintStart_toStartOf="@+id/textView47"
+            app:layout_constraintTop_toBottomOf="@+id/textView47" />
+
+        <ImageView
+            android:id="@+id/ivContextualMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/ivUserProfile"
+            app:layout_constraintEnd_toStartOf="@+id/guideline37"
+            app:layout_constraintTop_toTopOf="@+id/ivUserProfile"
+            app:layout_constraintVertical_bias="0.434"
+            app:tint="@android:color/black"
+            app:srcCompat="@drawable/ic_contextual_menu_dots" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

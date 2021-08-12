@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bottom_nav_color">#4b6057</color>
+
+    <!--    search background color-->
+    <color name="etBackgroundColor">#f2f2f3</color>
+    <!--    Recyclerview background coclor-->
+    <color name="rvBackground">#f2f2f3</color>
+    <color name="darkCardView">#4b6057</color>
+    <color name="borderColor">#2d4138</color>
+    <color name="buttonBorderColor">#1c2d26</color>
+    <color name="intorductoryBackground">#294338</color>
+    <color name="lightDardForAddress">#9d9d9d</color>
+
+    <color name="gold">#cdd614</color>
+    <color name="disableColor">#00ff00</color>
+    <color name="enableColor">#ff0000</color>
+
+    <color name="introStartColor">#2d463c</color>
+    <color name="introEndColor">#445b52</color>
+    <color name="grey_line">#EEE6E5</color>
+</resources>

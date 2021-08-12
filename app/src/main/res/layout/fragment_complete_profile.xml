@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".activities.SplashActivity">
+<!--        complete profile ui-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/completeProfileRoot"
+            android:visibility="gone"
+            tools:context=".activities.SplashActivity">
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/tvScreenHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"
+                android:text="Hi, nice to meet you!"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvSubHeading"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="@+id/guideline5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+
+            <TextView
+                android:id="@+id/tvSubHeading"
+                style="@style/tvSubHeadingTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="complete your profile and add your"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tvSubHeading2"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:layout_constraintStart_toStartOf="@+id/guideline5" />
+
+            <TextView
+                android:id="@+id/tvSubHeading2"
+                style="@style/tvSubHeadingTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:text="services"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/btnCompleteProfile"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:layout_constraintStart_toStartOf="@+id/guideline5" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCompleteProfile"
+                style="@style/materialButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/current_loc"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/otpBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_location_map" />
+
+            <ImageView
+                android:id="@+id/ivBottomSemiCircle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline6"
+                app:srcCompat="@drawable/ic_location_map" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!--        dashboard-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dashboardRoot"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="20dp" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:contentInsetStart="0dp"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/ivNotification"
+                            android:layout_width="25dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_bell" />
+
+                        <ImageView
+                            android:id="@+id/ivSchedule"
+                            android:layout_width="25dp"
+                            android:layout_height="0dp"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/ivNotification"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="1.0"
+                            app:srcCompat="@drawable/ic_extend_time" />
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hi, Dummy \n(Business)"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.appcompat.widget.Toolbar>
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Booking Due in"
+                    android:textAllCaps="true"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+                <TextView
+                    android:id="@+id/tvCountdownTimer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="@+id/textView8"
+                    app:layout_constraintStart_toStartOf="@+id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bookingInQueueContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circular_background"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCountdownTimer">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/bookingInQueueGuidelineLeft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="15dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/bookingInQueueGuidelineRight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_end="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Booking in queue"
+                        android:textAllCaps="true"
+                        style="@style/whiteTextViewTwo"
+                        app:layout_constraintStart_toStartOf="@id/bookingInQueueGuidelineLeft"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvBookingInQueues"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toStartOf="@+id/bookingInQueueGuidelineRight"
+                        app:layout_constraintStart_toStartOf="@+id/bookingInQueueGuidelineLeft"
+                        app:layout_constraintTop_toBottomOf="@id/tvQueueOrdersCount"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/active_order_single_item" />
+
+                    <TextView
+                        android:id="@+id/tvQueueOrdersCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/notification_counter"
+                        android:text="10"
+                        style="@style/whiteTextViewOne"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        app:layout_constraintRight_toRightOf="@id/bookingInQueueGuidelineRight"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvSeeAllPendingOrders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:text="@string/see_all"
+                        style="@style/whiteTextViewTwo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/bookingInQueueGuidelineRight"
+                        app:layout_constraintTop_toBottomOf="@id/rvBookingInQueues" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--                In Progress orders-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bookingInProgressContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/circular_background"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@+id/bookingInQueueContainer">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/bookingInProgressGuidelineLeft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="15dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/bookingInProgressGuidelineRight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_end="15dp" />
+
+                    <TextView
+                        style="@style/whiteTextViewTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Booking in Progress"
+                        android:textAllCaps="true"
+                        app:layout_constraintStart_toStartOf="@id/bookingInProgressGuidelineLeft"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvBookingInProgress"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toStartOf="@+id/bookingInProgressGuidelineRight"
+                        app:layout_constraintStart_toStartOf="@+id/bookingInProgressGuidelineLeft"
+                        app:layout_constraintTop_toBottomOf="@id/tvInProgressOrdersCount"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/active_order_single_item" />
+
+                    <TextView
+                        android:id="@+id/tvInProgressOrdersCount"
+                        style="@style/whiteTextViewOne"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/notification_counter"
+                        android:gravity="center"
+                        android:text="10"
+                        android:textColor="@color/black"
+                        app:layout_constraintRight_toRightOf="@id/bookingInProgressGuidelineRight"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvSeeAllInProgressOrders"
+                        style="@style/whiteTextViewTwo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:text="@string/see_all"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/bookingInProgressGuidelineRight"
+                        app:layout_constraintTop_toBottomOf="@id/rvBookingInProgress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--        progress Container-->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/merchantProgressContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:background="@drawable/progress_background"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@id/bookingInProgressContainer">
+
+                    <com.github.anastr.speedviewlib.RaySpeedometer
+                        android:id="@+id/raySpeedometer"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_110sdp"
+                        app:backgroundCircleColor="@android:color/transparent"
+                        app:degreeBetweenMark="12"
+                        app:highSpeedColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView15"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_weight="0.65"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:lowSpeedColor="@color/grey_line"
+                        app:markColor="@android:color/white"
+                        app:markWidth="4dp"
+                        app:maxSpeed="100"
+                        app:mediumSpeedColor="@color/black"
+                        app:rayColor="@android:color/transparent"
+                        app:speedBackgroundColor="@android:color/transparent"
+                        app:speedTextColor="@android:color/transparent"
+                        app:textColor="@android:color/transparent"
+                        app:withEffects="true" />
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        style="@style/whiteTextViewOne"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:autoSizeMinTextSize="12sp"
+                        android:autoSizeMaxTextSize="100sp"
+                        android:autoSizeStepGranularity="2sp"
+                        android:text="Based on customers reviews your average rating is 4.8 good work."
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintHorizontal_weight="0.65"
+                        app:layout_constraintStart_toEndOf="@+id/raySpeedometer"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvProgressCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="86"
+                        style="@style/whiteTextViewThree"
+                        app:layout_constraintBottom_toBottomOf="@+id/raySpeedometer"
+                        app:layout_constraintEnd_toEndOf="@+id/raySpeedometer"
+                        app:layout_constraintStart_toStartOf="@+id/raySpeedometer"
+                        app:layout_constraintTop_toTopOf="@+id/raySpeedometer" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--        complete orders progress-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/completedOrdersContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="3dp"
+                    android:background="@drawable/orders_background"
+                    app:layout_constraintEnd_toStartOf="@+id/serviceArea"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintTop_toBottomOf="@+id/merchantProgressContainer">
+
+
+                    <ImageView
+                        android:id="@+id/ivCompleteOrders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@+id/guideline9"
+                        app:layout_constraintTop_toBottomOf="@id/guideline10"
+                        app:srcCompat="@drawable/ic_solid_check"
+                        tools:layout_editor_absoluteY="1dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="20dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="20dp" />
+
+                    <TextView
+                        android:id="@+id/tvCompletedOrderscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="TextView"
+                        style="@style/greenTextViewThree"
+                        app:layout_constraintStart_toStartOf="@+id/guideline9"
+                        app:layout_constraintTop_toBottomOf="@+id/ivCompleteOrders" />
+
+                    <TextView
+                        android:id="@+id/tvCompletedOrders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Completed Orders"
+                        style="@style/greenTextViewOne"
+                        app:layout_constraintStart_toStartOf="@+id/guideline9"
+                        app:layout_constraintTop_toBottomOf="@+id/tvCompletedOrderscount" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--        service area radius-->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/serviceArea"
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/orders_background"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintStart_toEndOf="@+id/completedOrdersContainer"
+                    app:layout_constraintTop_toBottomOf="@+id/merchantProgressContainer">
+
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@+id/guideline11"
+                        app:layout_constraintTop_toBottomOf="@id/horizontalGuideline"
+                        app:srcCompat="@drawable/ic_about_yoneti"
+                        tools:layout_editor_absoluteY="1dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="20dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/horizontalGuideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="20dp" />
+
+                    <TextView
+                        android:id="@+id/tvServiceDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="TextView"
+                        style="@style/greenTextViewThree"
+                        app:layout_constraintStart_toStartOf="@+id/guideline11"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+                    <TextView
+                        android:id="@+id/tvServiceArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Your Service Area"
+                        style="@style/greenTextViewOne"
+                        app:layout_constraintStart_toStartOf="@+id/guideline11"
+                        app:layout_constraintTop_toBottomOf="@+id/tvServiceDistance" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--        Recent orders-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/recentOrdersContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/circular_background"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                    app:layout_constraintStart_toStartOf="@+id/guideline7"
+                    app:layout_constraintBottom_toTopOf="@+id/blankView"
+                    app:layout_constraintTop_toBottomOf="@+id/completedOrdersContainer">
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/recentOrdersLeftGuideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="15dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/recentOrdersRightGuideline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_end="15dp" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Recent Orders"
+                        android:textAllCaps="true"
+                        style="@style/whiteTextViewOne"
+                        app:layout_constraintStart_toEndOf="@id/recentOrdersLeftGuideline"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvRecentOrders"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/completed_orders_item_layout"
+                        tools:itemCount="3"
+                        app:layout_constraintEnd_toStartOf="@+id/recentOrdersRightGuideline"
+                        app:layout_constraintStart_toStartOf="@+id/recentOrdersLeftGuideline"
+                        app:layout_constraintTop_toBottomOf="@id/textView13" />
+
+                    <TextView
+                        android:id="@+id/tvSeeAllRecentOrders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="24dp"
+                        android:text="@string/see_all"
+                        style="@style/whiteTextViewOne"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/recentOrdersRightGuideline"
+                        app:layout_constraintTop_toBottomOf="@id/rvRecentOrders"
+                        app:layout_constraintVertical_bias="1.0" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/blankView"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_20sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recentOrdersContainer" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
