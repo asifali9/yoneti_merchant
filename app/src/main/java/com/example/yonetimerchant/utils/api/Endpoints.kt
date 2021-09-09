@@ -391,6 +391,15 @@ interface Endpoints {
     @Headers("Content-Type:application/json", "Accesskey:b8d7996ea3557791aba04cf51a0654b2")
     @POST("users_api/Home/getLikeCommentCounts")
     fun imageCommentsCount(@Header("Sessionid") sessionId: String, @Body json: String): Deferred<Profile>
+
+
+    @Headers("Content-Type:application/json", "Accesskey:b8d7996ea3557791aba04cf51a0654b2")
+    @POST("Discovery/updateDiscovery")
+    fun updateBusinessLocation(@Header("Sessionid") sessionId: String, @Body json: String): Deferred<Profile>
+
+    @Headers("Content-Type:application/json", "Accesskey:b8d7996ea3557791aba04cf51a0654b2")
+    @POST("Discovery/getDiscovery")
+    fun getBusinessLocation(@Header("Sessionid") sessionId: String, @Body json: String): Deferred<Profile>
 //    @POST("users/updateAddress")
 //    fun updateAddress(
 //        @Header("Sessionid") sessionId: String

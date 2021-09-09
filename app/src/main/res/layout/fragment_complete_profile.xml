@@ -102,9 +102,9 @@
                 android:id="@+id/imageView18"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_location_map" />
+                app:srcCompat="@drawable/ic_top_arrow" />
 
             <ImageView
                 android:id="@+id/ivBottomSemiCircle"
@@ -112,8 +112,8 @@
                 android:layout_height="100dp"
                 android:layout_marginBottom="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline6"
-                app:srcCompat="@drawable/ic_location_map" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_bottom_arrow" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -202,6 +202,7 @@
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:gravity="center"
+                    style="@style/greenBoldTextViewFour"
                     app:layout_constraintEnd_toEndOf="@+id/textView8"
                     app:layout_constraintStart_toStartOf="@+id/textView8"
                     app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -210,10 +211,11 @@
                     android:id="@+id/bookingInQueueContainer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/circular_background"
                     app:layout_constraintEnd_toStartOf="@+id/guideline8"
                     app:layout_constraintStart_toStartOf="@+id/guideline7"
-                    app:layout_constraintTop_toBottomOf="@+id/tvCountdownTimer">
+                    app:layout_constraintTop_toBottomOf="@+id/bookingInProgressContainer">
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/bookingInQueueGuidelineLeft"
@@ -256,7 +258,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/notification_counter"
-                        android:text="10"
+                        tools:text="10"
                         style="@style/whiteTextViewOne"
                         android:gravity="center"
                         android:textColor="@color/black"
@@ -281,11 +283,11 @@
                     android:id="@+id/bookingInProgressContainer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/circular_background"
                     app:layout_constraintEnd_toStartOf="@+id/guideline8"
                     app:layout_constraintStart_toStartOf="@+id/guideline7"
-                    app:layout_constraintTop_toBottomOf="@+id/bookingInQueueContainer">
+                    app:layout_constraintTop_toBottomOf="@+id/tvCountdownTimer">
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/bookingInProgressGuidelineLeft"
@@ -330,7 +332,7 @@
                         android:layout_marginTop="16dp"
                         android:background="@drawable/notification_counter"
                         android:gravity="center"
-                        android:text="10"
+                        tools:text="10"
                         android:textColor="@color/black"
                         app:layout_constraintRight_toRightOf="@id/bookingInProgressGuidelineRight"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -360,7 +362,7 @@
                     android:background="@drawable/progress_background"
                     app:layout_constraintEnd_toStartOf="@+id/guideline8"
                     app:layout_constraintStart_toStartOf="@+id/guideline7"
-                    app:layout_constraintTop_toBottomOf="@id/bookingInProgressContainer">
+                    app:layout_constraintTop_toBottomOf="@id/bookingInQueueContainer">
 
                     <com.github.anastr.speedviewlib.RaySpeedometer
                         android:id="@+id/raySpeedometer"

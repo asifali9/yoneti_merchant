@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.yoneti.base.BaseResult
 import com.example.yoneti.model.Album
 import com.example.yoneti.model.GridImage
+import com.example.yoneti.model.Profile
 import com.example.yoneti.repository.Repository
 import com.example.yonetimerchant.utils.MyPreferences
 import com.google.gson.Gson
@@ -91,6 +92,19 @@ class BusinessPhotosViewModel @ViewModelInject constructor(
             Log.d(TAG, "InternetIssue: ${exception.message}")
         }
 
+    }
+
+    var profileData = MutableLiveData<Profile>()
+
+    fun getProfile() {
+        viewModelScope.launch(Dispatchers.IO) {
+            var response = repository.getUserProfile(sessionId, userId.toString())
+            withContext(Dispatchers.Main)
+            {
+                if (response.status)
+                profileData.value = response
+            }
+        }
     }
 
 }

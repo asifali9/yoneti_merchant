@@ -6,8 +6,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.yoneti.base.BaseFragment
 import com.example.yoneti.model.Album
+import com.example.yoneti.model.Profile
 import com.example.yonetimerchant.R
 import com.example.yonetimerchant.adapters.ServicePhotosGridPagerAdapter
 import com.example.yonetimerchant.databinding.CustomTabTitleBinding
@@ -32,6 +35,7 @@ class BusinessPhotosGridViewFragment :
     override fun getLayout(): Int = R.layout.fragment_service_photos_grid_view
 
     override fun bindingToViews() {
+        viewModel!!.getProfile()
         viewModel!!.getTabName()
         viewModel!!.tabsList.observe(this, Observer { tabsList ->
             if (tabsList.size != 0) {
@@ -52,6 +56,12 @@ class BusinessPhotosGridViewFragment :
 //            settingTitlesOnViewPager(it)
 //        }
 
+        viewModel!!.profileData.observe(this, Observer {
+            if (it.status) {
+                updateUi(it)
+            } else
+                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+        })
         binding.btnEditTab.setOnClickListener {
 //            ServicePhotosGridPagerAdapter.FRAGMENTS_NUM =
 //                ServicePhotosGridPagerAdapter.FRAGMENTS_NUM + 1
@@ -69,6 +79,29 @@ class BusinessPhotosGridViewFragment :
         }
 
     }
+
+    private fun updateUi(profile: Profile?) {
+        profile!!.result.also {
+            binding.tvHeader.setText(it.fullname)
+            binding.tvUserName.setText(it.fullname)
+            binding.tvAboutUser.setText(it.userBio)
+            binding.tvWebAddress.setText(it.website)
+
+            binding.tvCompleteAddress.setText(it.address.let {
+                it.street+it.city+it.country
+            })
+            Glide.with(requireContext())
+                .load(it.coverPhoto)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(binding.coverPhoto)
+//            Glide.with(requireContext())
+//                .load(it.avatar)
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .into(binding.ivUserAvatar)
+        }
+    }
+
+
     fun onUpdateTabName(tabPosition:Int){
         viewModel!!.albumNameUpdated.value = false
 //        binding.servicePhotosTabs.getTabAt(tabPosition)?.setText(viewModel!!.newAlbumName)!!

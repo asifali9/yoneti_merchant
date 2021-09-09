@@ -289,6 +289,17 @@
                             android:layout_height="wrap_content" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_update"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Update"
+                        android:onClick="@{()->proflieViewModel.updateProfile()}"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@id/ilGender" />
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="270dp"
@@ -296,7 +307,7 @@
                         android:background="@color/white"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ilGender" />
+                        app:layout_constraintTop_toBottomOf="@id/btn_update" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
         </androidx.cardview.widget.CardView>

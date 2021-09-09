@@ -37,8 +37,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/imageView8"
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/coverPhoto"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:scaleType="centerCrop"
@@ -46,8 +46,12 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
-                        app:srcCompat="@drawable/yoneti_test_profile" />
+                        android:src="@drawable/yoneti_test_profile"
+                        app:riv_corner_radius_bottom_left="@dimen/_30sdp"
+                        app:riv_corner_radius_bottom_right="@dimen/_30sdp"
+                        app:riv_corner_radius_top_left="0dp"
+                        app:riv_corner_radius_top_right="0dp"
+                        app:riv_oval="false"/>
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline19"
@@ -63,16 +67,28 @@
                         android:orientation="vertical"
                         app:layout_constraintGuide_end="20dp" />
 
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivUserImage"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_marginBottom="8dp"
+                        app:srcCompat="@drawable/ic_camera"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
+                        app:layout_constraintBottom_toTopOf="@+id/tvHeader"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline20"
+                        app:layout_constraintStart_toStartOf="@+id/guideline19" />
+
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tvHeader"
                         style="@style/tvheading4StyleBlack"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="24dp"
                         android:gravity="center|left"
                         android:text="Brand Name"
                         app:layout_constraintEnd_toStartOf="@+id/guideline20"
                         app:layout_constraintStart_toStartOf="@+id/guideline19"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+                        app:layout_constraintTop_toBottomOf="@+id/coverPhoto" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tvUserName"
@@ -214,8 +230,10 @@
                     android:id="@+id/photosPager"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="24dp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline35"
-                    app:layout_constraintStart_toStartOf="@+id/guideline34" />
+                    app:layout_constraintStart_toStartOf="@+id/guideline34"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 

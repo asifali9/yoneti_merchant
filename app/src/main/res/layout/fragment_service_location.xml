@@ -20,7 +20,6 @@
 
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
-
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,15 +57,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textColor="@color/white"
                 android:background="@drawable/tv_location_background"
+                android:gravity="center"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/tvSelectedCity"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="@+id/guideline12"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/tvSelectedCity"
@@ -74,14 +73,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:gravity="center"
-                tools:text="TextView"
                 android:background="@drawable/tv_location_background"
+                android:gravity="center"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/tvSelectedRadius"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toEndOf="@+id/tvSelectedCountry"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/tvSelectedRadius"
@@ -89,17 +89,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:gravity="center"
-                tools:text="TextView"
                 android:background="@drawable/tv_location_background"
+                android:gravity="center"
+                android:text="@={serviceLocationViewModel.businessRadius}"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toEndOf="@+id/tvSelectedCity"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="TextView" />
 
             <TextView
                 android:id="@+id/textView16"
+                style="@style/greenBoldTextViewTwo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -113,9 +116,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="Search the country"
+                android:inputType="textPersonName"
+                android:text="@={serviceLocationViewModel.countryName}"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
                 app:layout_constraintStart_toStartOf="@+id/guideline12"
                 app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -146,13 +149,14 @@
 
             <TextView
                 android:id="@+id/textView19"
+                style="@style/greenBoldTextViewTwo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="More About Business"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintTop_toBottomOf="@id/etZipCode"
                 app:layout_constraintStart_toStartOf="@+id/guideline12"
+                app:layout_constraintTop_toBottomOf="@id/etZipCode"
                 tools:layout_editor_absoluteY="333dp" />
 
             <TextView
@@ -161,37 +165,46 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Business Hours"
+                android:textColor="@android:color/darker_gray"
+                style="@style/whiteTextViewTwoBold"
                 app:layout_constraintStart_toStartOf="@+id/guideline12"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/tvStartTime"
+                style="@style/greenBoldTextViewTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="TextView"
-                app:layout_constraintEnd_toStartOf="@+id/textView27"
+                android:padding="@dimen/_5sdp"
+                android:background="@drawable/business_time_background"
+                android:text="@={serviceLocationViewModel.businessOpenTime,default=open}"
+                app:layout_constraintEnd_toStartOf="@+id/tvCloseTime"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
             <TextView
-                android:id="@+id/textView27"
+                android:id="@+id/tvCloseTime"
+                style="@style/greenBoldTextViewTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="TextView"
+                android:padding="@dimen/_5sdp"
+                android:background="@drawable/business_time_background"
+                android:text="@={serviceLocationViewModel.businessCloseTime,default=Anitbodyy}"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
             <TextView
                 android:id="@+id/textView28"
+                style="@style/greenBoldTextViewTwo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Select the Business Range"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
                 app:layout_constraintStart_toStartOf="@+id/guideline12"
-                app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                app:layout_constraintTop_toBottomOf="@+id/tvStartTime" />
 
 
             <RadioGroup
@@ -209,13 +222,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/dominantGreen"
                     android:checked="true"
                     android:text="Entire City" />
+
                 <RadioButton
                     android:id="@+id/rbSelectRadius"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/dominantGreen"
                     android:text="Select Radius" />
             </RadioGroup>
 
@@ -225,62 +241,95 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:max="100"
+                android:progressTint="@color/dominantGreen"
+                android:thumbTint="@color/intorductoryBackground"
                 android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@+id/tvRadiusCounter"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_weight="2"
+                app:layout_constraintHorizontal_weight="2.5"
                 app:layout_constraintStart_toStartOf="@+id/guideline12"
                 app:layout_constraintTop_toBottomOf="@+id/rbBusinessRange" />
 
             <TextView
                 android:id="@+id/tvRadiusCounter"
+                style="@style/greenBoldTextViewTwo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                tools:text="20km"
+                android:gravity="center"
                 android:visibility="gone"
+                android:background="@drawable/business_time_background"
+                app:layout_constraintEnd_toEndOf="@id/guideline13"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintTop_toBottomOf="@+id/rbBusinessRange" />
+                app:layout_constraintStart_toEndOf="@+id/radiusBar"
+                app:layout_constraintTop_toBottomOf="@+id/rbBusinessRange"
+                tools:text="20km" />
 
-            <EditText
-                android:id="@+id/etSearchCity"
+            <Button
+                style="@style/materialButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Search the city..."
+                android:layout_marginTop="8dp"
+                android:onClick="@{()->serviceLocationViewModel.updateServiceLocations()}"
+                android:text="Update"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
                 app:layout_constraintStart_toStartOf="@+id/guideline12"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView2" />
+                app:layout_constraintTop_toBottomOf="@id/radiusBar" />
 
             <EditText
                 android:id="@+id/etStreetAddress"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:ems="10"
-                android:inputType="textPersonName"
                 android:hint="Enter Street Address"
+                android:inputType="textPostalAddress"
+                android:text="@={serviceLocationViewModel.streetAddress}"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
                 app:layout_constraintStart_toStartOf="@+id/guideline12"
-                app:layout_constraintTop_toBottomOf="@+id/etSearchCity" />
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <EditText
+                android:id="@+id/etSearchCity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:hint="City"
+                android:inputType="textPersonName"
+                android:text="@={serviceLocationViewModel.city}"
+                app:layout_constraintEnd_toStartOf="@+id/etState"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline12"
+                app:layout_constraintTop_toBottomOf="@+id/etStreetAddress" />
+
+
+            <EditText
+                android:id="@+id/etState"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="State"
+                android:inputType="textPersonName"
+                android:text="@={serviceLocationViewModel.state}"
+                app:layout_constraintEnd_toStartOf="@+id/etZipCode"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etSearchCity"
+                app:layout_constraintTop_toBottomOf="@+id/etStreetAddress" />
 
             <EditText
                 android:id="@+id/etZipCode"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:hint="Enter Zip Code"
+                android:layout_marginStart="8dp"
+                android:hint="Zip Code"
+                android:inputType="text"
+                android:text="@={serviceLocationViewModel.zipCode}"
                 app:layout_constraintEnd_toStartOf="@+id/guideline13"
-                app:layout_constraintStart_toStartOf="@+id/guideline12"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/etState"
                 app:layout_constraintTop_toBottomOf="@+id/etStreetAddress" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

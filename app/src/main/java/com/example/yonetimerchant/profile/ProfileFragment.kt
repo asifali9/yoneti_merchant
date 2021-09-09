@@ -23,7 +23,7 @@ class ProfileFragment : BaseFragment<ProfileViewModel, FragmentProfileRevisedBin
     override fun getLayout() = R.layout.fragment_profile_revised
 
     override fun bindingToViews() {
-//        binding.proflieViewModel = viewModel
+        binding.proflieViewModel = viewModel
         binding.ivUpdateUserImage.setOnClickListener {
             openGallery(SELECT_IMAGE)
 

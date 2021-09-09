@@ -71,7 +71,7 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
-        <item name="cornerRadius">@dimen/_5sdp</item>
+        <item name="cornerRadius">@dimen/_8sdp</item>
     </style>
     <style name="materialButtonWhiteBackground" parent="Widget.MaterialComponents.Button">
         <item name="elevation">3dp</item>
@@ -167,6 +167,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">10sp</item>
     </style>
+    <style name="whiteTextViewTwoBold">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
     <style name="whiteTextViewTwo">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">15sp</item>
@@ -182,6 +187,17 @@
         <item name="android:textColor">@color/borderColor</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="greenBoldTextViewTwo">
+        <item name="android:textColor">@color/borderColor</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="greenBoldTextViewFour">
+        <item name="android:textColor">@color/borderColor</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">25sp</item>
     </style>
     <style name="greenTextViewOne">
         <item name="android:textColor">@color/borderColor</item>

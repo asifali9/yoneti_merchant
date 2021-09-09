@@ -1,4 +1,3 @@
-
 package com.example.yonetimerchant.fragments.creating_service
 
 import android.view.View
@@ -21,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class CreateServiceFragment : BaseFragment<CreateServiceViewModel,FragmentCreateServiceBinding>() {
+class CreateServiceFragment : BaseFragment<CreateServiceViewModel, FragmentCreateServiceBinding>() {
     private var updatedItemPosition: Int = -1
     private lateinit var updateServicedialog: UpdateServiceDialogFragment
     private lateinit var addServiceDialog: AddServiceDialogFragment
@@ -30,9 +29,9 @@ class CreateServiceFragment : BaseFragment<CreateServiceViewModel,FragmentCreate
     private lateinit var addAgentDialog: AddAgentDialogFragment
     private var selectedCategory: Categories? = null
     private lateinit var serviceCategories: ArrayList<Categories>
-lateinit var categoryDialog: SpinnerCategoryItemsDialog
-var TAG = CreateServiceFragment::class.java.simpleName
-    override fun getViewMode(): Class<CreateServiceViewModel>  = CreateServiceViewModel::class.java
+    lateinit var categoryDialog: SpinnerCategoryItemsDialog
+    var TAG = CreateServiceFragment::class.java.simpleName
+    override fun getViewMode(): Class<CreateServiceViewModel> = CreateServiceViewModel::class.java
 
     override fun getLayout(): Int {
         return R.layout.fragment_create_service
@@ -47,15 +46,13 @@ var TAG = CreateServiceFragment::class.java.simpleName
         clickListeners()
         viewModel!!.serviceCateogryList.observe(this, Observer { categories ->
             serviceCategories = categories
-            if (categories.size == 1)
-            {
+            if (categories.size == 1) {
                 selectedCategory = serviceCategories.get(0)
                 binding.tvServiceCategory.text = categories.get(0).categoryName
                 binding.tvServiceCategory.isClickable = false
                 viewModel!!.getServicesAgainstId(categories.get(0).categoryId!!)
-            }
-            else if (categories.size > 1)
-                categoryDialog = SpinnerCategoryItemsDialog(categories,::onSelectedCategory)
+            } else if (categories.size > 1)
+                categoryDialog = SpinnerCategoryItemsDialog(categories, ::onSelectedCategory)
         })
 
         binding.tvServiceCategory.setOnClickListener {
@@ -70,23 +67,31 @@ var TAG = CreateServiceFragment::class.java.simpleName
 
         binding.btnAddAgent.isClickable = binding.switch1.isChecked
         binding.switch1.setOnCheckedChangeListener { compoundButton, isOn ->
-               binding.btnAddAgent.isClickable = isOn
+            binding.btnAddAgent.isClickable = isOn
         }
 
         viewModel!!.merchantServices.observe(this, Observer {
             if (it.size > 0) {
                 binding.merchantServices.visibility = View.VISIBLE
                 servicesList = it
-                merchantServiceAdapter = MerchantServicesAdapter(it,CreateServiceFragment@this)
+                merchantServiceAdapter = MerchantServicesAdapter(it, CreateServiceFragment@ this)
                 binding.merchantServices.adapter = merchantServiceAdapter
             }
         })
 
         viewModel!!.serviceAddedSuccessful.observe(this, Observer {
-            if (it && viewModel!!.newlyCreatedService != null)
-            {
+            if (it && viewModel!!.newlyCreatedService != null) {
+                if (!this::servicesList.isInitialized)
+                    servicesList = ArrayList()
                 servicesList.add(viewModel!!.newlyCreatedService!!)
-                merchantServiceAdapter.notifyItemInserted(servicesList.size-1)
+                if (this::merchantServiceAdapter.isInitialized)
+                merchantServiceAdapter.notifyItemInserted(servicesList.size - 1)
+                else
+                {
+                    merchantServiceAdapter = MerchantServicesAdapter(servicesList,this)
+                    binding.merchantServices.visibility = View.VISIBLE
+                    binding.merchantServices.adapter = merchantServiceAdapter
+                }
                 addServiceDialog.dismiss()
             }
         })
@@ -97,10 +102,9 @@ var TAG = CreateServiceFragment::class.java.simpleName
          * add services
          */
         binding.btnAddService.setOnClickListener {
-            if (selectedCategory != null)
-            {
+            if (selectedCategory != null) {
                 addServiceDialog = AddServiceDialogFragment(selectedCategory!!.categoryId)
-                addServiceDialog.show(childFragmentManager,"addService")
+                addServiceDialog.show(childFragmentManager, "addService")
             }
         }
 
@@ -108,11 +112,11 @@ var TAG = CreateServiceFragment::class.java.simpleName
             if (selectedCategory != null) {
                 addAgentDialog = AddAgentDialogFragment(selectedCategory!!.categoryId)
                 addAgentDialog.show(childFragmentManager, "agentDialog")
-            }else
+            } else
                 Toast.makeText(requireContext(), "select Category First", Toast.LENGTH_SHORT).show()
         }
 
-        viewModel!!.isServiceDeleted.observe(this, Observer { isServiceDeleted->
+        viewModel!!.isServiceDeleted.observe(this, Observer { isServiceDeleted ->
             if (isServiceDeleted) {
                 servicesList.removeAt(updatedItemPosition)
                 merchantServiceAdapter.notifyItemRemoved(updatedItemPosition)
@@ -122,10 +126,14 @@ var TAG = CreateServiceFragment::class.java.simpleName
     }
 
 
-    fun onSelectedCategory(index:Int = -1) {
+    fun onSelectedCategory(index: Int = -1) {
         categoryDialog.dismiss()
         selectedCategory = serviceCategories.get(index)
-        Toast.makeText(requireContext(),"${serviceCategories.get(index).categoryName}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            requireContext(),
+            "${serviceCategories.get(index).categoryName}",
+            Toast.LENGTH_SHORT
+        ).show()
         binding.tvServiceCategory.text = serviceCategories.get(index).categoryName
     }
 
@@ -134,32 +142,39 @@ var TAG = CreateServiceFragment::class.java.simpleName
      */
     fun updateService(obj: MerchantServices, position: Int) {
         updatedItemPosition = position
-        updateServicedialog = UpdateServiceDialogFragment(obj,::updateServiceObject)
-        updateServicedialog.show(childFragmentManager,"show")
+        updateServicedialog = UpdateServiceDialogFragment(obj, ::updateServiceObject)
+        updateServicedialog.show(childFragmentManager, "show")
     }
 
     /**
      * updating the service and resetting the index to its original position
      */
-    fun updateServiceObject(service:MerchantServices? = null)
-    {
-        Toast.makeText(requireContext(),"updating at index $updatedItemPosition", Toast.LENGTH_SHORT).show()
+    fun updateServiceObject(service: MerchantServices? = null) {
+        Toast.makeText(
+            requireContext(),
+            "updating at index $updatedItemPosition",
+            Toast.LENGTH_SHORT
+        ).show()
         if (service != null) {
             servicesList.set(updatedItemPosition, service)
             merchantServiceAdapter.notifyItemChanged(updatedItemPosition)
             updatedItemPosition = -1
         }
     }
+
     /**
      * Service Category Dialog fragment
      */
-    class SpinnerCategoryItemsDialog constructor(var categories: java.util.ArrayList<Categories>,var kFunction1: (Int) -> Unit) :
+    class SpinnerCategoryItemsDialog constructor(
+        var categories: java.util.ArrayList<Categories>,
+        var kFunction1: (Int) -> Unit
+    ) :
         BaseDialogFragment<SpinnerCategoryItemModel, DialogSpinnerCategoryItemsBinding>() {
 
         override fun getLayout(): Int = R.layout.dialog_spinner_category_items
 
         override fun bindingToView() {
-            dataBinding.rvCategory.adapter = ServiceCategoryAdapter(categories,this)
+            dataBinding.rvCategory.adapter = ServiceCategoryAdapter(categories, this)
 
 
         }

@@ -71,4 +71,5 @@
     <string name="active_orders">ACTIVE ORDERS</string>
     <string name="complete_orders">COMPLETED ORDERS</string>
     <string name="upload_photos">Upload\nPhotos</string>
+    <string name="entire_city">Entire City</string>
 </resources>

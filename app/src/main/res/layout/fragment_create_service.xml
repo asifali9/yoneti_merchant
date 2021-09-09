@@ -28,7 +28,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/nav_corners"
                 android:translationY="-18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -140,6 +140,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
+                    android:nestedScrollingEnabled="false"
                     app:layout_constraintTop_toBottomOf="@id/btnAddAgent"
                     android:id="@+id/rvMerchant"/>
             </androidx.constraintlayout.widget.ConstraintLayout>

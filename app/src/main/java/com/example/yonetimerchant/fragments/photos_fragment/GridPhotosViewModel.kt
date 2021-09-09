@@ -23,7 +23,7 @@ import java.lang.Exception
 
 class GridPhotosViewModel @ViewModelInject constructor(
     var repository: Repository,
-    var preferences: MyPreferences,
+    var preferences: MyPreferences
 ) : ViewModel() {
     var tabsList = MutableLiveData<MutableList<Album>>()
     var gridImages = MutableLiveData<MutableList<GridImage>>()

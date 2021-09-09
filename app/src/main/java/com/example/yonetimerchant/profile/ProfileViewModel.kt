@@ -20,8 +20,6 @@ import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.lang.Exception
 import java.util.ArrayList
-
-
 class ProfileViewModel @ViewModelInject constructor(
     var preferences: MyPreferences,
     var repository: Repository,
@@ -35,6 +33,7 @@ class ProfileViewModel @ViewModelInject constructor(
     var website: String? = null
     var bio: String? = null
     var dob: String? = null
+    var gender:String? = null
     var phone: String? = null
     var email: String? = null
     var address: String? = null
@@ -267,4 +266,24 @@ class ProfileViewModel @ViewModelInject constructor(
         }
     }
 
+
+    var profileResponseMessage = MutableLiveData<String>()
+    fun updateProfile(){
+        try{
+            viewModelScope.launch(Dispatchers.IO) {
+                var profileResponse = repository.updateProfile(fullName?:"",website?:"",userId,bio?:"",dob?:"",gender?:"",sessionId?:"")
+                withContext(Dispatchers.Main)
+                {
+                    if (profileResponse.status)
+                        profileResponseMessage.value = profileResponse.message
+                    else
+                        profileResponseMessage.value = profileResponse.message
+                }
+            }
+        }catch (e:Exception)
+        {
+            profileResponseMessage.value = e.message
+            Log.d(TAG, "updateProfile: ${e.message}")
+        }
+    }
 }

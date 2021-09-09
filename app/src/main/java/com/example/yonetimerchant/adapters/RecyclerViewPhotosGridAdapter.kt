@@ -7,14 +7,14 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yoneti.model.GridImage
-import com.example.yonetimerchant.R
 import com.example.yonetimerchant.databinding.PhotoGridItemBinding
 import com.example.yonetimerchant.databinding.StaticPhotoGridItemBinding
 import com.example.yonetimerchant.fragments.photos_fragment.GridPhotosFragment
 
 class RecyclerViewPhotosGridAdapter(
     var photosList: MutableList<GridImage>,
-    val fragmentInstance: GridPhotosFragment
+    val fragmentInstance: GridPhotosFragment,
+    var pagePosition: Int
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private lateinit var context: Context
 
@@ -75,7 +75,7 @@ class RecyclerViewPhotosGridAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        if (position == 0)
+        if (position == 0 && pagePosition != 0)
             return UPLOAD_IMAGE
         return CELL_IMAGES
     }

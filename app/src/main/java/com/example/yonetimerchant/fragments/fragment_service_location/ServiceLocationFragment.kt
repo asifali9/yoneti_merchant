@@ -1,10 +1,12 @@
 package com.example.yonetimerchant.fragments.fragment_service_location
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.util.Log
@@ -30,6 +32,9 @@ import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_KEYBOARD
+import com.google.android.material.timepicker.TimeFormat
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -38,21 +43,25 @@ import java.util.*
 class ServiceLocationFragment :
     BaseFragment<ServiceLocationViewModel, FragmentServiceLocationBinding>() {
 
+    private var isEntireCity: Boolean = true
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private var map: GoogleMap? = null
     private var locationRequest: LocationRequest? = null
     private val AUTOCOMPLETE_REQUEST_CODE = 1
+    var serviceRadius = "Entire City" // it would be by default
 
     override fun getViewMode(): Class<ServiceLocationViewModel> =
         ServiceLocationViewModel::class.java
 
     override fun getLayout(): Int = R.layout.fragment_service_location
 
+    @SuppressLint("SetTextI18n")
     override fun bindingToViews() {
-
+        viewModel!!.getServiceLocations()
         binding.mapView.onCreate(bundle)
         binding.mapView.onResume()
 
+        binding.serviceLocationViewModel = viewModel
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -95,9 +104,10 @@ class ServiceLocationFragment :
 
                 map?.uiSettings?.setMyLocationButtonEnabled(true)
 
-                map?.setOnMyLocationButtonClickListener(object : GoogleMap.OnMyLocationButtonClickListener {
+                map?.setOnMyLocationButtonClickListener(object :
+                    GoogleMap.OnMyLocationButtonClickListener {
                     override fun onMyLocationButtonClick(): Boolean {
-
+                        viewModel!!.isCurrentLocation = "1"
                         fillAddressForm(map?.myLocation)
                         return false
                     }
@@ -105,27 +115,35 @@ class ServiceLocationFragment :
 
 
                 map?.setOnMyLocationClickListener {
-                    var geocoder = Geocoder(requireContext(),
-                        Locale.getDefault())
-                    var addresses =  geocoder.getFromLocation(it.latitude,it.longitude,1)
+                    var geocoder = Geocoder(
+                        requireContext(),
+                        Locale.getDefault()
+                    )
+                    var addresses = geocoder.getFromLocation(it.latitude, it.longitude, 1)
                 }
             }
         })
 
         createLocationRequest()
-//        binding.mapView.enable
 
         binding.rbSelectRadius.setOnCheckedChangeListener { compoundButton, b ->
             if (b) {
+                isEntireCity = !b
                 binding.radiusBar.visibility = View.VISIBLE
                 binding.tvRadiusCounter.visibility = View.VISIBLE
+                binding.tvSelectedRadius.setText("${binding.radiusBar.progress} miles")
+                binding.tvRadiusCounter.setText(binding.radiusBar.progress.toString())
+
             }
         }
 
         binding.rbEntireCity.setOnCheckedChangeListener { compoundButton, b ->
             if (b) {
+                isEntireCity = b
                 binding.radiusBar.visibility = View.GONE
                 binding.tvRadiusCounter.visibility = View.GONE
+                binding.tvSelectedRadius.setText(serviceRadius)
+                viewModel!!.businessRange = getString(R.string.entire_city)
             }
         }
 
@@ -134,6 +152,8 @@ class ServiceLocationFragment :
             override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
                 binding.tvRadiusCounter.setText(p1.toString())
                 Log.d(TAG, "onProgressChanged: ${p1.toString()}")
+                binding.tvSelectedRadius.setText("${p1.toString()} miles")
+
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {
@@ -143,6 +163,9 @@ class ServiceLocationFragment :
             }
         })
 
+        viewModel!!.businessLocation.observe(this, androidx.lifecycle.Observer {
+            reverseGeocodeing(it.lat.toDouble(),it.lng.toDouble())
+        })
         setUi()
 //        binding.etSearchCity.setOnClickListener {
 //
@@ -162,15 +185,63 @@ class ServiceLocationFragment :
         Places.initialize(requireContext(), "AIzaSyA5wn9L2_Rze1zAWuKQhyveBW6McIJ8ROs")
     }
 
+    fun reverseGeocodeing(lat: Double, lng: Double)
+    {
+        var geocoder = Geocoder(
+            requireContext(),
+            Locale.getDefault()
+        )
+
+
+        var addresses = geocoder.getFromLocation(lat, lng, 1)
+        var latLng = LatLng(lat,lng)
+
+        settingMarkerForMap(latLng)
+        viewModel!!.lat = lat.toString()
+        viewModel!!.lng =  lng.toString()
+        bindDataToViews(addresses.get(0))
+    }
     private fun fillAddressForm(myLocation: Location?) {
-        var geocoder = Geocoder(requireContext(),
-            Locale.getDefault())
-        var addresses =  geocoder.getFromLocation(myLocation?.latitude!!,myLocation.longitude,1)
+        var geocoder = Geocoder(
+            requireContext(),
+            Locale.getDefault()
+        )
+        var addresses = geocoder.getFromLocation(myLocation?.latitude!!, myLocation.longitude, 1)
 
+        viewModel!!.lat = myLocation?.latitude.toString()
+        viewModel!!.lng =  myLocation.longitude.toString()
 
+        bindDataToViews(addresses.get(0))
+    }
+    fun bindDataToViews(address: Address)
+    {
+        binding.etSearchLocation.setText(address.countryName)
+        binding.tvSelectedCountry.setText(address.countryName)
+        binding.etStreetAddress.setText(address.getAddressLine(0))
+        binding.etState.setText(address.adminArea)
+        binding.etSearchCity.setText(address.locality)
+        binding.tvSelectedCity.setText(address.locality)
+        if (isEntireCity)
+            binding.tvSelectedRadius.setText(serviceRadius)
+        else
+            binding.tvSelectedRadius.setText("${binding.radiusBar.progress} miles")
+    }
+    private fun fillAddressFromAutoComplete(myLocation: LatLng?) {
+        var geocoder = Geocoder(
+            requireContext(),
+            Locale.getDefault()
+        )
+        var addresses = geocoder.getFromLocation(myLocation?.latitude!!, myLocation.longitude, 1)
         binding.etSearchLocation.setText(addresses.get(0).countryName)
+        binding.tvSelectedCountry.setText(addresses.get(0).countryName)
         binding.etStreetAddress.setText(addresses.get(0).getAddressLine(0))
+        binding.etState.setText(addresses.get(0).adminArea)
         binding.etSearchCity.setText(addresses.get(0).locality)
+        binding.tvSelectedCity.setText(addresses.get(0).locality)
+        if (isEntireCity)
+            binding.tvSelectedRadius.setText(serviceRadius)
+        else
+            binding.tvSelectedRadius.setText("${binding.radiusBar.progress} miles")
     }
 
     fun createLocationRequest() {
@@ -220,29 +291,62 @@ class ServiceLocationFragment :
                 .build(requireContext().applicationContext)
             startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
         }
+
+        binding.tvStartTime.setOnClickListener {
+            showDatePicker(true)
+        }
+        binding.tvCloseTime.setOnClickListener {
+            showDatePicker(false)
+        }
+
+    }
+
+    fun showDatePicker(isStartTime: Boolean) {
+        var title = ""
+        if (isStartTime)
+            title = "Opening Time"
+        else
+            title = "Close Time"
+        val materialTimePicker = MaterialTimePicker.Builder()
+            .setTimeFormat(TimeFormat.CLOCK_12H)
+            .setInputMode(INPUT_MODE_KEYBOARD)
+            .setTitleText(title)
+            .build()
+        materialTimePicker.show(childFragmentManager, "show")
+
+        materialTimePicker.addOnPositiveButtonClickListener {
+            materialTimePicker.minute
+            if (isStartTime) {
+                binding.tvStartTime.setText(
+                    "${materialTimePicker.hour}"
+                )
+            }
+            else{
+                binding.tvCloseTime.setText(
+                    "${materialTimePicker.hour}"
+                )
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == AUTOCOMPLETE_REQUEST_CODE && resultCode == RESULT_OK) {
             var places = Autocomplete.getPlaceFromIntent(data!!)
+            fillAddressFromAutoComplete(places.latLng)
             var address = places.address
-            settingLocationReturnedData()
+            viewModel!!.isCurrentLocation = "0"
             settingMarkerForMap(places.latLng)
 
         }
     }
 
-    private fun settingLocationReturnedData() {
-
-    }
-
     fun settingMarkerForMap(latLng: LatLng?) {
-            var markerOption = MarkerOptions()
-            markerOption.position(latLng!!)
-            markerOption.title("new latlng")
-            map?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
-            map?.addMarker(markerOption)
+        var markerOption = MarkerOptions()
+        markerOption.position(latLng!!)
+        markerOption.title("new latlng")
+        map?.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
+        map?.addMarker(markerOption)
     }
 
     override fun onDestroy() {

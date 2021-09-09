@@ -825,5 +825,80 @@ class RemoteService @Inject constructor(
         return apiEndpoints.startOrder(sessionId, json.toString()).await()
     }
 
+    /**
+     * getting discovery data
+     */
+    suspend fun updateServiceLocation(
+        userId: String,
+        sessionId: String,
+        country: String,
+        city: String,
+        completeAddress: String,
+        state: String,
+        zipCode: String,
+        startTime: String,
+        endTime: String,
+        businessRange: String,
+        businessRadius: String,
+        isCurrentLocation: String,
+        lat: String,
+        lng: String,
+    ): Profile {
+        try {
+            json.put("user_id", userId)
+            json.put("country_name", country)
+            json.put("city_name", city)
+            json.put("address", completeAddress)
+            json.put("zip_code", zipCode)
+            json.put("zip_code", state)
+            json.put("business_start_time", startTime)
+            json.put("business_close_time", endTime)
+            json.put("business_range", businessRange)
+            json.put("business_radius", businessRadius)
+            json.put("is_curr_location", isCurrentLocation)
+            json.put("current_location_lat", lat)
+            json.put("current_location_long", lng)
+        } catch (e: Exception) {
+            Log.d(TAG, "startOrder: ${e.message}")
+        }
+        Log.d(TAG, "updateServiceLocation: ${json.toString()}")
+        return apiEndpoints.updateBusinessLocation(sessionId, json.toString()).await()
+    }
 
+    /**
+     * updating Discovery Data
+     */
+    suspend fun getServiceLocation(userId: String, sessionId: String): Profile {
+        try {
+            json.put("user_id", userId)
+        } catch (e: Exception) {
+            Log.d(TAG, "startOrder: ${e.message}")
+        }
+        return apiEndpoints.getBusinessLocation(sessionId, json.toString()).await()
+    }
+
+
+    suspend fun updateProfile(
+        fullName: String,
+        website: String,
+        userId: Int,
+        bio: String,
+        dob: String,
+        gender: String,
+        sessionId: String
+    ): Profile {
+        try {
+            json.put("user_id",userId)
+            json.put("fullname",fullName)
+            json.put("website",website)
+            json.put("user_bio",bio)
+            json.put("dob",dob)
+            json.put("gender",gender)
+
+        }catch (e:Exception)
+        {
+            Log.d(TAG, "updateProfile: ${e.message}")
+        }
+        return apiEndpoints.addBasicProfileInfo(sessionId,json.toString()).await()
+    }
 }

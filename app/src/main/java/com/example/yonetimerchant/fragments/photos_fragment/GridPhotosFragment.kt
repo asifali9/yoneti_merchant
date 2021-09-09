@@ -35,8 +35,8 @@ class GridPhotosFragment(var position: Int, var albumId: String) :
 //        nav = Navigation.findNavController(requireActivity(),R.id.service_viewer)
         viewModel!!.gridImages.observe(this, Observer {
             var list = it
-            list.add(GridImage("", "", "", ""))
-            gridPhotosAdapter = RecyclerViewPhotosGridAdapter(list, this)
+            list.add(0,GridImage("", "", "", ""))
+            gridPhotosAdapter = RecyclerViewPhotosGridAdapter(list, this,position)
             binding.rvGridPhotos.adapter = gridPhotosAdapter
         })
     }
@@ -58,6 +58,7 @@ class GridPhotosFragment(var position: Int, var albumId: String) :
                     try {
                         var listSize = gridPhotosAdapter.photosList.size
                         gridPhotosAdapter.photosList.add(GridImage("", data.dataString!!, "", ""))
+                        gridPhotosAdapter.notifyItemInserted(listSize)
                         viewModel!!.uploadPhoto(
                             requireContext().contentResolver.openInputStream(
                                 data.data!!

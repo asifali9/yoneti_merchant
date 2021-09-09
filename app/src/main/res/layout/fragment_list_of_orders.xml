@@ -170,6 +170,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
+                        android:background="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/ivNotification"
                         app:layout_constraintTop_toTopOf="parent"
@@ -268,7 +269,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvOrders"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="10dp"
                     android:nestedScrollingEnabled="false"
@@ -277,8 +278,8 @@
                     android:visibility="gone"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/leftGuideline"
                     app:layout_constraintTop_toBottomOf="@id/divider"
                     tools:itemCount="10"
                     tools:listitem="@layout/completed_orders_item_layout" />

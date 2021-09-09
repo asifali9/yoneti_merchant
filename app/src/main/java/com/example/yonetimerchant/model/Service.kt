@@ -26,6 +26,39 @@ data class Service(
     @SerializedName("agent_name")
     var agentName: String,
     @SerializedName("agent_fees")
-    var agentCharges: String
+    var agentCharges: String,
+
+
+    /**
+     * For getting business locations
+     */
+    @SerializedName("id")
+    var id: String,
+    @SerializedName("user_id")
+    var userId: String,
+    @SerializedName("country_name")
+    var country: String,
+    @SerializedName("city_name")
+    var city: String,
+    @SerializedName("address")
+    var address: String,
+    @SerializedName("zip_code")
+    var zipcode: String,
+    @SerializedName("business_detail")
+    var businessDetail: String,
+    @SerializedName("business_start_time")
+    var openingTime: String,
+    @SerializedName("business_close_time")
+    var closeTime: String,
+    @SerializedName("business_range")
+    var businessRange: String,
+    @SerializedName("business_radius")
+    var businessRadius: String,
+    @SerializedName("is_curr_location")
+    var isCurrent: String,
+    @SerializedName("current_location_lat")
+    var lat: String,
+    @SerializedName("current_location_long")
+    var lng: String,
 ) {
 }

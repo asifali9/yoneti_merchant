@@ -18,12 +18,13 @@
     <color name="buttonBorderColor">#1c2d26</color>
     <color name="intorductoryBackground">#294338</color>
     <color name="lightDardForAddress">#9d9d9d</color>
+    <color name="dominantGreen">#485f55</color>
 
     <color name="gold">#cdd614</color>
     <color name="disableColor">#00ff00</color>
     <color name="enableColor">#ff0000</color>
 
     <color name="introStartColor">#2d463c</color>
-    <color name="introEndColor">#445b52</color>
+        <color name="introEndColor">#445b52</color>
     <color name="grey_line">#EEE6E5</color>
 </resources>

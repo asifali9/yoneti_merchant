@@ -63,6 +63,7 @@ data class BaseResult(
     /**
      * Dashboard
      */
+    @SerializedName("booking_in_due") var bookingDueIn: Int,
     @SerializedName("queue_orders") var queueOrdersList: ArrayList<QueueOrders>,
     @SerializedName("recent_orders") var recentOrdersList: ArrayList<ActiveOrder>,
 

@@ -8,7 +8,9 @@ import com.example.yoneti.base.BaseFragment
 import com.example.yonetimerchant.R
 import com.example.yonetimerchant.databinding.FragmentServiceProviderSinglePhotoBinding
 import com.example.yonetimerchant.utils.Constants.MERCHANT_SELECTED_IMAGE
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MerchantSinglePhotoFragment :
     BaseFragment<MerchantSinglePhotoModel, FragmentServiceProviderSinglePhotoBinding>() {
     private lateinit var imageUrl: String

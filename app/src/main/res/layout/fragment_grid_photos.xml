@@ -9,7 +9,6 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@android:color/darker_gray"
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView

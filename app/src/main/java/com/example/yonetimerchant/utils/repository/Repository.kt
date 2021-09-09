@@ -11,6 +11,7 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
     suspend fun login(password: String, emailAddress: String, deviceToken: String?): User {
         return remoteService.login(password, emailAddress, deviceToken!!)
     }
+
     suspend fun forgotPassword(password: String, emailAddress: String, deviceToken: String?): User {
         return remoteService.forgotPassword(password, emailAddress, deviceToken!!)
     }
@@ -43,10 +44,15 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
         remoteService.getUserProfile(sessionId, userId)
 
     suspend fun isPhotoLiked(sessionId: String, userId: String?, imageId: String?) =
-        remoteService.isPhotoLiked(sessionId, userId,userId!!,imageId)// second userid  is  the merchant id
+        remoteService.isPhotoLiked(
+            sessionId,
+            userId,
+            userId!!,
+            imageId
+        )// second userid  is  the merchant id
 
     suspend fun imageAndCommentCount(sessionId: String, imageId: String?) =
-        remoteService.imageAndCommentsCount(sessionId,imageId)
+        remoteService.imageAndCommentsCount(sessionId, imageId)
 
     suspend fun updateCoverPhoto(sessionId: String?, userId: String?, base64CoverPhoto: String?) =
         remoteService.updateCoverPhoto(sessionId!!, userId!!, base64CoverPhoto!!)
@@ -377,8 +383,53 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
     }
 
     suspend fun startOrder(orderId: String, sessionId: String): Profile {
-        return remoteService.startOrder(orderId,sessionId)
+        return remoteService.startOrder(orderId, sessionId)
     }
 
+    suspend fun getServiceLocation(userId:String, sessionId: String) = remoteService.getServiceLocation(userId,sessionId)
 
+    suspend fun updateServiceLocation(
+        userId: String,
+        sessionId: String,
+        countryName: String,
+        streetAddress: String,
+        city: String,
+        state: String,
+        zipCode: String,
+        businessOpenTime: String,
+        businessCloseTime: String,
+        businessRange: String,
+        businessRadius: String,
+        isCurrentLocation: String,
+        lat: String,
+        lng: String
+    ): Profile {
+        return remoteService.updateServiceLocation(
+            userId,
+            sessionId,
+            countryName,
+            city,
+            streetAddress,
+            state,
+            zipCode,
+            businessOpenTime,
+            businessCloseTime,
+            businessRange,
+            businessRadius,
+            isCurrentLocation,
+            lat,
+            lng)
+    }
+
+    suspend fun updateProfile(
+        fullName: String,
+        website: String,
+        userId: Int,
+        bio: String,
+        dob: String,
+        gender: String,
+        sessionId: String
+    ): Profile {
+        return remoteService.updateProfile(fullName,website,userId,bio,dob,gender,sessionId)
+    }
 }
