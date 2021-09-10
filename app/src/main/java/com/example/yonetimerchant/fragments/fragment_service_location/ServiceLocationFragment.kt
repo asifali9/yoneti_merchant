@@ -165,6 +165,20 @@ class ServiceLocationFragment :
 
         viewModel!!.businessLocation.observe(this, androidx.lifecycle.Observer {
             reverseGeocodeing(it.lat.toDouble(),it.lng.toDouble())
+
+            binding.etSearchLocation.setText(it.country)
+            binding.tvSelectedCountry.setText(it.country)
+            binding.etStreetAddress.setText(it.let{it.city+" "+it.address+" "+it.country})
+//            binding.etState.setText(it.adminArea)
+            binding.etSearchCity.setText(it.city)
+            binding.etZipCode.setText(it.zipcode)
+            binding.tvStartTime.setText(it.openingTime)
+            binding.tvCloseTime.setText(it.closeTime)
+            binding.tvSelectedCity.setText(it.city)
+            if (isEntireCity)
+                binding.tvSelectedRadius.setText(serviceRadius)
+            else
+                binding.tvSelectedRadius.setText("${binding.radiusBar.progress} miles")
         })
         setUi()
 //        binding.etSearchCity.setOnClickListener {

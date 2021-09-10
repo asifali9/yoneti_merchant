@@ -35,6 +35,7 @@ class GridPhotosFragment(var position: Int, var albumId: String) :
 //        nav = Navigation.findNavController(requireActivity(),R.id.service_viewer)
         viewModel!!.gridImages.observe(this, Observer {
             var list = it
+            if (position != 0)
             list.add(0,GridImage("", "", "", ""))
             gridPhotosAdapter = RecyclerViewPhotosGridAdapter(list, this,position)
             binding.rvGridPhotos.adapter = gridPhotosAdapter

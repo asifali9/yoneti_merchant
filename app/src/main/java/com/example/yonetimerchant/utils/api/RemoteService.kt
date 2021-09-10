@@ -357,7 +357,8 @@ class RemoteService @Inject constructor(
         } catch (exception: Exception) {
             Log.d(TAG, "getTabName: ${exception.message}")
         }
-        return apiEndpoints.getAllYourUploadedImages(json.toString(), sessionId).await()
+        Log.d(TAG, "AllImages: ${json.toString()}")
+        return apiEndpoints.getAllYourUploadedImages(sessionId,json.toString()).await()
     }
 
     suspend fun getYourUploadedImagesByAlbum(
