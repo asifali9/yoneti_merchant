@@ -1,6 +1,7 @@
 package com.example.yoneti.base
 
 import com.example.yoneti.model.*
+import com.example.yonetimerchant.model.InProgressOrders
 import com.example.yonetimerchant.model.QueueOrders
 import com.google.gson.annotations.SerializedName
 
@@ -65,6 +66,7 @@ data class BaseResult(
      */
     @SerializedName("booking_in_due") var bookingDueIn: Int,
     @SerializedName("queue_orders") var queueOrdersList: ArrayList<QueueOrders>,
+    @SerializedName("inprogress_orders") var inProgressOrders: ArrayList<InProgressOrders>,
     @SerializedName("recent_orders") var recentOrdersList: ArrayList<ActiveOrder>,
 
     @SerializedName("marchant_rating") var merchantRating: String,

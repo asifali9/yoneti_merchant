@@ -234,6 +234,7 @@
                     android:paddingLeft="@dimen/_20sdp"
                     android:paddingTop="@dimen/_6sdp"
                     android:paddingBottom="@dimen/_6sdp"
+                    android:visibility="gone"
                     android:background="@drawable/et_background"
                     android:hint="Type to search order"
                     android:inputType="textPersonName"
@@ -288,16 +289,29 @@
                     android:id="@+id/rvActiveOrders"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:scrollbarSize="@dimen/_1sdp"
                     android:scrollbars="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/btnSeeOrderDetails"
                     app:layout_constraintEnd_toEndOf="@id/rightGuideline"
                     app:layout_constraintStart_toStartOf="@id/leftGuideline"
                     app:layout_constraintTop_toBottomOf="@id/divider"
                     tools:itemCount="1"
                     tools:listitem="@layout/active_orders_item_layout" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSeeOrderDetails"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/et_background"
+                    android:text="See All Order Detail"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+                    app:layout_constraintStart_toStartOf="@+id/leftGuideline"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

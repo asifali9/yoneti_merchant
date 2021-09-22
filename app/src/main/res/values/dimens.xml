@@ -26,4 +26,9 @@
     <dimen name="_110sdp">110dp</dimen>
     <dimen name="_6sdp">6dp</dimen>
     <dimen name="_55sdp">55dp</dimen>
+    <dimen name="_150sdp">150dp</dimen>
+    <dimen name="_120sdp">120dp</dimen>
+    <dimen name="_130sdp">130dp</dimen>
+    <dimen name="_70sdp">70dp</dimen>
+    <dimen name="_200sdp">200dp</dimen>
 </resources>

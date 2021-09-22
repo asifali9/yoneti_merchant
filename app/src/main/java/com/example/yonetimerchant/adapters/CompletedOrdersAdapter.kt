@@ -10,10 +10,9 @@ import com.example.yonetimerchant.R
 import com.example.yonetimerchant.databinding.CompletedOrdersItemLayoutBinding
 import com.example.yonetimerchant.fragments.complete_profile.CompleteProfileFragment
 import com.example.yonetimerchant.fragments.orders.ListOfOrdersFragment
-import java.util.ArrayList
 
 class CompletedOrdersAdapter(
-    var completedOrdersList: ArrayList<ActiveOrder>,
+    var completedOrdersList: MutableList<ActiveOrder>,
     var instance: ListOfOrdersFragment?,
     var completeProfileFragment: CompleteProfileFragment?
 ) :

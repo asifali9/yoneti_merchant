@@ -37,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.makeramen.roundedimageview.RoundedImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/coverPhoto"
                         android:layout_width="0dp"
                         android:layout_height="200dp"
@@ -46,12 +46,7 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:src="@drawable/yoneti_test_profile"
-                        app:riv_corner_radius_bottom_left="@dimen/_30sdp"
-                        app:riv_corner_radius_bottom_right="@dimen/_30sdp"
-                        app:riv_corner_radius_top_left="0dp"
-                        app:riv_corner_radius_top_right="0dp"
-                        app:riv_oval="false"/>
+                        android:src="@drawable/yoneti_test_profile"/>
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline19"
@@ -68,67 +63,193 @@
                         app:layout_constraintGuide_end="20dp" />
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/ivUserImage"
                         android:layout_width="@dimen/_100sdp"
                         android:layout_height="@dimen/_100sdp"
-                        android:layout_marginBottom="8dp"
-                        app:srcCompat="@drawable/ic_camera"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginBottom="@dimen/_40sdp"
+                        android:background="@color/black"
+                        android:elevation="@dimen/_50sdp"
+                        android:src="@drawable/ic_bell"
+                        app:layout_constraintBottom_toBottomOf="@+id/coverPhoto"
+                        app:layout_constraintStart_toStartOf="@+id/ivUserImage"
+                        app:layout_constraintTop_toTopOf="@+id/ivUserImage"
                         app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
-                        app:layout_constraintBottom_toTopOf="@+id/tvHeader"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline20"
-                        app:layout_constraintStart_toStartOf="@+id/guideline19" />
+                        app:tint="@color/white" />
 
-                    <com.google.android.material.textview.MaterialTextView
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ivUserImage"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_150sdp"
+                        android:background="@drawable/user_bio_background"
+                        app:layout_constraintBottom_toBottomOf="@+id/coverPhoto"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline20"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/guideline19"
+                        app:layout_constraintTop_toBottomOf="@+id/coverPhoto"
+                        app:layout_constraintVertical_bias="0.513">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline39"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_end="50dp" />
+
+                        <TextView
+                            android:id="@+id/tvMerchantName"
+                            style="@style/greenBoldTextViewFour"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="TextView"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline39"
+                            app:layout_constraintStart_toStartOf="@+id/guideline42"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvAddress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="TextView"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline39"
+                            app:layout_constraintStart_toStartOf="@+id/guideline42"
+                            app:layout_constraintTop_toBottomOf="@id/tvMerchantName" />
+
+                        <TextView
+                            android:id="@+id/tvBio"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="TextView"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline39"
+                            app:layout_constraintStart_toEndOf="@+id/guideline43"
+                            app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+                        <TextView
+                            android:id="@+id/tvWebsite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="TextView"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline42"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_begin="140dp" />
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline43"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_begin="24dp" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/tvHeader"
-                        style="@style/tvheading4StyleBlack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="24dp"
-                        android:gravity="center|left"
-                        android:text="Brand Name"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_marginRight="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_25sdp"
+                        android:background="@drawable/ic_statistics_background"
                         app:layout_constraintEnd_toStartOf="@+id/guideline20"
                         app:layout_constraintStart_toStartOf="@+id/guideline19"
-                        app:layout_constraintTop_toBottomOf="@+id/coverPhoto" />
+                        app:layout_constraintTop_toBottomOf="@+id/ivUserImage">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvUserName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center|left"
-                        android:text="Brand Name"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline20"
-                        app:layout_constraintStart_toStartOf="@+id/guideline19"
-                        app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
+                        <LinearLayout
+                            android:id="@+id/llReviews"
+                            android:layout_height="0dp"
+                            android:layout_width="0dp"
+                            app:layout_constraintHorizontal_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/llBookmarks"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent">
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvAboutUser"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center|left"
-                        android:text="Brand Name"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline20"
-                        app:layout_constraintStart_toStartOf="@+id/guideline19"
-                        app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+                            <TextView
+                                android:id="@+id/tvReview"
+                                style="@style/tvheading4StyleBlack"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="782" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvWebAddress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center|left"
-                        android:text="Brand Name"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline20"
-                        app:layout_constraintStart_toStartOf="@+id/guideline19"
-                        app:layout_constraintTop_toBottomOf="@+id/tvAboutUser" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:text="Reviews" />
+                        </LinearLayout>
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/tvCompleteAddress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center|left"
-                        android:text="Brand Name"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline20"
-                        app:layout_constraintStart_toStartOf="@+id/guideline19"
-                        app:layout_constraintTop_toBottomOf="@+id/tvWebAddress" />
+                        <LinearLayout
+                            android:id="@+id/llBookmarks"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintHorizontal_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/llLikes"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/llReviews">
+
+                            <TextView
+                                android:id="@+id/tvBookmarks"
+                                style="@style/tvheading4StyleBlack"
+                                android:textColor="@color/white"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="78" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:text="Bookmarks" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llLikes"
+                            android:layout_width="0dp"
+                            app:layout_constraintHorizontal_weight="1"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/llBookmarks">
+
+                            <TextView
+                                android:id="@+id/tvLikes"
+                                style="@style/tvheading4StyleBlack"
+                                android:textColor="@color/white"
+                                android:gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="812" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:textColor="@color/white"
+                                android:text="Likes" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
                         android:id="@+id/btnEditTab"
@@ -142,7 +263,7 @@
                         style="@style/whiteTextViewOneBold"
                         app:layout_constraintBottom_toBottomOf="@id/blank"
                         app:layout_constraintEnd_toStartOf="@+id/guideline20"
-                        app:layout_constraintTop_toBottomOf="@+id/tvCompleteAddress" />
+                        app:layout_constraintTop_toBottomOf="@+id/tvHeader" />
 
 
                     <View

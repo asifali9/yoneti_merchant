@@ -21,7 +21,7 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_about_yoneti" />
+            app:srcCompat="@drawable/ic_filter" />
 
         <TextView
             android:id="@+id/tvUserName"

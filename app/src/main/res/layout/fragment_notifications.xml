@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="New notification"
+                style="@style/tvheading3StyleBlack"
+                app:layout_constraintEnd_toStartOf="@+id/guideline46"
+                app:layout_constraintStart_toStartOf="@+id/guideline45"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline46"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+
+            <TextView
+                android:id="@+id/tvViewed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Viewed"
+                style="@style/tvheading3StyleBlack"
+                app:layout_constraintTop_toBottomOf="@id/rvNotifications"
+                app:layout_constraintEnd_toStartOf="@+id/guideline46"
+                app:layout_constraintStart_toStartOf="@+id/guideline45" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:id="@+id/rvNotifications"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toStartOf="@+id/guideline46"
+                app:layout_constraintStart_toStartOf="@+id/guideline45"
+                app:layout_constraintTop_toBottomOf="@+id/textView40"
+                app:layout_constraintBottom_toTopOf="@id/tvViewed"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="5"
+                tools:listitem="@layout/message_notification_single_item" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toStartOf="@+id/guideline46"
+                app:layout_constraintStart_toStartOf="@+id/guideline45"
+                app:layout_constraintTop_toBottomOf="@+id/tvViewed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="5"
+                tools:listitem="@layout/notification_single_item" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

@@ -360,8 +360,8 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
         )
     }
 
-    suspend fun cancelOrder(userId: String, sessionId: String): Profile {
-        return remoteService.cancelOrder(userId, sessionId)
+    suspend fun cancelOrder(orderId: String, sessionId: String): Profile {
+        return remoteService.cancelOrder(orderId, sessionId)
     }
 
     suspend fun rescheduleOrder(userId: String, sessionId: String): Profile {
@@ -374,7 +374,6 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
     ): Profile {
         return remoteService.orderDetails(userId, pageNumber, pageSize, sessionId)
     }
-
     suspend fun getDashboard(
         merchantId: String, pageNumber: Int,
         pageSize: Int, sessionId: String
@@ -432,4 +431,6 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
     ): Profile {
         return remoteService.updateProfile(fullName,website,userId,bio,dob,gender,sessionId)
     }
+
+    suspend fun getNextJobTimer(userId: Int, sessionId: String) = remoteService.getNextJobTimer(userId.toString(),sessionId)
 }

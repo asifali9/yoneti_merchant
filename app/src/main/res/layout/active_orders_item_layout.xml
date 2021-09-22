@@ -19,6 +19,7 @@
                 android:id="@+id/imgProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:elevation="@dimen/_50sdp"
                 android:src="@drawable/img_profile_placeholder"
                 app:civ_border_width="1dp" />
 

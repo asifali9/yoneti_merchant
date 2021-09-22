@@ -25,6 +25,7 @@ class ProfileSettingsFragment : BaseFragment<MeViewModel, FragmentProfileOptions
 
     override fun bindingToViews() {
         binding.meViewModel = viewModel
+
         binding.tvChangePassword.setOnClickListener {
             findNavController().navigate(R.id.changePasswordDialogFragment)
         }

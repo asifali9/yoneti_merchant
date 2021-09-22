@@ -26,6 +26,7 @@ class ProfileViewModel @ViewModelInject constructor(
     var gson: Gson
 ) : ViewModel() {
 
+    var timer = MutableLiveData<String>()
     var TAG = ProfileViewModel::class.java.simpleName
     var profileData = MutableLiveData<Profile>()
     var fullName: String? = null
@@ -284,6 +285,24 @@ class ProfileViewModel @ViewModelInject constructor(
         {
             profileResponseMessage.value = e.message
             Log.d(TAG, "updateProfile: ${e.message}")
+        }
+    }
+
+    fun getNextJobTimer() {
+        try {
+            viewModelScope.launch (Dispatchers.IO){
+                var timerResponse = repository.getNextJobTimer(userId,sessionId)
+                withContext(Dispatchers.Main)
+                {
+                    if (timerResponse.status)
+                    {
+//                        timer.value  = timerResponse.result.bookingDueIn
+                    }
+                }
+            }
+        }catch (e:Exception)
+        {
+
         }
     }
 }

@@ -8,7 +8,6 @@ import com.example.yonetimerchant.utils.MyPreferences
 class MeViewModel @ViewModelInject constructor(
     var preferences: MyPreferences
 ):ViewModel() {
-
     var isLogout = MutableLiveData<Boolean>()
     fun onSignoutclick()
     {

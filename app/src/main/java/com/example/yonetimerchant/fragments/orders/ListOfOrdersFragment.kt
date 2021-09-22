@@ -1,8 +1,7 @@
 package com.example.yonetimerchant.fragments.orders
 
-import android.content.ContextWrapper
-import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -12,10 +11,12 @@ import com.example.yonetimerchant.R
 import com.example.yonetimerchant.adapters.ActiveOrdersAdapter
 import com.example.yonetimerchant.adapters.CompletedOrdersAdapter
 import com.example.yonetimerchant.databinding.FragmentListOfOrdersBinding
+import com.example.yonetimerchant.utils.Constants
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ListOfOrdersFragment : BaseFragment<ListOfOrdersViewModel, FragmentListOfOrdersBinding>() {
+    private var trackingOrderPage: Int = 3
     private lateinit var adapter: CompletedOrdersAdapter
     private lateinit var activeOrderdapter: ActiveOrdersAdapter
     private var offset: Int = 0
@@ -53,9 +54,17 @@ class ListOfOrdersFragment : BaseFragment<ListOfOrdersViewModel, FragmentListOfO
             ).show()
         }
 
+        binding.btnSeeOrderDetails.setOnClickListener {
+            var bundle = Bundle()
+            bundle.putInt(Constants.ORDER_PAGE,trackingOrderPage)
+            findNavController().navigate(R.id.ordersTrackingFragment, bundle)
+        }
+
     }
 
     private fun onCompleteOrderSelected() {
+        trackingOrderPage = 3
+        showOrderDetailsButton(adapter.completedOrdersList.size != 0)
         binding.tvOrderStatus.setText(resources.getString(R.string.complete_orders))
 
         binding.completedOrders.setBackgroundResource(R.drawable.circular_background)
@@ -72,6 +81,9 @@ class ListOfOrdersFragment : BaseFragment<ListOfOrdersViewModel, FragmentListOfO
     }
 
     private fun onActiveOrderSelected() {
+
+        trackingOrderPage = 0
+        showOrderDetailsButton(activeOrderdapter.acitveOrdersList.size != 0)
         binding.tvOrderStatus.setText(resources.getString(R.string.active_orders))
         binding.activeOrders.setBackgroundResource(R.drawable.circular_background)
         binding.ivActiveOrders.setBackgroundResource(R.drawable.ic_check_white)
@@ -97,7 +109,10 @@ class ListOfOrdersFragment : BaseFragment<ListOfOrdersViewModel, FragmentListOfO
             if (it.size != 0) {
                 activeOrderdapter = ActiveOrdersAdapter(it)
                 binding.rvActiveOrders.adapter = activeOrderdapter
+                showOrderDetailsButton(true)
             }
+            else
+                showOrderDetailsButton(false)
         })
 
         viewModel!!.completeOrdersList.observe(this, Observer {
@@ -105,12 +120,25 @@ class ListOfOrdersFragment : BaseFragment<ListOfOrdersViewModel, FragmentListOfO
             if (it.size != 0) {
                 adapter = CompletedOrdersAdapter(
                     it,
-                    ListOfOrdersFragment@this,
+                    ListOfOrdersFragment@ this,
                     null
                 )
                 binding.rvOrders.adapter = adapter
+                showOrderDetailsButton(true)
             }
+            showOrderDetailsButton(false)
         })
+    }
+
+    /**
+     * if orders list contains data then show, otherwise hide it
+     */
+    fun showOrderDetailsButton(show:Boolean)
+    {
+        if (show)
+            binding.btnSeeOrderDetails.visibility = View.VISIBLE
+        else
+            binding.btnSeeOrderDetails.visibility = View.GONE
     }
 
     fun openOrderDetail() {

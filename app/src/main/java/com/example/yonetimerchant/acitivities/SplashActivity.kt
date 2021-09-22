@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.yonetimerchant.R
@@ -26,7 +28,9 @@ class SplashActivity : AppCompatActivity() {
     lateinit var preferences: MyPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         activitySplash = DataBindingUtil.setContentView<ActivitySplashBinding>(SplashActivity@this,R.layout.activity_splash)
+
         FirebaseApp.initializeApp(this)
         FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
             if (!task.isSuccessful) {

@@ -183,4 +183,9 @@
             android:id="@+id/action_global_orderDetailsFragment2"
             app:destination="@id/orderDetailsFragment" />
     </navigation>
+    <fragment
+        android:id="@+id/ordersTrackingFragment"
+        android:name="com.example.yonetimerchant.fragments.tracking.OrdersTrackingFragment"
+        tools:layout="@layout/fragment_orders_tracking"
+        android:label="OrdersTrackingFragment" />
 </navigation>

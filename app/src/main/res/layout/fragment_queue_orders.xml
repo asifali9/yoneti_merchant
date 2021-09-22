@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSearchQueueOrders"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/et_background"
+            android:hint="Type to search order"
+            android:inputType="textPersonName"
+            android:paddingLeft="@dimen/_20sdp"
+            android:paddingTop="@dimen/_6sdp"
+            android:paddingBottom="@dimen/_6sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            app:layout_constraintEnd_toStartOf="@+id/ivQueueFilter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivSearchQueueOrder"
+            android:layout_width="48dp"
+            android:layout_height="0dp"
+            android:padding="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:layout_constraintBottom_toBottomOf="@+id/etSearchQueueOrders"
+            app:layout_constraintEnd_toEndOf="@+id/etSearchQueueOrders"
+            app:layout_constraintTop_toTopOf="@+id/etSearchQueueOrders"
+            app:srcCompat="@drawable/ic_search"
+            app:tint="@color/borderColor" />
+
+        <ImageView
+            android:id="@+id/ivQueueFilter"
+            android:layout_width="48dp"
+            android:layout_height="0dp"
+            android:padding="3dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:contentDescription="@string/filter"
+            app:layout_constraintBottom_toTopOf="@+id/rvQueueOrders"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_filter"
+            app:tint="@color/borderColor" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvQueueOrders"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="5"
+            android:orientation="vertical"
+            tools:listitem="@layout/progress_orders_item_tracking"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etSearchQueueOrders" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

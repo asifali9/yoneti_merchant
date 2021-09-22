@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/imageView3"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/activeOrderMapView"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="fitXY"
@@ -38,7 +38,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageView3"
+                app:layout_constraintTop_toBottomOf="@id/activeOrderMapView"
                 app:layout_constraintVertical_bias="0.0">
 
                 <TextView
@@ -95,7 +95,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="09.04am"
+                    android:text="4.0"
+                    style="@style/whiteTextViewOne"
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -166,6 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Service List"
+                    style="@style/greenTextViewOne"
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
                     app:layout_constraintTop_toBottomOf="@id/addressDivider" />
 
@@ -175,6 +177,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="3"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:background="@drawable/tv_eclipse"
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintTop_toBottomOf="@id/addressDivider" />
 
@@ -182,7 +187,7 @@
                     android:id="@+id/rvServiceDetails"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="12dp"
                     tools:itemCount="5"
                     tools:listitem="@layout/selected_service_item_layout"
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
@@ -211,7 +216,6 @@
                     android:id="@+id/btnCancelOrder"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:onClick="@{() -> orderDetailsViewModel.cancelOrder() }"
                     android:text="Cancel Order"
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintHorizontal_bias="0.0"

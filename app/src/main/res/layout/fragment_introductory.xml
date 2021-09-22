@@ -16,7 +16,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivAvatar"
             android:layout_width="180dp"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:layout_marginTop="140dp"
             android:tint="@android:color/white"
             android:scaleType="fitXY"

@@ -766,9 +766,9 @@ class RemoteService @Inject constructor(
         return apiEndpoints.updateAlbum(sessionId, json.toString()).await()
     }
 
-    suspend fun cancelOrder(userId: String, sessionId: String): Profile {
+    suspend fun cancelOrder(orderId: String, sessionId: String): Profile {
         try {
-            json.put("order_id", userId)
+            json.put("order_id", orderId)
         } catch (e: Exception) {
             Log.d(TAG, "cancelOrder: ${e.message}")
         }
@@ -814,6 +814,7 @@ class RemoteService @Inject constructor(
         } catch (e: Exception) {
             Log.d(TAG, "cancelOrder: ${e.message}")
         }
+        Log.d(TAG, "getDashboard: $json")
         return apiEndpoints.getDashboard(sessionId, json.toString()).await()
     }
 
@@ -901,5 +902,15 @@ class RemoteService @Inject constructor(
             Log.d(TAG, "updateProfile: ${e.message}")
         }
         return apiEndpoints.addBasicProfileInfo(sessionId,json.toString()).await()
+    }
+
+    suspend fun getNextJobTimer(merchantId: String, sessionId:String): Profile {
+        try {
+            json.put("marchant_id",merchantId)
+        }catch (e:Exception)
+        {
+            Log.d(TAG, "getNextJobTimer: ")
+        }
+        return apiEndpoints.getNextJobTimer(sessionId,json.toString()).await()
     }
 }

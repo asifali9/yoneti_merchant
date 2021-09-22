@@ -11,7 +11,7 @@ import com.example.yonetimerchant.fragments.complete_profile.CompleteProfileFrag
 import com.example.yonetimerchant.model.QueueOrders
 
 class PendingOrderAdapter(
-    var queueOrdersList: ArrayList<QueueOrders>,
+    var queueOrdersList: MutableList<QueueOrders>,
     var completeProfileFragment: CompleteProfileFragment
 ) :
     RecyclerView.Adapter<BookingInQueueViewHolder>() {

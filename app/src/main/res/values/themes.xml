@@ -15,10 +15,11 @@
     </style>
 
 
-    <style name="splashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
+<!--        <item name="android:windowActionBar">false</item>-->
         <item name="android:windowFullscreen">true</item>
+<!--        <item name="android:windowContentOverlay">@null</item>-->
     </style>
 
 
@@ -142,9 +143,10 @@
 
         <item name="boxStrokeWidthFocused">3dp</item>
     </style>
+
 <!--    Home Activity-->
     <style name="whiteSatusBarWithNoActionBar" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/white</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/intorductoryBackground</item>
         <item name="colorPrimary">@color/social_media_color</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowContentTransitions">true</item>
@@ -216,5 +218,19 @@
     <style name="customRatingBar" parent="@style/Widget.AppCompat.RatingBar.Small">
 <!--        <item name="android:progressDrawable">@drawable/custom_image1</item>-->
         <item name="android:indeterminateDrawable">@drawable/ic_star</item>
+    </style>
+
+
+    <style name="cardViewCorners" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 </resources>

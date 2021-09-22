@@ -16,6 +16,7 @@ import com.example.yonetimerchant.adapters.ServicePhotosGridPagerAdapter
 import com.example.yonetimerchant.databinding.CustomTabTitleBinding
 import com.example.yonetimerchant.databinding.FragmentServicePhotosGridViewBinding
 import com.example.yonetimerchant.dialog_fragment.EditAlbumDialogFragment
+import com.example.yonetimerchant.fragments.ModalBottomSheetFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -75,21 +76,22 @@ class BusinessPhotosGridViewFragment :
         }
 
         binding.btnEditProfile.setOnClickListener {
-            findNavController().navigate(R.id.profileSettingsFragment)
+//            findNavController().navigate(R.id.profileSettingsFragment)
+            ModalBottomSheetFragment().show(childFragmentManager,"show")
         }
 
     }
 
     private fun updateUi(profile: Profile?) {
         profile!!.result.also {
-            binding.tvHeader.setText(it.fullname)
-            binding.tvUserName.setText(it.fullname)
-            binding.tvAboutUser.setText(it.userBio)
-            binding.tvWebAddress.setText(it.website)
-
-            binding.tvCompleteAddress.setText(it.address.let {
-                it.street+it.city+it.country
-            })
+            binding.tvMerchantName.setText(it.fullname)
+//            binding.tvAddress.setText(it.address.)
+            binding.tvBio.setText(it.userBio)
+            binding.tvWebsite.setText(it.website)
+//
+//            binding.tvCompleteAddress.setText(it.address.let {
+//                it.street+it.city+it.country
+//            })
             Glide.with(requireContext())
                 .load(it.coverPhoto)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

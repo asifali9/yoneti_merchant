@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yoneti.model.ActiveOrder
+import com.example.yonetimerchant.R
 import com.example.yonetimerchant.databinding.ActiveOrdersItemLayoutBinding
 import java.util.ArrayList
 
-class ActiveOrdersAdapter(var acitveOrdersList: ArrayList<ActiveOrder>) : RecyclerView.Adapter<ActiveOrdersViewHolder>() {
+class ActiveOrdersAdapter(var acitveOrdersList: ArrayList<ActiveOrder>) :
+    RecyclerView.Adapter<ActiveOrdersViewHolder>() {
     private lateinit var ctx: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActiveOrdersViewHolder {
@@ -25,7 +27,9 @@ class ActiveOrdersAdapter(var acitveOrdersList: ArrayList<ActiveOrder>) : Recycl
 
     override fun onBindViewHolder(holder: ActiveOrdersViewHolder, position: Int) {
         Glide.with(ctx)
-            .load(acitveOrdersList.get(position).userPic).into(holder.bindingView.imgProfile)
+            .load(acitveOrdersList.get(position).userPic)
+            .placeholder(R.drawable.img_profile_placeholder)
+            .into(holder.bindingView.imgProfile)
 
         holder.bindingView.tvOrderDate.text = acitveOrdersList.get(position).date
         holder.bindingView.tvUserName.text = acitveOrdersList.get(position).customerName
