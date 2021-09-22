@@ -31,14 +31,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="20dp" />
+                app:layout_constraintGuide_begin="10dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline46"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="20dp" />
+                app:layout_constraintGuide_end="10dp" />
 
             <TextView
                 android:id="@+id/tvViewed"
@@ -75,7 +75,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="5"
-                tools:listitem="@layout/notification_single_item" />
+                android:visibility="gone"
+                tools:listitem="@layout/message_notification_single_item" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

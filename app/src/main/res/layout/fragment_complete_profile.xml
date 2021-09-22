@@ -161,13 +161,18 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_bell" />
+                            app:srcCompat="@drawable/ic_bell"
+                            app:tint="@color/grey" />
 
                         <ImageView
                             android:id="@+id/ivSchedule"
                             android:layout_width="25dp"
                             android:layout_height="0dp"
                             android:layout_marginEnd="16dp"
+                            android:scaleX="1.5"
+                            android:scaleY="1.45"
+                            android:padding="3dp"
+                            app:tint="@color/grey"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/ivNotification"
                             app:layout_constraintTop_toTopOf="parent"
@@ -200,7 +205,7 @@
                     android:id="@+id/tvCountdownTimer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="No Job"
+                    android:text="NaN:NaN"
                     android:gravity="center"
                     style="@style/greenBoldTextViewFour"
                     app:layout_constraintEnd_toEndOf="@+id/textView8"
