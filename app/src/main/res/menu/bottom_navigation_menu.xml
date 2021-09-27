@@ -10,7 +10,7 @@
 
 
     <item android:title="@string/orders"
-        android:id="@+id/listOrdersNav"
+        android:id="@+id/orderTrackingNav"
         android:icon="@drawable/ic_bookmark"/>
 
     <item android:title="@string/my_services"

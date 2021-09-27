@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yonetimerchant.R
+import com.example.yonetimerchant.databinding.ProgressOrdersItemBinding
 import com.example.yonetimerchant.databinding.ProgressOrdersItemTrackingBinding
 import com.example.yonetimerchant.fragments.complete_profile.CompleteProfileFragment
 import com.example.yonetimerchant.model.InProgressOrders
-import kotlin.collections.ArrayList
 
 class ProgressOrdersAdapter(
     var inProgressOrders: MutableList<InProgressOrders>,
@@ -20,7 +20,7 @@ class ProgressOrdersAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProgressOrdersViewHolder {
         ctx = parent.context
         return ProgressOrdersViewHolder(
-            ProgressOrdersItemTrackingBinding.inflate(
+            ProgressOrdersItemBinding.inflate(
                 LayoutInflater.from(
                     parent.context
                 ), parent, false
@@ -37,8 +37,8 @@ class ProgressOrdersAdapter(
         holder.bindingView.tvServiceName.text = inProgressOrders.get(position).orderDetails
         holder.bindingView.tvUserName.text = inProgressOrders.get(position).userName
 
-        holder.bindingView.tvRating.setOnClickListener {
-            completeProfileFragment.openOrderDetail()
+        holder.bindingView.tvOrderManageOrViewAction.setOnClickListener {
+            completeProfileFragment.openOrderDetail(inProgressOrders.get(position).orderId)
         }
     }
 
@@ -47,5 +47,5 @@ class ProgressOrdersAdapter(
     }
 }
 
-class ProgressOrdersViewHolder(val bindingView: ProgressOrdersItemTrackingBinding) :
+class ProgressOrdersViewHolder(val bindingView: ProgressOrdersItemBinding) :
     RecyclerView.ViewHolder(bindingView.root)

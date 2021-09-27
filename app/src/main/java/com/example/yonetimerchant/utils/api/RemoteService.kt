@@ -824,6 +824,7 @@ class RemoteService @Inject constructor(
         } catch (e: Exception) {
             Log.d(TAG, "startOrder: ${e.message}")
         }
+        Log.d(TAG, "startOrder: $json")
         return apiEndpoints.startOrder(sessionId, json.toString()).await()
     }
 

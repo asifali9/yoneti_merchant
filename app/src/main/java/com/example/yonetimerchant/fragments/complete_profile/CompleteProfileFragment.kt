@@ -104,7 +104,7 @@ class CompleteProfileFragment : BaseFragment<ProfileViewModel, FragmentCompleteP
 
         })
 
-        binding.raySpeedometer.speedTo(50, 1500)
+        binding.raySpeedometer.speedTo(200, 1500)
 
         binding.tvProgressCount.setText(binding.raySpeedometer.speed.toString())
 
@@ -159,7 +159,9 @@ class CompleteProfileFragment : BaseFragment<ProfileViewModel, FragmentCompleteP
         }
 
         binding.tvSeeAllPendingOrders.setOnClickListener {
-            findNavController().navigate(R.id.listOrdersNav)
+            var b = Bundle()
+            b.putInt(Constants.ORDER_PAGE,1)
+            findNavController().navigate(R.id.orderTrackingNav,b)
         }
 
         binding.tvSeeAllRecentOrders.setOnClickListener {
@@ -167,7 +169,10 @@ class CompleteProfileFragment : BaseFragment<ProfileViewModel, FragmentCompleteP
         }
 
         binding.completedOrdersContainer.setOnClickListener {
-            findNavController().navigate(R.id.listOrdersNav)
+
+            var b = Bundle()
+            b.putInt(Constants.ORDER_PAGE,3)
+            findNavController().navigate(R.id.orderTrackingNav,b)
         }
 
         binding.serviceArea.setOnClickListener {
@@ -177,7 +182,7 @@ class CompleteProfileFragment : BaseFragment<ProfileViewModel, FragmentCompleteP
         binding.tvSeeAllInProgressOrders.setOnClickListener {
 //            var bundle = Bundle()
 //            bundle.putInt(Constants.ORDER_PAGE,0)
-            findNavController().navigate(R.id.ordersTrackingFragment)
+            findNavController().navigate(R.id.orderTrackingNav)
         }
 
         binding.tvSeeAllRecentOrders.setOnClickListener {
@@ -187,8 +192,10 @@ class CompleteProfileFragment : BaseFragment<ProfileViewModel, FragmentCompleteP
         }
     }
 
-    fun openOrderDetail() {
-        findNavController().navigate(R.id.orderDetailsFragment)
+    fun openOrderDetail(orderId: String?) {
+        var b = Bundle()
+        b.putString(Constants.ORDER_ID,orderId!!)
+        findNavController().navigate(R.id.orderDetailsFragment,b)
     }
 
     fun openPendingOrder(pendingOrder: QueueOrders) {

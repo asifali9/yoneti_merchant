@@ -13,7 +13,7 @@
         android:translationZ="5dp"
         android:layout_width="match_parent"
         android:layout_marginBottom="5dp"
-        android:layout_height="100dp">
+        android:layout_height="50dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="20dp" />
+                app:layout_constraintGuide_begin="15dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline24"
@@ -35,49 +35,62 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/ivReviewer"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/img_profile_placeholder"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline23"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:shapeAppearance="@drawable/ic_circle_drawable" />
+                app:layout_constraintVertical_bias="0.52"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
 
             <TextView
                 android:id="@+id/tvName"
-                style="@style/tvheading3StyleBlack"
+                style="@style/tvheading2StyleBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:text="TextView"
+                android:maxLength="20"
                 app:layout_constraintStart_toStartOf="@+id/guideLineRihtToImage"
                 app:layout_constraintTop_toTopOf="@+id/ivReviewer" />
 
             <TextView
-                android:id="@+id/tvMessageDescription"
+                android:id="@+id/tvMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="@color/lightDardForAddress"
-                android:visibility="visible"
-                app:layout_constraintStart_toStartOf="@+id/guideLineRihtToImage"
-                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+                android:layout_marginStart="8dp"
+                android:maxLength="60"
+                android:text="this is message this is message"
+                app:layout_constraintBottom_toTopOf="@+id/tvTime"
+                app:layout_constraintStart_toEndOf="@+id/tvName"
+                app:layout_constraintTop_toTopOf="@+id/tvName" />
 
+<!--            notification time-->
             <TextView
-                android:id="@+id/tvMessageTime"
+                android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Testing"
-                android:textColor="@color/social_media_color"
+                android:maxLength="60"
+                android:text="09:45am"
                 app:layout_constraintBottom_toBottomOf="@+id/ivReviewer"
                 app:layout_constraintStart_toStartOf="@+id/guideLineRihtToImage"
-                app:layout_constraintTop_toBottomOf="@+id/tvMessageDescription" />
+                app:layout_constraintTop_toBottomOf="@id/tvName" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideLineRihtToImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="111dp" />
+                app:layout_constraintGuide_begin="40dp" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView4"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvMessage"
+                app:srcCompat="@drawable/img_profile_placeholder"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

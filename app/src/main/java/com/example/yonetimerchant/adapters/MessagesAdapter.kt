@@ -30,8 +30,8 @@ class MessagesAdapter(
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         holder.bindingView.tvName.text = messagesList.get(position).userName
-        holder.bindingView.tvMessageDescription.text = messagesList.get(position).message
-        holder.bindingView.tvMessageTime.text = messagesList.get(position).messageDate
+//        holder.bindingView.tvMessageDescription.text = messagesList.get(position).message
+//        holder.bindingView.tvMessageTime.text = messagesList.get(position).messageDate
         Glide.with(context)
             .load(messagesList.get(position).avatar)
             .into(holder.bindingView.ivReviewer)

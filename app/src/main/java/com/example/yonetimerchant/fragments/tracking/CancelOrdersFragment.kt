@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CancelOrdersFragment :
-    BaseFragment<OrdersTrackingViewModel, FragmentCancelOrdersBinding>() {
+    BaseFragment<OrderTrackingViewModel, FragmentCancelOrdersBinding>() {
 
     private lateinit var cancelOrdersAdapter: CancelOrdersAdapter
     private lateinit var orderTrackingAdapter: PagerAdapter
@@ -22,5 +22,5 @@ class CancelOrdersFragment :
 binding.rvCancelOrders.adapter = cancelOrdersAdapter
     }
 
-    override fun getViewMode(): Class<OrdersTrackingViewModel> = OrdersTrackingViewModel::class.java
+    override fun getViewMode(): Class<OrderTrackingViewModel> = OrderTrackingViewModel::class.java
 }

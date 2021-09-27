@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.yonetimerchant.R
 import com.example.yonetimerchant.databinding.ProgressOrdersItemTrackingBinding
 import com.example.yonetimerchant.fragments.tracking.CompleteOrdersFragment
 
@@ -24,6 +25,7 @@ class CompleteOrdersAdapter(
     }
 
     override fun onBindViewHolder(holder: CompleteOrdersViewHolder, position: Int) {
+        holder.bindingView.tvOrderManageOrViewAction.text = ctx.resources.getString(R.string.view_order)
     }
 
     override fun getItemCount(): Int {

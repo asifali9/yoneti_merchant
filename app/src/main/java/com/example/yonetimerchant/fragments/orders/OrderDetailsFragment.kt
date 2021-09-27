@@ -6,12 +6,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.yoneti.base.BaseFragment
 import com.example.yonetimerchant.R
 import com.example.yonetimerchant.acitivities.HomeActivity
+import com.example.yonetimerchant.adapters.OrderDetailsAdapter
 import com.example.yonetimerchant.databinding.FragmentActiveOrdersDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OrderDetailsFragment :
     BaseFragment<OrderDetailsViewModel, FragmentActiveOrdersDetailsBinding>() {
+    private lateinit var detailsAdapter: OrderDetailsAdapter
     var pageNumber = 0
     var pageSize = 10
     override fun getViewMode(): Class<OrderDetailsViewModel> = OrderDetailsViewModel::class.java
@@ -36,6 +38,12 @@ class OrderDetailsFragment :
                 Toast.makeText(requireContext(), "started", Toast.LENGTH_SHORT).show()
             else
                 Toast.makeText(requireContext(), "something wrong", Toast.LENGTH_SHORT).show()
+        })
+
+        viewModel!!.details.observe(this, Observer {
+
+            detailsAdapter = OrderDetailsAdapter(it)
+            binding.rvServiceDetails.adapter = detailsAdapter
         })
     }
 

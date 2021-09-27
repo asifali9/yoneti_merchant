@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.yoneti.model.ActiveOrder
 import com.example.yonetimerchant.R
 import com.example.yonetimerchant.databinding.ActiveOrdersItemLayoutBinding
+import com.example.yonetimerchant.databinding.ProgressOrdersItemTrackingBinding
 import java.util.ArrayList
 
 class ActiveOrdersAdapter(var acitveOrdersList: ArrayList<ActiveOrder>) :
@@ -17,7 +18,7 @@ class ActiveOrdersAdapter(var acitveOrdersList: ArrayList<ActiveOrder>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActiveOrdersViewHolder {
         ctx = parent.context
         return ActiveOrdersViewHolder(
-            ActiveOrdersItemLayoutBinding.inflate(
+            ProgressOrdersItemTrackingBinding.inflate(
                 LayoutInflater.from(
                     parent.context
                 ), parent, false
@@ -41,5 +42,5 @@ class ActiveOrdersAdapter(var acitveOrdersList: ArrayList<ActiveOrder>) :
     }
 }
 
-class ActiveOrdersViewHolder(val bindingView: ActiveOrdersItemLayoutBinding) :
+class ActiveOrdersViewHolder(val bindingView: ProgressOrdersItemTrackingBinding) :
     RecyclerView.ViewHolder(bindingView.root)

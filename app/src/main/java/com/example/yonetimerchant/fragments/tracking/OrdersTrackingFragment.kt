@@ -11,7 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class OrdersTrackingFragment :
-    BaseFragment<OrdersTrackingViewModel, FragmentOrdersTrackingBinding>() {
+    BaseFragment<OrderTrackingViewModel, FragmentOrdersTrackingBinding>() {
 
     private var fragmentsList = ArrayList<Fragment>()
     private var fragmentsTitle = ArrayList<String>()
@@ -28,7 +28,7 @@ class OrdersTrackingFragment :
 
 
         /**
-         * setting page clicke position
+         * setting page clicked position
          */
         var pageNUmber = arguments?.getInt(Constants.ORDER_PAGE) ?: 0
         binding.ordersPager.setCurrentItem(pageNUmber,true)
@@ -47,5 +47,5 @@ class OrdersTrackingFragment :
         fragmentsTitle.add("Complete")
     }
 
-    override fun getViewMode(): Class<OrdersTrackingViewModel> = OrdersTrackingViewModel::class.java
+    override fun getViewMode(): Class<OrderTrackingViewModel> = OrderTrackingViewModel::class.java
 }
