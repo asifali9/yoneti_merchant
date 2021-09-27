@@ -102,10 +102,10 @@
                         app:layout_constraintTop_toBottomOf="@id/profileLine">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
                             android:id="@+id/etFullName"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="@={proflieViewModel.fullName}"/>
+                            android:text="@={proflieViewModel.fullName}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -119,10 +119,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/ilName">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/userName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/userName"
-                            android:text="@={proflieViewModel.userName}"/>
+                            android:text="@={proflieViewModel.userName}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -136,10 +136,10 @@
                         app:layout_constraintTop_toBottomOf="@id/iluserName">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etWebsite"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/etWebsite"
-                            android:text="@={proflieViewModel.website}"/>
+                            android:text="@={proflieViewModel.website}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -156,7 +156,7 @@
                             android:id="@+id/ilYourBio"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@={proflieViewModel.bio}"/>
+                            android:text="@={proflieViewModel.bio}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
@@ -180,10 +180,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/tvBioMessage">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDob"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/etDob"
-                            android:text="@={proflieViewModel.dob}"/>
+                            android:text="@={proflieViewModel.dob}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -197,10 +197,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/ilPhone">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/etEmail"
-                            android:text="@={proflieViewModel.email}"/>
+                            android:text="@={proflieViewModel.email}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <ImageView
@@ -227,10 +227,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/ilDob">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPhone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/etPhone"
-                            android:text="@={proflieViewModel.phone}"/>
+                            android:text="@={proflieViewModel.phone}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <ImageView
@@ -256,10 +256,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/ilEmail">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etAddress"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/etAddress"
-                            android:text="@={proflieViewModel.address}"/>
+                            android:text="@={proflieViewModel.address}" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <ImageView
@@ -274,31 +274,49 @@
                         app:layout_constraintTop_toBottomOf="@id/ilAddress"
                         app:layout_constraintTop_toTopOf="@id/ilAddress" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/ilGender"
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnMale"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:hint="Gender"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        android:hint="Male"
+                        app:layout_constraintEnd_toStartOf="@+id/btnFemale"
+                        app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="@+id/guideline31"
-                        app:layout_constraintTop_toBottomOf="@+id/ilAddress">
+                        app:layout_constraintTop_toBottomOf="@+id/ilAddress" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnFemale"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:hint="Female"
+                        app:layout_constraintEnd_toStartOf="@+id/btnOther"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btnMale"
+                        app:layout_constraintTop_toBottomOf="@+id/ilAddress" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnOther"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:hint="Other"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintRight_toLeftOf="@id/guideline32"
+                        app:layout_constraintStart_toEndOf="@+id/btnFemale"
+                        tools:layout_editor_absoluteY="742dp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_update"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:text="Update"
                         android:onClick="@{()->proflieViewModel.updateProfile()}"
+                        android:text="Update"
                         app:layout_constraintEnd_toStartOf="@+id/guideline32"
                         app:layout_constraintStart_toStartOf="@+id/guideline31"
-                        app:layout_constraintTop_toBottomOf="@id/ilGender" />
+                        app:layout_constraintTop_toBottomOf="@id/btnMale" />
 
                     <View
                         android:layout_width="0dp"
