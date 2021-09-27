@@ -159,6 +159,7 @@
 <!--        <item name="android:windowExitTransition">@transition/explode</item>-->
 
 <!--        <item name="android:windowSharedElementEnterTransition">@transition/shared_enter</item>-->
+        <item name="fontFamily">@font/quicksand_bold</item>
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
 
     </style>
@@ -206,6 +207,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">25sp</item>
     </style>
+    <style name="greenBoldTextViewThree">
+        <item name="android:textColor">@color/borderColor</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
     <style name="greenTextViewOne">
         <item name="android:textColor">@color/borderColor</item>
         <item name="android:textSize">10sp</item>
@@ -222,7 +228,12 @@
 <!--    custom rating bar-->
     <style name="customRatingBar" parent="@style/Widget.AppCompat.RatingBar.Small">
 <!--        <item name="android:progressDrawable">@drawable/custom_image1</item>-->
-        <item name="android:indeterminateDrawable">@drawable/ic_star</item>
+<!--        <item name="android:indeterminateDrawable">@drawable/ic_star</item>-->
+        <item name="android:progressTint">@color/white</item>
+        <item name="android:progressBackgroundTint">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
     </style>
 
 

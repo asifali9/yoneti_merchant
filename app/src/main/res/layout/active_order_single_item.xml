@@ -9,6 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activeOrderRootView"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,7 +22,7 @@
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_filter" />
+            app:srcCompat="@drawable/img_profile_placeholder" />
 
         <TextView
             android:id="@+id/tvUserName"
@@ -48,32 +49,33 @@
 
         <TextView
             android:id="@+id/tvDate"
+            style="@style/whiteTextViewOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Sun,20 sep"
-            style="@style/whiteTextViewOne"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/tvOrderDetails"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTime" />
+            app:layout_constraintTop_toBottomOf="@+id/tvUserName"
+            tools:text="Sun,20 sep" />
 
         <TextView
             android:id="@+id/tvTime"
+            style="@style/whiteTextViewOneBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="09.04am"
-            style="@style/whiteTextViewOneBold"
+            app:layout_constraintBottom_toTopOf="@+id/tvOrderDetails"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/tvUserName" />
 
         <TextView
             android:id="@+id/textView14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/tasks_counter"
-            android:text="12"
+            android:text="1"
             style="@style/greenBoldTextViewOne"
-            android:padding="2dp"
+            android:gravity="center"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintRight_toRightOf="@id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2" />

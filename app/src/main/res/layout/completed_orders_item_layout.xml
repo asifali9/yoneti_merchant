@@ -70,8 +70,8 @@
             android:layout_height="wrap_content"
             android:background="@drawable/tasks_counter"
             android:text="12"
+            android:gravity="center"
             style="@style/greenTextViewOne"
-            android:padding="2dp"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintRight_toRightOf="@id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2" />

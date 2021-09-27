@@ -3,14 +3,36 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/drawable/btn_background.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/drawable/btn_border.xml" value="0.37083333333333335" />
         <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/drawable/ic_bell.xml" value="0.3828125" />
         <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/drawable/ic_circle_drawable.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/drawable/ic_extend_time.xml" value="0.3828125" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/drawable/ic_menu.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/drawable/notification_counter.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/drawable/tab_selector.xml" value="0.37083333333333335" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/drawable/tasks_counter.xml" value="0.3828125" />
         <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/active_order_single_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/active_orders_item_layout.xml" value="0.3546875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/cancel_orders_item_tracking.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/completed_orders_item_layout.xml" value="0.3546875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_active_orders_details.xml" value="0.3546875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_cancel_orders.xml" value="0.3546875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_complete_orders.xml" value="0.3546875" />
         <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_complete_profile.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_grid_photos.xml" value="0.1921875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_list_of_orders.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_notifications.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_orders_tracking.xml" value="0.3546875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_progress_orders.xml" value="0.3546875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_queue_orders.xml" value="0.3546875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/fragment_service_photos_grid_view.xml" value="0.1921875" />
         <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/message_notification_single_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/notification_single_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/progress_orders_item.xml" value="0.1921875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/progress_orders_item_tracking.xml" value="0.25" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/layout/selected_service_item_layout.xml" value="0.3546875" />
+        <entry key="..\:/Users/Uzman/Downloads/yoneti/yoneti_merchant/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3546875" />
       </map>
     </option>
   </component>

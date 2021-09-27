@@ -14,25 +14,25 @@ import com.example.yoneti.model.Album
 import com.example.yoneti.model.Profile
 import com.example.yonetimerchant.R
 import com.example.yonetimerchant.adapters.CompleteOrdersAdapter
-import com.example.yonetimerchant.adapters.ServicePhotosGridPagerAdapter
 import com.example.yonetimerchant.databinding.CustomTabTitleBinding
 import com.example.yonetimerchant.databinding.FragmentCompleteOrdersBinding
 import com.example.yonetimerchant.databinding.FragmentOrdersTrackingBinding
-import com.example.yonetimerchant.databinding.FragmentServicePhotosGridViewBinding
 import com.example.yonetimerchant.dialog_fragment.EditAlbumDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CompleteOrdersFragment :
-    BaseFragment<OrdersTrackingViewModel, FragmentCompleteOrdersBinding>() {
-
+    BaseFragment<OrderTrackingViewModel, FragmentCompleteOrdersBinding>() {
+    var pageNumber = 0
+    var pageSize = 10
     private lateinit var orderTrackingAdapter: PagerAdapter
 
     override fun getLayout(): Int = R.layout.fragment_complete_orders
 
     override fun bindingToViews() {
-binding.rvCompleteOrders.adapter = CompleteOrdersAdapter(this)
+        viewModel!!.completedOrders(pageNumber,pageSize)
+        binding.rvCompleteOrders.adapter = CompleteOrdersAdapter(this)
     }
 
-    override fun getViewMode(): Class<OrdersTrackingViewModel> = OrdersTrackingViewModel::class.java
+    override fun getViewMode(): Class<OrderTrackingViewModel> = OrderTrackingViewModel::class.java
 }

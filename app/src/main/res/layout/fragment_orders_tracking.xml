@@ -87,6 +87,8 @@
                     android:background="@color/rvBackground"
                     app:tabTextColor="@color/black"
                     app:tabMode="scrollable"
+                    app:tabIndicatorColor="@color/buttonBorderColor"
+                    app:tabBackground="@drawable/tab_selector"
                     app:layout_constraintEnd_toStartOf="@+id/guideline20"
                     app:layout_constraintStart_toStartOf="@+id/guideline19"
                     app:layout_constraintTop_toBottomOf="@+id/blank" />

@@ -18,13 +18,12 @@ import com.example.yonetimerchant.adapters.ServicePhotosGridPagerAdapter
 import com.example.yonetimerchant.databinding.CustomTabTitleBinding
 import com.example.yonetimerchant.databinding.FragmentOrdersTrackingBinding
 import com.example.yonetimerchant.databinding.FragmentQueueOrdersBinding
-import com.example.yonetimerchant.databinding.FragmentServicePhotosGridViewBinding
 import com.example.yonetimerchant.dialog_fragment.EditAlbumDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class QueueOrdersFragment :
-    BaseFragment<OrdersTrackingViewModel, FragmentQueueOrdersBinding>() {
+    BaseFragment<OrderTrackingViewModel, FragmentQueueOrdersBinding>() {
 
     private lateinit var queueOrdersAdapter: QueueOrdersAdapter
     private lateinit var orderTrackingAdapter: PagerAdapter
@@ -36,5 +35,5 @@ class QueueOrdersFragment :
         binding.rvQueueOrders.adapter = queueOrdersAdapter
     }
 
-    override fun getViewMode(): Class<OrdersTrackingViewModel> = OrdersTrackingViewModel::class.java
+    override fun getViewMode(): Class<OrderTrackingViewModel> = OrderTrackingViewModel::class.java
 }

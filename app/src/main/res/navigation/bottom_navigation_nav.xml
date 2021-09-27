@@ -120,7 +120,7 @@
             android:id="@+id/profile"
             android:name="com.example.yonetimerchant.fragments.photos_fragment.BusinessPhotosGridViewFragment"
             android:label="BusinessPhotosGridViewFragment"
-            tools:layout="@layout/fragment_service_photos_grid_view" />
+            tools:layout="@layout/fragment_business_photos_grid_view" />
         <action
             android:id="@+id/action_global_editTabDialogFragment2"
             app:destination="@id/editTabDialogFragment" />
@@ -172,12 +172,12 @@
         android:name="com.example.yonetimerchant.fragments.orders.OrderDetailsFragment"
         android:label="OrderDetailsFragment"
         tools:layout="@layout/fragment_active_orders_details"/>
-    <navigation android:id="@+id/listOrdersNav"
+    <navigation android:id="@+id/orderTrackingNav"
         app:startDestination="@id/orders">
         <fragment
             android:id="@+id/orders"
-            android:name="com.example.yonetimerchant.fragments.orders.ListOfOrdersFragment"
-            android:label="ListOfOrdersFragment"
+            android:name="com.example.yonetimerchant.fragments.tracking.OrdersTrackingFragment"
+            android:label="TrackingOrdersFragment"
             tools:layout="@layout/fragment_list_of_orders" />
         <action
             android:id="@+id/action_global_orderDetailsFragment2"

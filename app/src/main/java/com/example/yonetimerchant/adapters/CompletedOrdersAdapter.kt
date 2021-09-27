@@ -1,8 +1,10 @@
 package com.example.yonetimerchant.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yoneti.model.ActiveOrder
@@ -34,6 +36,17 @@ class CompletedOrdersAdapter(
         holder.bindingView.tvUserName.setText(completedOrdersList.get(position).customerName)
         holder.bindingView.tvService.setText(completedOrdersList.get(position).orderDetails)
         holder.bindingView.tvRatingCount.setText(completedOrdersList.get(position).merchantRating)
+        var progress = holder.bindingView.rateBar.progressDrawable
+        if (completedOrdersList.get(position).merchantRating!!.toFloat() >= 1f && completedOrdersList.get(position).merchantRating!!.toFloat() < 3f)
+        {
+            DrawableCompat.setTint(progress,Color.RED)
+        }else if  (completedOrdersList.get(position).merchantRating!!.toFloat() >= 3f && completedOrdersList.get(position).merchantRating!!.toFloat() < 4f)
+        {
+            DrawableCompat.setTint(progress,Color.YELLOW)
+        }else
+        {
+            DrawableCompat.setTint(progress,Color.WHITE)
+        }
 //        holder.bindingView.rateBar.fill
         Glide.with(ctx)
             .load(completedOrdersList.get(position).userPic)
@@ -50,7 +63,7 @@ class CompletedOrdersAdapter(
             /**
              * opening fragment from dashboard
              */
-            completeProfileFragment?.openOrderDetail()
+            completeProfileFragment?.openOrderDetail(completedOrdersList.get(position).categoryId)
         }
     }
 

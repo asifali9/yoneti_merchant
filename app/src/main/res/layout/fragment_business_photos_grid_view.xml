@@ -67,14 +67,12 @@
                         android:layout_height="@dimen/_100sdp"
                         android:layout_marginStart="24dp"
                         android:layout_marginBottom="@dimen/_40sdp"
-                        android:background="@color/black"
                         android:elevation="@dimen/_50sdp"
-                        android:src="@drawable/ic_bell"
+                        android:src="@drawable/img_profile_placeholder"
                         app:layout_constraintBottom_toBottomOf="@+id/coverPhoto"
                         app:layout_constraintStart_toStartOf="@+id/ivUserImage"
                         app:layout_constraintTop_toTopOf="@+id/ivUserImage"
-                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
-                        app:tint="@color/white" />
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/ivUserImage"
@@ -97,11 +95,12 @@
 
                         <TextView
                             android:id="@+id/tvMerchantName"
-                            style="@style/greenBoldTextViewFour"
+                            style="@style/greenBoldTextViewThree"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:text="TextView"
+                            android:maxLines="1"
                             app:layout_constraintEnd_toStartOf="@+id/guideline39"
                             app:layout_constraintStart_toStartOf="@+id/guideline42"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -119,6 +118,7 @@
                             android:id="@+id/tvBio"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="TextView"
                             app:layout_constraintEnd_toStartOf="@+id/guideline39"
                             app:layout_constraintStart_toEndOf="@+id/guideline43"
@@ -285,12 +285,13 @@
                         app:tabIndicator="@android:color/transparent"
                         app:tabSelectedTextColor="@color/social_media_color" />
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/btnEditProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Edit Profile"
-                        style="@style/greenTextViewThree"
+                        app:srcCompat="@drawable/ic_menu"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp"
                         app:layout_constraintTop_toBottomOf="@id/guideline16"
                         app:layout_constraintEnd_toStartOf="@+id/guideline20"
                         tools:layout_editor_absoluteY="25dp" />

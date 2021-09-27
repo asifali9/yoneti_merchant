@@ -15,6 +15,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/et_background"
+            android:backgroundTint="@android:color/darker_gray"
             android:hint="Type to search order"
             android:inputType="textPersonName"
             android:paddingLeft="@dimen/_20sdp"

@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.yoneti.base.BaseFragment
@@ -14,14 +13,14 @@ import com.example.yoneti.model.Profile
 import com.example.yonetimerchant.R
 import com.example.yonetimerchant.adapters.ServicePhotosGridPagerAdapter
 import com.example.yonetimerchant.databinding.CustomTabTitleBinding
-import com.example.yonetimerchant.databinding.FragmentServicePhotosGridViewBinding
+import com.example.yonetimerchant.databinding.FragmentBusinessPhotosGridViewBinding
 import com.example.yonetimerchant.dialog_fragment.EditAlbumDialogFragment
 import com.example.yonetimerchant.fragments.ModalBottomSheetFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BusinessPhotosGridViewFragment :
-    BaseFragment<BusinessPhotosViewModel, FragmentServicePhotosGridViewBinding>() {
+    BaseFragment<BusinessPhotosViewModel, FragmentBusinessPhotosGridViewBinding>() {
     private var tabTitle = mutableListOf<Album>()
     val TAG = BusinessPhotosGridViewFragment::class.java.name
     var albumIds = ArrayList<String>()
@@ -33,7 +32,7 @@ class BusinessPhotosGridViewFragment :
 
     }
 
-    override fun getLayout(): Int = R.layout.fragment_service_photos_grid_view
+    override fun getLayout(): Int = R.layout.fragment_business_photos_grid_view
 
     override fun bindingToViews() {
         viewModel!!.getProfile()

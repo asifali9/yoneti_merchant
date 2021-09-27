@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yoneti.model.Categories
+import com.example.yonetimerchant.R
 import com.example.yonetimerchant.databinding.ProgressOrdersItemTrackingBinding
 import com.example.yonetimerchant.fragments.tracking.CancelOrdersFragment
 import com.example.yonetimerchant.fragments.tracking.ProgressOrdersFragment
@@ -27,6 +28,7 @@ class CancelOrdersAdapter(
     }
 
     override fun onBindViewHolder(holder: CancelOrdersViewHolder, position: Int) {
+        holder.bindingView.tvOrderManageOrViewAction.text = ctx.resources.getString(R.string.view_order)
     }
 
     override fun getItemCount(): Int {

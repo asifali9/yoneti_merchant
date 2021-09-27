@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <RelativeLayout
         android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_5sdp">
+        android:padding="@dimen/_5sdp">
 
         <RelativeLayout
             android:id="@+id/userProfile"
@@ -19,19 +17,18 @@
                 android:id="@+id/imgProfile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:elevation="@dimen/_50sdp"
                 android:src="@drawable/img_profile_placeholder"
                 app:civ_border_width="1dp" />
 
             <TextView
                 android:id="@+id/tvOrdersCount"
-                android:layout_width="14dp"
+                android:layout_width="wrap_content"
                 android:layout_height="14dp"
                 android:layout_marginLeft="-16dp"
                 android:layout_toRightOf="@+id/imgProfile"
-                android:backgroundTint="@color/white"
+                android:background="@drawable/tasks_counter"
                 android:gravity="center"
-                android:text="1"
+                android:text="12"
                 android:textColor="@color/borderColor"
                 android:textSize="10sp" />
 
@@ -50,20 +47,20 @@
 
             <TextView
                 android:id="@+id/tvUserName"
+                style="@style/whiteTextViewOneBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
                 android:maxLines="1"
-                style="@style/whiteTextViewOneBold"
                 android:text="Agha Dostain"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvServiceName"
+                style="@style/whiteTextViewOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/whiteTextViewOne"
                 android:inputType="textCapWords"
                 android:text="Hair cutting.."
                 android:textSize="14sp" />
@@ -81,17 +78,17 @@
 
             <TextView
                 android:id="@+id/tvOrderManageOrViewAction"
+                style="@style/greenBoldTextViewOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:paddingTop="@dimen/_3sdp"
-                android:paddingBottom="@dimen/_3sdp"
-                android:paddingRight="@dimen/_8sdp"
-                android:paddingLeft="@dimen/_8sdp"
                 android:background="@drawable/et_background"
-                style="@style/greenBoldTextViewOne"
+                android:backgroundTint="@color/white"
                 android:inputType="textCapWords"
                 android:maxLines="1"
+                android:paddingLeft="@dimen/_8sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingRight="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_3sdp"
                 android:text="Manage"
                 android:textSize="12sp" />
 
@@ -108,5 +105,4 @@
         </LinearLayout>
 
     </RelativeLayout>
-
 </layout>
