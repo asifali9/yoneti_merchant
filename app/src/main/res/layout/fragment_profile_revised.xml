@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="proflieViewModel"
             type="com.example.yonetimerchant.profile.ProfileViewModel" />
@@ -18,11 +19,12 @@
             android:id="@+id/ivCoverPhoto"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/yoneti_test_profile"
             app:layout_constraintEnd_toEndOf="parent"
-            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cvOptions"
             android:layout_width="match_parent"
@@ -274,38 +276,51 @@
                         app:layout_constraintTop_toBottomOf="@id/ilAddress"
                         app:layout_constraintTop_toTopOf="@id/ilAddress" />
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnMale"
+                    <RadioGroup
+                        android:id="@+id/rgGender"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:hint="Male"
-                        app:layout_constraintEnd_toStartOf="@+id/btnFemale"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toStartOf="@+id/guideline31"
-                        app:layout_constraintTop_toBottomOf="@+id/ilAddress" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnFemale"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:hint="Female"
-                        app:layout_constraintEnd_toStartOf="@+id/btnOther"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/btnMale"
-                        app:layout_constraintTop_toBottomOf="@+id/ilAddress" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnOther"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:hint="Other"
+                        android:orientation="horizontal"
                         app:layout_constraintEnd_toStartOf="@+id/guideline32"
-                        app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintRight_toLeftOf="@id/guideline32"
-                        app:layout_constraintStart_toEndOf="@+id/btnFemale"
-                        tools:layout_editor_absoluteY="742dp" />
+                        app:layout_constraintStart_toStartOf="@+id/guideline31"
+                        app:layout_constraintTop_toBottomOf="@+id/ilAddress">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/btnMale"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/radio_selector"
+
+                            android:button="@android:color/transparent"
+                            android:gravity="center"
+                            android:hint="Male" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/btnFemale"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+android:layout_marginLeft="@dimen/_2sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/radio_selector"
+                            android:button="@android:color/transparent"
+                            android:gravity="center"
+                            android:hint="Female" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:id="@+id/btnOther"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/_2sdp"
+                            android:background="@drawable/radio_selector"
+                            android:button="@android:color/transparent"
+                            android:gravity="center"
+                            android:hint="Other" />
+                    </RadioGroup>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_update"
@@ -316,7 +331,7 @@
                         android:text="Update"
                         app:layout_constraintEnd_toStartOf="@+id/guideline32"
                         app:layout_constraintStart_toStartOf="@+id/guideline31"
-                        app:layout_constraintTop_toBottomOf="@id/btnMale" />
+                        app:layout_constraintTop_toBottomOf="@id/rgGender" />
 
                     <View
                         android:layout_width="0dp"
@@ -358,9 +373,9 @@
             android:layout_marginEnd="24dp"
             android:layout_marginRight="24dp"
             android:alpha=".45"
-            android:textSize="10sp"
             android:background="@android:color/white"
             android:text="Update Cover"
+            android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -375,7 +390,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/facebook"/>
+            app:srcCompat="@drawable/facebook" />
 
         <ImageView
             android:id="@+id/ivUpdateUserImage"

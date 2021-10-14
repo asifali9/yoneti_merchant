@@ -5,7 +5,7 @@ import com.example.yoneti.base.SharedBaseTestDialogFragment
 import com.example.yonetimerchant.R
 import com.example.yonetimerchant.adapters.NotificationPagerAdapter
 import com.example.yonetimerchant.databinding.DialogFragmentNotificationsBinding
-import com.example.yonetimerchant.fragments.notifications.MessagesFragment
+import com.example.yonetimerchant.fragments.notifications.TimerFragment
 import com.example.yonetimerchant.fragments.notifications.NotificationFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,7 +17,7 @@ class HomeNotificationsDialogFragment :SharedBaseTestDialogFragment<DialogFragme
     init {
         tabsTitle.add("Messages")
         tabsTitle.add("Alerts")
-        listOfFragments.add(MessagesFragment())
+        listOfFragments.add(TimerFragment())
         listOfFragments.add(NotificationFragment())
     }
     override fun getLayout(): Int  = R.layout.dialog_fragment_notifications

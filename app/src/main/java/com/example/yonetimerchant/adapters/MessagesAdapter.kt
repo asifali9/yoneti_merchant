@@ -2,17 +2,16 @@ package com.example.yonetimerchant.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yoneti.model.Messages
 import com.example.yonetimerchant.databinding.MessageNotificationSingleItemBinding
-import com.example.yonetimerchant.fragments.notifications.MessagesFragment
+import com.example.yonetimerchant.fragments.notifications.TimerFragment
 
 class MessagesAdapter(
     var messagesList: MutableList<Messages>,
-    var fragmentInstance: MessagesFragment
+    var fragmentInstance: TimerFragment
 ) :
     RecyclerView.Adapter<MessageViewHolder>() {
     private lateinit var context: Context

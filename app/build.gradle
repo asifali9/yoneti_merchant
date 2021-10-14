@@ -161,4 +161,7 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
 //    implementation 'com.google.maps.android:android-maps-utils:2.2.5'
+
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 }

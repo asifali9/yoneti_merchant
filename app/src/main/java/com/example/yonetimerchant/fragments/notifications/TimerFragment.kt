@@ -6,19 +6,20 @@ import com.example.yoneti.base.BaseFragment
 import com.example.yonetimerchant.R
 import com.example.yonetimerchant.adapters.MessagesAdapter
 import com.example.yonetimerchant.databinding.FragmentNotificationsBinding
+import com.example.yonetimerchant.databinding.FragmentTimerBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MessagesFragment :
-    BaseFragment<MessageNotificationsViewModel, FragmentNotificationsBinding>() {
+class TimerFragment :
+    BaseFragment<MessageNotificationsViewModel, FragmentTimerBinding>() {
 
     private lateinit var adapter: MessagesAdapter
     var pageOffset = 0
     override fun getViewMode(): Class<MessageNotificationsViewModel> =
         MessageNotificationsViewModel::class.java
 
-    override fun getLayout(): Int = R.layout.fragment_notifications
+    override fun getLayout(): Int = R.layout.fragment_timer
 
     override fun bindingToViews() {
         viewModel!!.getMessagesNotificationList(pageOffset)
@@ -30,6 +31,7 @@ class MessagesFragment :
         viewModel!!.message.observe(this, Observer { message->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         })
+        binding.timepicker.setIs24HourView(true)
     }
 
 }

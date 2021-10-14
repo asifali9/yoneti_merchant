@@ -15,7 +15,7 @@ class RemoteService @Inject constructor(
 ) {
     val TAG = RemoteService::class.java.simpleName
     suspend fun login(password: String, emailAddress: String, deviceToken: String): User {
-        Log.d(TAG, "login: $emailAddress +$password")
+        Log.wtf(TAG, "login: $emailAddress +$password")
         try {
             json.put("email", emailAddress)
             json.put("password", password)
@@ -25,15 +25,15 @@ class RemoteService @Inject constructor(
             json.put("app_type", "marchant")
 
         } catch (e: Exception) {
-            Log.d(TAG, "loginException: ${e.message}")
+            Log.wtf(TAG, "loginException: ${e.message}")
         }
-        Log.d(TAG, "login: ${json.toString()}")
+        Log.wtf(TAG, "login: ${json.toString()}")
         return apiEndpoints.login(
             json.toString()
         ).await()
     }
     suspend fun forgotPassword(password: String, emailAddress: String, deviceToken: String): User {
-        Log.d(TAG, "login: $emailAddress +$password")
+        Log.wtf(TAG, "login: $emailAddress +$password")
         try {
             json.put("email", emailAddress)
             json.put("password", password)
@@ -43,9 +43,9 @@ class RemoteService @Inject constructor(
             json.put("app_type", "marchant")
 
         } catch (e: Exception) {
-            Log.d(TAG, "loginException: ${e.message}")
+            Log.wtf(TAG, "loginException: ${e.message}")
         }
-        Log.d(TAG, "login: ${json.toString()}")
+        Log.wtf(TAG, "login: ${json.toString()}")
         return apiEndpoints.forgotPassword(
             json.toString()
         ).await()
@@ -74,9 +74,9 @@ class RemoteService @Inject constructor(
             json.put("app_type", appType)
             json.put("is_push_notification", 1)
         } catch (e: Exception) {
-            Log.d(TAG, "createUserException: ${e.message}")
+            Log.wtf(TAG, "createUserException: ${e.message}")
         }
-        Log.d(TAG, "createUser: $json")
+        Log.wtf(TAG, "createUser: $json")
         return apiEndpoints.signup(json.toString()).await()
 
     }
@@ -86,7 +86,7 @@ class RemoteService @Inject constructor(
             json.put("verificationcode", otpText)
             json.put("id", userId)
         } catch (exception: Exception) {
-            Log.d(TAG, "verify: ${exception.message}")
+            Log.wtf(TAG, "verify: ${exception.message}")
         }
         return apiEndpoints.verifyOtp(json.toString()).await()
     }
@@ -95,9 +95,9 @@ class RemoteService @Inject constructor(
         try {
             json.put("user_id", userId ?: "")
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
-        Log.d(TAG, "getUserProfile: $json")
+        Log.wtf(TAG, "getUserProfile: $json")
         return apiEndpoints.getUserProfile(sessionId, json.toString()).await()
     }
     suspend fun isPhotoLiked(sessionId: String, userId: String?, merchantId: String, imageId: String?): Profile {
@@ -106,9 +106,9 @@ class RemoteService @Inject constructor(
             json.put("marchant_id", merchantId)
             json.put("image_id", imageId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
-        Log.d(TAG, "getUserProfile: $json")
+        Log.wtf(TAG, "getUserProfile: $json")
         return apiEndpoints.isLikePhoto(sessionId, json.toString()).await()
     }
 
@@ -116,9 +116,9 @@ class RemoteService @Inject constructor(
         try {
             json.put("image_id", imageId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
-        Log.d(TAG, "imageAndCommentsCount: $json")
+        Log.wtf(TAG, "imageAndCommentsCount: $json")
         return apiEndpoints.imageCommentsCount(sessionId, json.toString()).await()
     }
 
@@ -131,7 +131,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("cover_photo", base64CoverPhoto)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.updateCover(sessionId, json.toString()).await()
     }
@@ -145,7 +145,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("avatar", base64AvatarPhoto)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.updateAvatar(sessionId, json.toString()).await()
     }
@@ -167,7 +167,7 @@ class RemoteService @Inject constructor(
             json.put("street", street)
             json.put("zip_code", zipCode)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.updateAddress(json.toString()).await()
     }
@@ -184,7 +184,7 @@ class RemoteService @Inject constructor(
             json.put("newPhoneNumber", newPhoneNumber)
 
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.updatePhone(sessionId, json.toString()).await()
     }
@@ -194,7 +194,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("Sessionid", sessionId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.getOtp(sessionId, json.toString()).await()
     }
@@ -204,7 +204,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("Sessionid", sessionId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.getHomeCategories(sessionId, json.toString()).await()
     }
@@ -215,7 +215,7 @@ class RemoteService @Inject constructor(
             json.put("category_id", categoryId)
 //            json.put("Sessionid", sessionId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.getCategoryDetail(sessionId, json.toString()).await()
     }
@@ -225,7 +225,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("business_id", serviceId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.bookmarkService(sessionId, json.toString()).await()
     }
@@ -234,7 +234,7 @@ class RemoteService @Inject constructor(
         try {
             json.put("user_id", userId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.getBookmarks(sessionId, json.toString()).await()
     }
@@ -244,7 +244,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("id", bookMarkId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
         return apiEndpoints.deleteBookmark(sessionId, json.toString()).await()
     }
@@ -262,9 +262,9 @@ class RemoteService @Inject constructor(
             json.put("long", long)
             json.put("is_permission", isPermissionProvided)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
-        Log.d(TAG, "getDiscovery: ${json.toString()}")
+        Log.wtf(TAG, "getDiscovery: ${json.toString()}")
         return apiEndpoints.discovery(sessionId, json.toString()).await()
     }
 
@@ -272,9 +272,9 @@ class RemoteService @Inject constructor(
         try {
             json.put("user_id", userId.toString())
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
-        Log.d(TAG, "getDiscovery: ${json.toString()}")
+        Log.wtf(TAG, "getDiscovery: ${json.toString()}")
         return apiEndpoints.getReviews(sessionId, json.toString()).await()
     }
 
@@ -282,9 +282,9 @@ class RemoteService @Inject constructor(
         try {
             json.put("user_id", userId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getUserProfile: ${exception.message}")
+            Log.wtf(TAG, "getUserProfile: ${exception.message}")
         }
-        Log.d(TAG, "getDiscovery: ${json.toString()}")
+        Log.wtf(TAG, "getDiscovery: ${json.toString()}")
         return apiEndpoints.getTopYonetiPhotos(sessionId, json.toString()).await()
     }
 
@@ -292,9 +292,9 @@ class RemoteService @Inject constructor(
         try {
             json.put("user_id", userId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getMerchantDetail: ${exception.message}")
+            Log.wtf(TAG, "getMerchantDetail: ${exception.message}")
         }
-        Log.d(TAG, "getMerchantDetail: $json\\\\$sessionId")
+        Log.wtf(TAG, "getMerchantDetail: $json\\\\$sessionId")
         return apiEndpoints.getMerchantDetails(sessionId, json.toString()).await()
     }
 
@@ -321,7 +321,7 @@ class RemoteService @Inject constructor(
             json.put("offset", pageNumber)
             json.put("limit", dataSize)
         } catch (exception: Exception) {
-            Log.d(TAG, "getAllReviews: ${exception.message}")
+            Log.wtf(TAG, "getAllReviews: ${exception.message}")
         }
         return apiEndpoints.getAllReviews(sessionId, json.toString()).await()
     }
@@ -330,7 +330,7 @@ class RemoteService @Inject constructor(
         try {
             json.put("user_id", merchantId)
         } catch (e: Exception) {
-            Log.d(TAG, "bookMerchant: ${e.message}")
+            Log.wtf(TAG, "bookMerchant: ${e.message}")
         }
         return apiEndpoints.bookMerchant(sessionId, json.toString()).await()
     }
@@ -339,7 +339,7 @@ class RemoteService @Inject constructor(
         try {
             json.put("user_id", merchantId)
         } catch (exception: Exception) {
-            Log.d(TAG, "getTabName: ${exception.message}")
+            Log.wtf(TAG, "getTabName: ${exception.message}")
         }
         return apiEndpoints.getTabName(json.toString(), sessionId).await()
     }
@@ -355,9 +355,9 @@ class RemoteService @Inject constructor(
             json.put("offset", pageNumber)
             json.put("limit", pageSize)
         } catch (exception: Exception) {
-            Log.d(TAG, "getTabName: ${exception.message}")
+            Log.wtf(TAG, "getTabName: ${exception.message}")
         }
-        Log.d(TAG, "AllImages: ${json.toString()}")
+        Log.wtf(TAG, "AllImages: ${json.toString()}")
         return apiEndpoints.getAllYourUploadedImages(sessionId,json.toString()).await()
     }
 
@@ -372,9 +372,9 @@ class RemoteService @Inject constructor(
             json.put("offset", pageNumber)
             json.put("limit", pageSize)
         } catch (exception: Exception) {
-            Log.d(TAG, "getTabName: ${exception.message}")
+            Log.wtf(TAG, "getTabName: ${exception.message}")
         }
-        Log.d(TAG, "getYourUploadedImagesByAlbum: $json")
+        Log.wtf(TAG, "getYourUploadedImagesByAlbum: $json")
         return apiEndpoints.getYourUploadedImagesByAlbum(sessionId, json.toString()).await()
     }
 
@@ -383,7 +383,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId.toString())
             json.put("name", countryKeyword)
         } catch (e: Exception) {
-            Log.d(TAG, "cityList: ${e.message}")
+            Log.wtf(TAG, "cityList: ${e.message}")
         }
         return apiEndpoints.searchCountry(json.toString(), sessionId).await()
     }
@@ -400,7 +400,7 @@ class RemoteService @Inject constructor(
             json.put("country_id", countryId)
             json.put("city_name", cityKeyword)
         } catch (e: Exception) {
-            Log.d(TAG, "cityList: ${e.message}")
+            Log.wtf(TAG, "cityList: ${e.message}")
         }
         return apiEndpoints.searchCity(json.toString(), sessionId).await()
     }
@@ -412,9 +412,9 @@ class RemoteService @Inject constructor(
 //            json.put("limit",10)
 //        }catch (e:java.lang.Exception)
 //        {
-//            Log.d(TAG, "getPhotosByAlbum: ${e.message}")
+//            Log.wtf(TAG, "getPhotosByAlbum: ${e.message}")
 //        }
-//        Log.d(TAG, "getPhotosByAlbum: ${json.toString()}")
+//        Log.wtf(TAG, "getPhotosByAlbum: ${json.toString()}")
 //        return apiEndpoints.getMerchantPhotos(sessionId,json.toString()).await()
 //    }
 
@@ -423,9 +423,9 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("swap_user_id", merchantId)
         } catch (e: java.lang.Exception) {
-            Log.d(TAG, "getPhotosByAlbum: ${e.message}")
+            Log.wtf(TAG, "getPhotosByAlbum: ${e.message}")
         }
-        Log.d(TAG, "getPhotosByAlbum: ${json.toString()}")
+        Log.wtf(TAG, "getPhotosByAlbum: ${json.toString()}")
         return apiEndpoints.swapBooking(sessionId, json.toString()).await()
     }
 
@@ -446,9 +446,9 @@ class RemoteService @Inject constructor(
             json.put("agent_id", agentId)
             json.put("services", serviceList)
         } catch (e: Exception) {
-            Log.d(TAG, "orderMerchant: ${e.message}")
+            Log.wtf(TAG, "orderMerchant: ${e.message}")
         }
-        Log.d(TAG, "orderMerchant: $json")
+        Log.wtf(TAG, "orderMerchant: $json")
         return apiEndpoints.orderMerchant(sessionId, json.toString()).await()
     }
 
@@ -465,9 +465,9 @@ class RemoteService @Inject constructor(
             json.put("limit", limit)
             json.put("order_status", bookingStatus)
         } catch (e: Exception) {
-            Log.d(TAG, "orderMerchant: ${e.message}")
+            Log.wtf(TAG, "orderMerchant: ${e.message}")
         }
-        Log.d(TAG, "orderMerchant: $json")
+        Log.wtf(TAG, "orderMerchant: $json")
         return apiEndpoints.currentBooking(sessionId, json.toString()).await()
     }
 
@@ -484,9 +484,9 @@ class RemoteService @Inject constructor(
             json.put("limit", limit)
             json.put("order_status", bookingStatus)
         } catch (e: Exception) {
-            Log.d(TAG, "orderMerchant: ${e.message}")
+            Log.wtf(TAG, "orderMerchant: ${e.message}")
         }
-        Log.d(TAG, "orderMerchant: $json")
+        Log.wtf(TAG, "orderMerchant: $json")
         return apiEndpoints.pastBooking(sessionId, json.toString()).await()
     }
 
@@ -501,9 +501,9 @@ class RemoteService @Inject constructor(
             json.put("offset", offset)
             json.put("limit", limit)
         } catch (e: Exception) {
-            Log.d(TAG, "orderMerchant: ${e.message}")
+            Log.wtf(TAG, "orderMerchant: ${e.message}")
         }
-        Log.d(TAG, "orderMerchant: $json")
+        Log.wtf(TAG, "orderMerchant: $json")
         return apiEndpoints.getNotificationsList(sessionId, json.toString()).await()
     }
 
@@ -518,9 +518,9 @@ class RemoteService @Inject constructor(
             json.put("offset", offset)
             json.put("limit", limit)
         } catch (e: Exception) {
-            Log.d(TAG, "notificationMessaages: ${e.message}")
+            Log.wtf(TAG, "notificationMessaages: ${e.message}")
         }
-        Log.d(TAG, "notificationMessaages: $json")
+        Log.wtf(TAG, "notificationMessaages: $json")
         return apiEndpoints.getNotificationsMessages(sessionId, json.toString()).await()
     }
 
@@ -533,9 +533,9 @@ class RemoteService @Inject constructor(
             json.put("notification_id", notificationId)
             json.put("status", swapStatus)
         } catch (e: Exception) {
-            Log.d(TAG, "acceptOrRejectSwapOrder: ${e.message}")
+            Log.wtf(TAG, "acceptOrRejectSwapOrder: ${e.message}")
         }
-        Log.d(TAG, "acceptOrRejectSwapOrder: $json")
+        Log.wtf(TAG, "acceptOrRejectSwapOrder: $json")
         return apiEndpoints.acceptOrRejectSwapOrder(sessionId, json.toString()).await()
     }
 
@@ -550,9 +550,9 @@ class RemoteService @Inject constructor(
             json.put("oldPassword", oldPassword)
             json.put("newPassword", newPassword)
         } catch (e: Exception) {
-            Log.d(TAG, "changePassword: ${e.message}")
+            Log.wtf(TAG, "changePassword: ${e.message}")
         }
-        Log.d(TAG, "changePassword: $json")
+        Log.wtf(TAG, "changePassword: $json")
         return apiEndpoints.acceptOrRejectSwapOrder(sessionId, json.toString()).await()
     }
 
@@ -567,7 +567,7 @@ class RemoteService @Inject constructor(
         try {
             json.put("user_id", userId)
         } catch (e: Exception) {
-            Log.d(TAG, "changePassword: ${e.message}")
+            Log.wtf(TAG, "changePassword: ${e.message}")
         }
         return apiEndpoints.getMerchantCategories(sessionId, json.toString()).await()
     }
@@ -587,7 +587,7 @@ class RemoteService @Inject constructor(
             json.put("service_charged", serviceCharged)
             json.put("estimated_time", estimatedTime)
         } catch (e: Exception) {
-            Log.d(TAG, "changePassword: ${e.message}")
+            Log.wtf(TAG, "changePassword: ${e.message}")
         }
         return apiEndpoints.addServices(sessionId, json.toString()).await()
     }
@@ -607,7 +607,7 @@ class RemoteService @Inject constructor(
             json.put("agent_name", agentName)
             json.put("agent_fees", agentFee)
         } catch (e: Exception) {
-            Log.d(TAG, "changePassword: ${e.message}")
+            Log.wtf(TAG, "changePassword: ${e.message}")
         }
         return apiEndpoints.addAgent(sessionId, json.toString()).await()
     }
@@ -624,7 +624,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("category_id", categoryId)
         } catch (e: Exception) {
-            Log.d(TAG, "getServicesList: ${e.message}")
+            Log.wtf(TAG, "getServicesList: ${e.message}")
         }
         return apiEndpoints.getServices(sessionId, json.toString()).await()
     }
@@ -643,9 +643,9 @@ class RemoteService @Inject constructor(
             json.put("offset", offset)
             json.put("limit", limit)
         } catch (e: Exception) {
-            Log.d(TAG, "activeOrders: ${e.message}")
+            Log.wtf(TAG, "activeOrders: ${e.message}")
         }
-        Log.d(TAG, "activeOrders:$sessionId   ${json.toString()}")
+        Log.wtf(TAG, "activeOrders:$sessionId   ${json.toString()}")
         return apiEndpoints.activeOrders(sessionId, json.toString()).await()
     }
 
@@ -663,9 +663,9 @@ class RemoteService @Inject constructor(
             json.put("offset", offset)
             json.put("limit", limit)
         } catch (e: Exception) {
-            Log.d(TAG, "getServicesList: ${e.message}")
+            Log.wtf(TAG, "getServicesList: ${e.message}")
         }
-        Log.d(TAG, "completeOrders: $json")
+        Log.wtf(TAG, "completeOrders: $json")
         return apiEndpoints.completeOrders(sessionId, json.toString()).await()
     }
 
@@ -679,7 +679,7 @@ class RemoteService @Inject constructor(
             json.put("category_id", categoryId)
             json.put("user_id", userId)
         } catch (e: Exception) {
-            Log.d(TAG, "getServicesList: ${e.message}")
+            Log.wtf(TAG, "getServicesList: ${e.message}")
         }
         return apiEndpoints.getServicesAgainstCategory(sessionId, json.toString()).await()
     }
@@ -700,7 +700,7 @@ class RemoteService @Inject constructor(
             json.put("service_charged", serviceCharges)
             json.put("estimated_time", estimatedTime)
         } catch (e: Exception) {
-            Log.d(TAG, "changePassword: ${e.message}")
+            Log.wtf(TAG, "changePassword: ${e.message}")
         }
         return apiEndpoints.updateService(sessionId, json.toString()).await()
     }
@@ -714,7 +714,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("service_id", serviceId)
         } catch (e: Exception) {
-            Log.d(TAG, "changePassword: ${e.message}")
+            Log.wtf(TAG, "changePassword: ${e.message}")
         }
         return apiEndpoints.deleteService(sessionId, json.toString()).await()
     }
@@ -730,7 +730,7 @@ class RemoteService @Inject constructor(
             json.put("album_id", albumId)
             json.put("album_image", base64AlbumImage)
         } catch (e: Exception) {
-            Log.d(TAG, "changePassword: ${e.message}")
+            Log.wtf(TAG, "changePassword: ${e.message}")
         }
         return apiEndpoints.uploadImage(sessionId, json.toString()).await()
     }
@@ -744,7 +744,7 @@ class RemoteService @Inject constructor(
             json.put("user_id", userId)
             json.put("name", albumName)
         } catch (e: Exception) {
-            Log.d(TAG, "changePassword: ${e.message}")
+            Log.wtf(TAG, "changePassword: ${e.message}")
         }
         return apiEndpoints.createAlbum(sessionId, json.toString()).await()
     }
@@ -760,9 +760,9 @@ class RemoteService @Inject constructor(
             json.put("name", albumName)
             json.put("album_id", albumId)
         } catch (e: Exception) {
-            Log.d(TAG, "changePassword: ${e.message}")
+            Log.wtf(TAG, "changePassword: ${e.message}")
         }
-        Log.d(TAG, "updateAlbum: ${json.toString()}")
+        Log.wtf(TAG, "updateAlbum: ${json.toString()}")
         return apiEndpoints.updateAlbum(sessionId, json.toString()).await()
     }
 
@@ -770,7 +770,7 @@ class RemoteService @Inject constructor(
         try {
             json.put("order_id", orderId)
         } catch (e: Exception) {
-            Log.d(TAG, "cancelOrder: ${e.message}")
+            Log.wtf(TAG, "cancelOrder: ${e.message}")
         }
         return apiEndpoints.cancelOrders(sessionId, json.toString()).await()
     }
@@ -779,7 +779,7 @@ class RemoteService @Inject constructor(
         try {
             json.put("order_id", orderId)
         } catch (e: Exception) {
-            Log.d(TAG, "cancelOrder: ${e.message}")
+            Log.wtf(TAG, "cancelOrder: ${e.message}")
         }
         return apiEndpoints.rescheduleOrders(sessionId, json.toString()).await()
     }
@@ -795,8 +795,9 @@ class RemoteService @Inject constructor(
             json.put("offset", pageNumber)
             json.put("limit", pageSize)
         } catch (e: Exception) {
-            Log.d(TAG, "cancelOrder: ${e.message}")
+            Log.wtf(TAG, "cancelOrder: ${e.message}")
         }
+        Log.d(TAG, "orderDetails: ${json.toString()}")
         return apiEndpoints.orderDetails(sessionId, json.toString()).await()
     }
 
@@ -812,9 +813,9 @@ class RemoteService @Inject constructor(
             json.put("offset", pageNumber)
             json.put("limit", pageSize)
         } catch (e: Exception) {
-            Log.d(TAG, "cancelOrder: ${e.message}")
+            Log.wtf(TAG, "cancelOrder: ${e.message}")
         }
-        Log.d(TAG, "getDashboard: $json")
+        Log.wtf(TAG, "${sessionId}+getDashboard: $json")
         return apiEndpoints.getDashboard(sessionId, json.toString()).await()
     }
 
@@ -822,9 +823,9 @@ class RemoteService @Inject constructor(
         try {
             json.put("order_id", orderId)
         } catch (e: Exception) {
-            Log.d(TAG, "startOrder: ${e.message}")
+            Log.wtf(TAG, "startOrder: ${e.message}")
         }
-        Log.d(TAG, "startOrder: $json")
+        Log.wtf(TAG, "startOrder: $json")
         return apiEndpoints.startOrder(sessionId, json.toString()).await()
     }
 
@@ -862,9 +863,9 @@ class RemoteService @Inject constructor(
             json.put("current_location_lat", lat)
             json.put("current_location_long", lng)
         } catch (e: Exception) {
-            Log.d(TAG, "startOrder: ${e.message}")
+            Log.wtf(TAG, "startOrder: ${e.message}")
         }
-        Log.d(TAG, "updateServiceLocation: ${json.toString()}")
+        Log.wtf(TAG, "updateServiceLocation: ${json.toString()}")
         return apiEndpoints.updateBusinessLocation(sessionId, json.toString()).await()
     }
 
@@ -875,7 +876,7 @@ class RemoteService @Inject constructor(
         try {
             json.put("user_id", userId)
         } catch (e: Exception) {
-            Log.d(TAG, "startOrder: ${e.message}")
+            Log.wtf(TAG, "startOrder: ${e.message}")
         }
         return apiEndpoints.getBusinessLocation(sessionId, json.toString()).await()
     }
@@ -900,7 +901,7 @@ class RemoteService @Inject constructor(
 
         }catch (e:Exception)
         {
-            Log.d(TAG, "updateProfile: ${e.message}")
+            Log.wtf(TAG, "updateProfile: ${e.message}")
         }
         return apiEndpoints.addBasicProfileInfo(sessionId,json.toString()).await()
     }
@@ -910,7 +911,7 @@ class RemoteService @Inject constructor(
             json.put("marchant_id",merchantId)
         }catch (e:Exception)
         {
-            Log.d(TAG, "getNextJobTimer: ")
+            Log.wtf(TAG, "getNextJobTimer: ")
         }
         return apiEndpoints.getNextJobTimer(sessionId,json.toString()).await()
     }

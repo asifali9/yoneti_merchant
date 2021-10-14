@@ -368,7 +368,7 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
         return remoteService.rescheduleOrder(userId, sessionId)
     }
 
-    suspend fun orderDetails(
+    suspend fun orderDetils(
         userId: String, pageNumber: Int,
         pageSize: Int, sessionId: String
     ): Profile {
