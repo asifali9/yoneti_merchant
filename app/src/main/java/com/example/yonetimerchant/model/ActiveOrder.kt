@@ -27,17 +27,26 @@ class ActiveOrder() {
     @SerializedName("start_time")
     var startTime: String? = null
 
+    @SerializedName("service_time")
+    var serviceTime: String? = null
+
     @SerializedName("end_time")
     var endTime: String? = null
 
     @SerializedName("order_details")
     var orderDetails: String? = null
 
+    @SerializedName("service_details")
+    var serviceDetails: String? = null
+
     @SerializedName("rating_count")
     var ratingCount: String? = null
 
     @SerializedName("customer_name")
     var customerName: String? = null
+
+    @SerializedName("service_price")
+    var servicePrice: String? = null
 
 //    @SerializedName("user_pic")
 //    var customerImages: String? = null

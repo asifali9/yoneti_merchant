@@ -73,4 +73,8 @@
     <string name="upload_photos">Upload\nPhotos</string>
     <string name="entire_city">Entire City</string>
     <string name="view_order">View</string>
+    <string name="order_detail_timepicker_title">Select Appointment time</string>
+    <string name="order_cancelled">Order Cancelled</string>
+<!--    used this bundle id to pass order id to order details fragment-->
+    <string name="order_id">orderId</string>
 </resources>

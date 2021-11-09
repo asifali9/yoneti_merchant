@@ -87,6 +87,7 @@
                 android:id="@+id/imageView4"
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/tvMessage"
                 app:srcCompat="@drawable/img_profile_placeholder"

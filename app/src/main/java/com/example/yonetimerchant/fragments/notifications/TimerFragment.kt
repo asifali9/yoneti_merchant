@@ -11,8 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TimerFragment :
-    BaseFragment<MessageNotificationsViewModel, FragmentTimerBinding>() {
+class TimerFragment : BaseFragment<MessageNotificationsViewModel, FragmentTimerBinding>() {
 
     private lateinit var adapter: MessagesAdapter
     var pageOffset = 0
@@ -31,7 +30,7 @@ class TimerFragment :
         viewModel!!.message.observe(this, Observer { message->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         })
-        binding.timepicker.setIs24HourView(true)
+//        binding.timepicker.setIs24HourView(true)
     }
 
 }

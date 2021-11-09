@@ -13,6 +13,7 @@ import com.example.yonetimerchant.adapters.CompletedOrdersAdapter
 import com.example.yonetimerchant.adapters.PendingOrderAdapter
 import com.example.yonetimerchant.adapters.ProgressOrdersAdapter
 import com.example.yonetimerchant.databinding.FragmentCompleteProfileBinding
+import com.example.yonetimerchant.dialog_fragment.extend_order_time.ExtendOrderTimeDialogFragment
 import com.example.yonetimerchant.dialog_fragment.HomeNotificationsDialogFragment
 import com.example.yonetimerchant.model.QueueOrders
 import com.example.yonetimerchant.profile.ProfileViewModel
@@ -31,8 +32,6 @@ class CompleteProfileFragment : BaseFragment<ProfileViewModel, FragmentCompleteP
     private lateinit var completedOrders: CompletedOrdersAdapter
     private lateinit var inProgressAdapter: ProgressOrdersAdapter
 
-    var pageNumber: Int = 0
-    var pageSize: Int = 10
     override fun getViewMode(): Class<ProfileViewModel> = ProfileViewModel::class.java
 
     override fun getLayout(): Int {
@@ -45,7 +44,7 @@ class CompleteProfileFragment : BaseFragment<ProfileViewModel, FragmentCompleteP
 
         viewModel!!.isProfileCompleted.observe(this, Observer { isCompleted ->
             if (isCompleted) {
-                viewModel!!.getDashBoard(pageNumber, pageSize)
+                viewModel!!.getDashBoard(offset, pageSize)
                 binding.dashboardRoot.visibility = View.VISIBLE
                 binding.completeProfileRoot.visibility = View.GONE
             } else {
@@ -69,6 +68,7 @@ class CompleteProfileFragment : BaseFragment<ProfileViewModel, FragmentCompleteP
                     queOrders,
                     CompleteProfileFragment@ this
                 )
+                binding.tvGreetings.text = "Hi, ${dashboardResponse.result.userName} \n(Business)"
                 binding.rvBookingInQueues.adapter = adapter
             }
             if (dashboardResponse.result.recentOrdersList != null && dashboardResponse.result.recentOrdersList.size > 0) {
@@ -156,6 +156,10 @@ class CompleteProfileFragment : BaseFragment<ProfileViewModel, FragmentCompleteP
 
         binding.ivNotification.setOnClickListener {
             HomeNotificationsDialogFragment().show(childFragmentManager.beginTransaction(),"show")
+        }
+
+        binding.ivSchedule.setOnClickListener {
+            ExtendOrderTimeDialogFragment().show(childFragmentManager.beginTransaction(),"show")
         }
 
         binding.tvSeeAllPendingOrders.setOnClickListener {

@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -25,22 +27,21 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ModalBottomSheetFragment :
     BottomSheetDialogFragment() {
+//   val viewModel = ViewModelProvider(this).get(MeViewModel::class.java)
+
     private lateinit var bottomSheetBinding: FragmentProfileBottomSheetBinding
     private lateinit var imageUrl: String
     private lateinit var navigation: NavController
-
+val viewModel:MeViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-
-
-
         bottomSheetBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_profile_bottom_sheet,container,false)
 //        bottomSheetBinding.meViewModel = viewModel
+
+        bottomSheetBinding.meViewModel = viewModel
         bottomSheetBinding.tvChangePassword.setOnClickListener {
             findNavController().navigate(R.id.changePasswordDialogFragment)
         }
@@ -60,10 +61,11 @@ class ModalBottomSheetFragment :
 //        findNavController().navigate(R.id.profileFragment3)
         }
 
-//        viewModel!!.isLogout.observe(this, Observer {
-//            if (it)
-//                (activity as HomeActivity).signOutclick()
-//        })
+        viewModel!!.isLogout.observe(this, Observer {
+            if (it)
+                (activity as HomeActivity).signOutclick()
+        })
+
         return bottomSheetBinding.root
     }
 }

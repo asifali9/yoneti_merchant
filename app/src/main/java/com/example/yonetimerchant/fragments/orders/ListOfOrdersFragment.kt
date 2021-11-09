@@ -19,8 +19,6 @@ class ListOfOrdersFragment : BaseFragment<ListOfOrdersViewModel, FragmentListOfO
     private var trackingOrderPage: Int = 3
     private lateinit var adapter: CompletedOrdersAdapter
     private lateinit var activeOrderdapter: ActiveOrdersAdapter
-    private var offset: Int = 0
-    private var limit: Int = 10
     override fun getViewMode(): Class<ListOfOrdersViewModel> = ListOfOrdersViewModel::class.java
 
     override fun getLayout(): Int = R.layout.fragment_list_of_orders
@@ -28,8 +26,8 @@ class ListOfOrdersFragment : BaseFragment<ListOfOrdersViewModel, FragmentListOfO
 
         binding.listOfOrdersViewModel = viewModel
 
-        viewModel!!.activeOrders(offset, limit)
-        viewModel!!.completedOrders(offset, limit)
+        viewModel!!.activeOrders(offset, pageSize)
+        viewModel!!.completedOrders(offset, pageSize)
 
         setUi()
 
@@ -107,7 +105,7 @@ class ListOfOrdersFragment : BaseFragment<ListOfOrdersViewModel, FragmentListOfO
         viewModel!!.activeOrdersList.observe(this, Observer {
             binding.tvActiveOrdersNumber.text = it.size.toString()
             if (it.size != 0) {
-                activeOrderdapter = ActiveOrdersAdapter(it)
+                activeOrderdapter = ActiveOrdersAdapter(it, this,null)
                 binding.rvActiveOrders.adapter = activeOrderdapter
                 showOrderDetailsButton(true)
             }

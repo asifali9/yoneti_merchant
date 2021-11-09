@@ -1,38 +1,34 @@
 package com.example.yonetimerchant.fragments.tracking
 
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.TextView
-import android.widget.Toast
+import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.PagerAdapter
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.yoneti.base.BaseFragment
-import com.example.yoneti.model.Album
-import com.example.yoneti.model.Profile
 import com.example.yonetimerchant.R
 import com.example.yonetimerchant.adapters.CompleteOrdersAdapter
-import com.example.yonetimerchant.databinding.CustomTabTitleBinding
 import com.example.yonetimerchant.databinding.FragmentCompleteOrdersBinding
-import com.example.yonetimerchant.databinding.FragmentOrdersTrackingBinding
-import com.example.yonetimerchant.dialog_fragment.EditAlbumDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CompleteOrdersFragment :
     BaseFragment<OrderTrackingViewModel, FragmentCompleteOrdersBinding>() {
-    var pageNumber = 0
-    var pageSize = 10
     private lateinit var orderTrackingAdapter: PagerAdapter
 
     override fun getLayout(): Int = R.layout.fragment_complete_orders
-
+var COMPLETE_ORDER = "complete"
     override fun bindingToViews() {
-        viewModel!!.completedOrders(pageNumber,pageSize)
-        binding.rvCompleteOrders.adapter = CompleteOrdersAdapter(this)
+        viewModel!!.completedOrders(offset,pageSize,COMPLETE_ORDER)
+        viewModel!!.completeOrdersList.observe(this, Observer { activeOrders ->
+            if (activeOrders != null && activeOrders.size != 0 )
+            binding.rvCompleteOrders.adapter = CompleteOrdersAdapter(activeOrders,this)
+        })
     }
 
     override fun getViewMode(): Class<OrderTrackingViewModel> = OrderTrackingViewModel::class.java
+    fun openingDetails(orderId: String?) {
+        var bundle = Bundle()
+        bundle.putString(getString(R.string.order_id),orderId)
+        findNavController().navigate(R.id.orderDetailsFragment)
+    }
 }

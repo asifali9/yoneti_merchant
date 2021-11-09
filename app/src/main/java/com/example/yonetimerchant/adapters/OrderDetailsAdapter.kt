@@ -27,10 +27,10 @@ class OrderDetailsAdapter(var acitveOrdersList: ArrayList<ActiveOrder>) :
     }
 
     override fun onBindViewHolder(holder: OrderDetailsViewHolder, position: Int) {
-        holder.bindingView.tvOrderDate.text = acitveOrdersList.get(position).date
-        holder.bindingView.tvService.text = acitveOrdersList.get(position).orderDetails
-        holder.bindingView.tvServiceTime.text = (acitveOrdersList.get(position).endTime!!.toInt() - acitveOrdersList.get(position).startTime!!.toInt()).toString()
-//        holder.bindingView.tvServicePrice.text = acitveOrdersList.get(position).
+        holder.bindingView.tvServiceTime.text = acitveOrdersList.get(position).serviceTime
+        holder.bindingView.tvService.text = acitveOrdersList.get(position).serviceDetails
+//        holder.bindingView.tvServiceTime.text = (acitveOrdersList.get(position).endTime!!.toInt() - acitveOrdersList.get(position).startTime!!.toInt()).toString()
+        holder.bindingView.tvServicePrice.text = acitveOrdersList.get(position).servicePrice
     }
 
     override fun getItemCount(): Int {

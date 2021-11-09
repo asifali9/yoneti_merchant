@@ -27,7 +27,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/yoneti_test_profile" />
+                app:srcCompat="@drawable/img_profile_placeholder" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
@@ -58,7 +58,7 @@
                     android:scaleType="fitXY"
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
                     app:srcCompat="@drawable/ic_about_yoneti" />
 
                 <TextView
@@ -92,16 +92,16 @@
 
                 <TextView
                     android:id="@+id/tvRatingCount"
+                    style="@style/whiteTextViewOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="4.0"
-                    style="@style/whiteTextViewOne"
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView14"
+                    android:id="@+id/tvUserServiceCounter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/notification_counter"
@@ -134,6 +134,7 @@
                     android:text="TextView"
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
                     app:layout_constraintTop_toBottomOf="@id/tvEmailHeading" />
+
                 <TextView
                     android:id="@+id/tvPhoneHeading"
                     android:layout_width="wrap_content"
@@ -142,6 +143,7 @@
                     android:text="Phone"
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
                     app:layout_constraintTop_toBottomOf="@id/tvEmail" />
+
                 <TextView
                     android:id="@+id/tvPhone"
                     android:layout_width="wrap_content"
@@ -161,25 +163,26 @@
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
                     app:layout_constraintTop_toBottomOf="@id/tvPhone" />
+
                 <TextView
                     android:id="@+id/tvSErviceListHeading"
+                    style="@style/greenTextViewOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Service List"
-                    style="@style/greenTextViewOne"
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
                     app:layout_constraintTop_toBottomOf="@id/addressDivider" />
 
                 <TextView
-                    android:id="@+id/tvServiceCounter"
+                    android:id="@+id/tvServiceListCounter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="3"
-                    android:gravity="center"
-                    android:textColor="@color/white"
                     android:background="@drawable/tv_eclipse"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintTop_toBottomOf="@id/addressDivider" />
 
@@ -188,12 +191,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    tools:itemCount="5"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/selected_service_item_layout"
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
-                    app:layout_constraintTop_toBottomOf="@id/tvServiceCounter"/>
+                    app:layout_constraintTop_toBottomOf="@id/tvServiceListCounter"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/selected_service_item_layout" />
 
                 <Button
                     android:id="@+id/btnStartOrder"
@@ -203,15 +206,15 @@
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
                     app:layout_constraintTop_toBottomOf="@id/rvServiceDetails" />
+
                 <Button
                     android:id="@+id/btnRescheduleOrder"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Re-Schedule Order"
-                    android:onClick="@{() -> orderDetailsViewModel.reschedudleOrders() }"
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
-                    app:layout_constraintTop_toBottomOf="@id/btnStartOrder"/>
+                    app:layout_constraintTop_toBottomOf="@id/btnStartOrder" />
 
                 <Button
                     android:id="@+id/btnCancelOrder"
@@ -223,6 +226,28 @@
                     app:layout_constraintStart_toStartOf="@+id/guideline17"
                     app:layout_constraintTop_toBottomOf="@id/btnRescheduleOrder" />
 
+                <Button
+                    android:id="@+id/btnCompleteOrder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Complete Order"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline18"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/guideline17"
+                    app:layout_constraintTop_toBottomOf="@id/btnCancelOrder" />
+
+                <TextView
+                    android:id="@+id/tvOrderStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline18"
+                    app:layout_constraintStart_toStartOf="@+id/guideline17"
+                    app:layout_constraintTop_toBottomOf="@id/btnCompleteOrder" />
                 <TextView
                     android:id="@+id/tvLocation"
                     android:layout_width="wrap_content"
@@ -250,14 +275,23 @@
                     app:layout_constraintTop_toTopOf="@+id/tvPhoneHeading" />
 
                 <TextView
-                    android:id="@+id/textView33"
+                    android:id="@+id/tvDateTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     app:layout_constraintBottom_toBottomOf="@+id/tvPhone"
                     app:layout_constraintEnd_toStartOf="@+id/guideline18"
                     app:layout_constraintTop_toTopOf="@+id/tvPhone" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/buttonGroup"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:constraint_referenced_ids="btnStartOrder,btnRescheduleOrder,btnCancelOrder" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

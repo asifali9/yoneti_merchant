@@ -7,11 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.yoneti.model.ActiveOrder
 import com.example.yonetimerchant.R
-import com.example.yonetimerchant.databinding.ActiveOrdersItemLayoutBinding
 import com.example.yonetimerchant.databinding.ProgressOrdersItemTrackingBinding
+import com.example.yonetimerchant.fragments.orders.ListOfOrdersFragment
+import com.example.yonetimerchant.fragments.tracking.ProgressOrdersFragment
 import java.util.ArrayList
 
-class ActiveOrdersAdapter(var acitveOrdersList: ArrayList<ActiveOrder>) :
+class ActiveOrdersAdapter(
+    var acitveOrdersList: ArrayList<ActiveOrder>,
+    var listOrderFragmentInstance: ListOfOrdersFragment?,
+    var instance: ProgressOrdersFragment?,
+) :
     RecyclerView.Adapter<ActiveOrdersViewHolder>() {
     private lateinit var ctx: Context
 
@@ -33,8 +38,14 @@ class ActiveOrdersAdapter(var acitveOrdersList: ArrayList<ActiveOrder>) :
             .into(holder.bindingView.imgProfile)
 
         holder.bindingView.tvOrderDate.text = acitveOrdersList.get(position).date
-        holder.bindingView.tvUserName.text = acitveOrdersList.get(position).customerName
+        holder.bindingView.tvUserName.text = acitveOrdersList.get(position).userName
         holder.bindingView.tvServiceName.text = acitveOrdersList.get(position).orderDetails
+
+        holder.bindingView.rootView.setOnClickListener {
+            instance!!.openingDetails(
+            acitveOrdersList.get(position).categoryId
+            )
+        }
     }
 
     override fun getItemCount(): Int {

@@ -44,10 +44,32 @@
 
 
         <EditText
-            android:id="@+id/etSignupEmail"
+            android:id="@+id/etmerchantName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
+            android:hint="username"
+            style="@style/etTheme"
+            android:text="@={signUpViewModelX.username}"
+            android:inputType="textEmailAddress"
+            android:background="@null"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_0sdp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toBottomOf="@id/etmerchantName"
+            android:background="@color/subHeadingColor"/>
+
+        <EditText
+            android:id="@+id/etSignupEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             android:hint="Email"
             style="@style/etTheme"
             android:text="@={signUpViewModelX.email}"
@@ -56,7 +78,7 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/etmerchantName" />
 
         <View
             android:layout_width="0dp"

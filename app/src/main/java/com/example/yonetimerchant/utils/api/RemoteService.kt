@@ -775,9 +775,10 @@ class RemoteService @Inject constructor(
         return apiEndpoints.cancelOrders(sessionId, json.toString()).await()
     }
 
-    suspend fun rescheduleOrder(orderId: String, sessionId: String): Profile {
+    suspend fun rescheduleOrder(orderId: String, sessionId: String, newOrderTime: String): Profile {
         try {
             json.put("order_id", orderId)
+            json.put("start_time", newOrderTime)
         } catch (e: Exception) {
             Log.wtf(TAG, "cancelOrder: ${e.message}")
         }
@@ -827,6 +828,15 @@ class RemoteService @Inject constructor(
         }
         Log.wtf(TAG, "startOrder: $json")
         return apiEndpoints.startOrder(sessionId, json.toString()).await()
+    }
+    suspend fun completeOrder(orderId: String, sessionId: String): Profile {
+        try {
+            json.put("order_id", orderId)
+        } catch (e: Exception) {
+            Log.wtf(TAG, "completeOrder: ${e.message}")
+        }
+        Log.wtf(TAG, "completeOrders: $json")
+        return apiEndpoints.completeOrder(sessionId, json.toString()).await()
     }
 
     /**
@@ -914,5 +924,19 @@ class RemoteService @Inject constructor(
             Log.wtf(TAG, "getNextJobTimer: ")
         }
         return apiEndpoints.getNextJobTimer(sessionId,json.toString()).await()
+    }
+
+    suspend fun getOrdersStatus(pageNumber: Int,dataSize:Int,merchantId: String, sessionId:String, orderStatus:String): Profile {
+        try {
+            json.put("marchant_id",merchantId)
+            json.put("order_status",orderStatus)
+            json.put("offset", pageNumber)
+            json.put("limit", dataSize)
+        }catch (e:Exception)
+        {
+            Log.wtf(TAG, "getorderStatus: $json")
+        }
+        Log.wtf(TAG, "getorderStatus: $json")
+        return apiEndpoints.getOrdersStatus(sessionId,json.toString()).await()
     }
 }

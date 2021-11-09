@@ -12,7 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 
 
 abstract class BaseFragment<V : ViewModel, T : ViewDataBinding> : Fragment() {
-
+    var offset: Int=0
+    var pageSize: Int=10
     var bundle: Bundle? = null
     lateinit var binding: T
     var viewModel: V? = null

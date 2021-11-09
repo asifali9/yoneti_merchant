@@ -6,8 +6,7 @@ import com.example.yonetimerchant.R
 import com.example.yonetimerchant.databinding.FragmentPendingOrdersBinding
 
 class PendingOrdersFragment : BaseFragment<PendingOrdersViewModel,FragmentPendingOrdersBinding>() {
-    var pageNumber = 0
-    var pageSize = 10
+
     override fun getViewMode(): Class<PendingOrdersViewModel> {
         return PendingOrdersViewModel::class.java
     }
@@ -17,7 +16,7 @@ class PendingOrdersFragment : BaseFragment<PendingOrdersViewModel,FragmentPendin
     }
 
     override fun bindingToViews() {
-        viewModel!!.pendingOrders(pageNumber,pageSize)
+        viewModel!!.pendingOrders(offset,pageSize)
 
         viewModel!!.pendingOrdersList.observe(this, Observer { pendingOrdersList ->
             if (pendingOrdersList.size > 0 )

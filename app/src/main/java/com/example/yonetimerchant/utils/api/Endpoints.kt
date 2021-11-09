@@ -373,7 +373,7 @@ interface Endpoints {
 
     @Headers("Content-Type:application/json", "Accesskey:b8d7996ea3557791aba04cf51a0654b2")
     @POST("Marchant_orders/endOrder")
-    fun endOrder(@Header("Sessionid") sessionId: String, @Body json: String): Deferred<Profile>
+    fun completeOrder(@Header("Sessionid") sessionId: String, @Body json: String): Deferred<Profile>
 
 
     @Headers("Content-Type:application/json", "Accesskey:b8d7996ea3557791aba04cf51a0654b2")
@@ -404,6 +404,13 @@ interface Endpoints {
     @Headers("Content-Type:application/json", "Accesskey:b8d7996ea3557791aba04cf51a0654b2")
     @POST("Marchant_orders/getNewTimer")
     fun getNextJobTimer(@Header("Sessionid") sessionId: String, @Body json: String): Deferred<Profile>
+
+    /**
+     * Trackinng Orders
+     */
+    @Headers("Content-Type:application/json", "Accesskey:b8d7996ea3557791aba04cf51a0654b2")
+    @POST("Marchant_orders/getOrdersStatus")
+    fun getOrdersStatus(@Header("Sessionid") sessionId: String, @Body json: String): Deferred<Profile>
 //    @POST("users/updateAddress")
 //    fun updateAddress(
 //        @Header("Sessionid") sessionId: String

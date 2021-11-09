@@ -4,11 +4,15 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.yonetimerchant.databinding.ProgressOrdersItemTrackingBinding
 import com.example.yonetimerchant.fragments.tracking.QueueOrdersFragment
+import com.example.yonetimerchant.model.QueueOrders
+import java.util.ArrayList
 
 class QueueOrdersAdapter(
-    var instance: QueueOrdersFragment
+    var instance: QueueOrdersFragment,
+    var orders: ArrayList<QueueOrders>
 ) : RecyclerView.Adapter<QueueOrdersViewHolder>() {
     private lateinit var ctx: Context
 
@@ -24,10 +28,23 @@ class QueueOrdersAdapter(
     }
 
     override fun onBindViewHolder(holder: QueueOrdersViewHolder, position: Int) {
+        Glide.with(ctx)
+            .load(orders.get(position).picUrl)
+            .into(holder.bindingView.imgProfile)
+
+        holder.bindingView.tvOrderDate.text = orders.get(position).date
+        holder.bindingView.tvUserName.text = orders.get(position).userName
+        holder.bindingView.tvServiceName.text = orders.get(position).orderDetails
+
+        holder.bindingView.rootView.setOnClickListener {
+            instance.openingDetails(
+                orders.get(position).orderId
+            )
+        }
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return orders.size
     }
 }
 

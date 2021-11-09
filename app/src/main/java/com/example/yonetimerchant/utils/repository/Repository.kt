@@ -364,8 +364,8 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
         return remoteService.cancelOrder(orderId, sessionId)
     }
 
-    suspend fun rescheduleOrder(userId: String, sessionId: String): Profile {
-        return remoteService.rescheduleOrder(userId, sessionId)
+    suspend fun rescheduleOrder(userId: String, sessionId: String, newOrderTime: String): Profile {
+        return remoteService.rescheduleOrder(userId, sessionId, newOrderTime)
     }
 
     suspend fun orderDetils(
@@ -374,6 +374,7 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
     ): Profile {
         return remoteService.orderDetails(userId, pageNumber, pageSize, sessionId)
     }
+
     suspend fun getDashboard(
         merchantId: String, pageNumber: Int,
         pageSize: Int, sessionId: String
@@ -385,7 +386,12 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
         return remoteService.startOrder(orderId, sessionId)
     }
 
-    suspend fun getServiceLocation(userId:String, sessionId: String) = remoteService.getServiceLocation(userId,sessionId)
+    suspend fun completeOrder(orderId: String, sessionId: String): Profile {
+        return remoteService.completeOrder(orderId, sessionId)
+    }
+
+    suspend fun getServiceLocation(userId: String, sessionId: String) =
+        remoteService.getServiceLocation(userId, sessionId)
 
     suspend fun updateServiceLocation(
         userId: String,
@@ -417,7 +423,8 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
             businessRadius,
             isCurrentLocation,
             lat,
-            lng)
+            lng
+        )
     }
 
     suspend fun updateProfile(
@@ -429,8 +436,17 @@ class Repository @Inject constructor(var remoteService: RemoteService) {
         gender: String,
         sessionId: String
     ): Profile {
-        return remoteService.updateProfile(fullName,website,userId,bio,dob,gender,sessionId)
+        return remoteService.updateProfile(fullName, website, userId, bio, dob, gender, sessionId)
     }
 
-    suspend fun getNextJobTimer(userId: Int, sessionId: String) = remoteService.getNextJobTimer(userId.toString(),sessionId)
+    suspend fun getNextJobTimer(userId: Int, sessionId: String) =
+        remoteService.getNextJobTimer(userId.toString(), sessionId)
+
+    suspend fun getOrdersStatus(
+        merchantId: Int,
+        sessionId: String,
+        orderStatus: String,
+        offset: Int,
+        limit: Int
+    ) = remoteService.getOrdersStatus(offset, limit, merchantId.toString(), sessionId, orderStatus)
 }

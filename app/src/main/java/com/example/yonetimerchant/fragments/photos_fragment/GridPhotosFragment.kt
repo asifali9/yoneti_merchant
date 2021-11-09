@@ -22,16 +22,14 @@ class GridPhotosFragment(var position: Int, var albumId: String) :
     private lateinit var gridPhotosAdapter: RecyclerViewPhotosGridAdapter
     private val REQUEST_CODE: Int = 100
     private lateinit var nav: NavController
-    var pageNumber = 0
-    var pageSize = 10
 
     override fun getLayout() = R.layout.fragment_grid_photos
 
     override fun bindingToViews() {
         if (position == 0)
-            viewModel!!.getAllUploadedPhotos(pageNumber, pageSize)
+            viewModel!!.getAllUploadedPhotos(offset, pageSize)
         else
-            viewModel!!.getPhotos(albumId, pageNumber, pageSize)
+            viewModel!!.getPhotos(albumId, offset, pageSize)
 //        nav = Navigation.findNavController(requireActivity(),R.id.service_viewer)
         viewModel!!.gridImages.observe(this, Observer {
             var list = it

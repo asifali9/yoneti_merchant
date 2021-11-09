@@ -24,7 +24,8 @@ class NotificationAdapter(var notificationsList: MutableList<Notifications>,var 
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
-//        holder.bindingView.tvName.text = notificationsList.get(position).notificationText
+        holder.bindingView.tvName.text = notificationsList.get(position).notificationText
+        holder.bindingView.tvTime.text = notificationsList.get(position).date
 //        if (!notificationsList.get(position).notificationType.equals("swap")) {
 //            holder.bindingView.btnAccept.visibility = View.GONE
 //            holder.bindingView.btnCancel.visibility = View.GONE

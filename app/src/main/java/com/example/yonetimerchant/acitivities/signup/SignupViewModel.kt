@@ -31,6 +31,7 @@ class SignupViewModel @ViewModelInject constructor(
     var phoneObserver = MutableLiveData<Boolean>()
     var verifyUser = MutableLiveData<Boolean>()
     var email: String? = null
+    var username: String? = null
     var password: String? = null
     var phone: String? = null
     var goingToLogin = MutableLiveData<Boolean>()

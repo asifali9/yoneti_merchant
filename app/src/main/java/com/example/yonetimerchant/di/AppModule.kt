@@ -25,12 +25,12 @@ import javax.inject.Singleton
 object AppModule {
     @Singleton
     @Provides
-    fun getRetrofit(gson: Gson, BASE_URL: String): Retrofit = Retrofit.Builder()
+    fun getRetrofit(gson: Gson, BASE_URL: String,httpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
-//        .client(httpClient)
+        .client(httpClient)
         .build()
 
     @Provides
@@ -45,8 +45,8 @@ object AppModule {
         .addInterceptor(chuck)
         .build()
 
-//    @Provides
-//    fun getChuck(@ApplicationContext context: Context) = ChuckerInterceptor(context)
+    @Provides
+    fun getChuck(@ApplicationContext context: Context) = ChuckerInterceptor(context)
     @Provides
     fun provideGson(): Gson = GsonBuilder().create()
 

@@ -56,6 +56,7 @@ class RecyclerViewPhotosGridAdapter(
             }
         }
         else if (holder is PhotoGridViewHolder){
+            if (photosList!= null && photosList.size > 0)
             Glide.with(context)
                 .load(photosList.get(position).imagePath)
                 .into(holder.bindingView.ivCategory)

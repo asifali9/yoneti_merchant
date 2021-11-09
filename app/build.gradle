@@ -23,10 +23,10 @@ android {
         versionCode 1
         multiDexEnabled true
         versionName "1.0"
-        buildConfigField 'String', 'BASE_URL', "\"https://yoneti.com/youneti/api/index.php/\""
         buildConfigField 'String', 'DEVICE_TYPE', "\"Android\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'BASE_URL', "\"https://yoneti.com/youneti/api/index.php/\""
     }
 
     buildTypes {

@@ -9,10 +9,21 @@ import com.google.gson.annotations.SerializedName
 data class BaseResult(
     @SerializedName("session_id") var sessionId: String,
     @SerializedName("user_id") var userId: Int,
-    @SerializedName("username") var userName: String,
+    @SerializedName("service_count") var serviceCount: Int,
+    @SerializedName("marchant_id") var marchantId: String,
+    @SerializedName("order_id") var orderId: String,
+    @SerializedName("date") var date: String,
+    @SerializedName("start_time") var startTime: String,
+    @SerializedName("end_time") var endTime: String,
+    @SerializedName("name") var userName: String,
+    //this is for order details
+    @SerializedName("user_name") var Username: String,
     @SerializedName("email") var email: String,
+    @SerializedName("user_email") var userEmail: String,
     @SerializedName("fullname") var fullname: String,
+    //for order details
     @SerializedName("phone_num") var phoneNumber: String,
+    @SerializedName("order_status") var orderStatus: String,
     @SerializedName("user_type") var userType: String,
     @SerializedName("business_type") var businessType: String,
     /**
@@ -20,6 +31,8 @@ data class BaseResult(
      */
     @SerializedName("avatar") var avatar: String,
     @SerializedName("cover_photo") var coverPhoto: String,
+    //used for order details
+    @SerializedName("user_pic") var userPhoto: String,
     @SerializedName("website") var website: String,
     @SerializedName("user_bio") var userBio: String,
     @SerializedName("gender") var gender: String,
@@ -59,15 +72,19 @@ data class BaseResult(
     @SerializedName("categories") var categoryList: ArrayList<Categories>,
 
     @SerializedName("active_orders") var activeOrdersList: ArrayList<ActiveOrder>,
+    @SerializedName("order_details") var orderDetails: ArrayList<ActiveOrder>,
     @SerializedName("complete_orders") var completeOrdersList: ArrayList<ActiveOrder>,
+    @SerializedName("orders_complete") var progressTrackingOrdersList: ArrayList<ActiveOrder>,
     @SerializedName("marchant_services") var merchantServices: ArrayList<MerchantServices>,
     /**
      * Dashboard
      */
     @SerializedName("booking_in_due") var bookingDueIn: String,
     @SerializedName("queue_orders") var queueOrdersList: ArrayList<QueueOrders>,
+    @SerializedName("orders_pending") var pendingOrdersList: ArrayList<QueueOrders>,
     @SerializedName("inprogress_orders") var inProgressOrders: ArrayList<InProgressOrders>,
     @SerializedName("recent_orders") var recentOrdersList: ArrayList<ActiveOrder>,
+    @SerializedName("orders_cancel") var cancelOrdersList: ArrayList<ActiveOrder>,
 
     @SerializedName("marchant_rating") var merchantRating: String,
     @SerializedName("marchant_complete_orders") var completeOrdersCount: Int,

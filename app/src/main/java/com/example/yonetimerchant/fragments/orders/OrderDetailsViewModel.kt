@@ -21,7 +21,7 @@ class OrderDetailsViewModel @ViewModelInject constructor(
     var repository: Repository
 ) : ViewModel() {
 
-    var details = MutableLiveData<ArrayList<ActiveOrder>>()
+    var details = MutableLiveData<BaseResult>()
     var userId = gson.fromJson(preferences.getUser(), BaseResult::class.java).userId
     var sessionId = gson.fromJson(preferences.getUser(), BaseResult::class.java).sessionId
     var activeOrdersList = MutableLiveData<ArrayList<ActiveOrder>>()
@@ -65,14 +65,25 @@ class OrderDetailsViewModel @ViewModelInject constructor(
 
     }
 
-    public fun orderDetails(pageNumber: Int, pageSize: Int) {
+    var isOrderCompleted = MutableLiveData<Boolean>()
+    public fun completeOrder(orderId: String?) {
         viewModelScope.launch(Dispatchers.IO) {
-            var orderDetailsResponse =
-                repository.activeOrders(userId.toString(), pageNumber, pageSize, sessionId)
+            var completedOrders = repository.completeOrder(orderId!!, sessionId)
+            withContext(Dispatchers.Main)
+            {
+                isOrderCompleted.value = completedOrders.status
+            }
+        }
+
+    }
+
+    public fun orderDetails(pageNumber: Int, pageSize: Int,orderId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            var orderDetailsResponse = repository.orderDetils(orderId, pageNumber, pageSize, sessionId)
             withContext(Dispatchers.Main)
             {
                 if (orderDetailsResponse.status) {
-                    details.value = orderDetailsResponse.result.activeOrdersList
+                    details.value = orderDetailsResponse.result
                 }
             }
         }

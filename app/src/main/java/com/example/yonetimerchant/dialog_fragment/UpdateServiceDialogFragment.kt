@@ -45,9 +45,9 @@ class UpdateServiceDialogFragment(
         dataBinding.btnEditService.setOnClickListener {
             if (!dataBinding.etEstimatedTime.text.toString().equals(updateService.estimatedTime) || !dataBinding.etServiceCharges.text.toString().equals(updateService.serviceCharged))
             {
-                updateServiceViewModel.updateService(updateService.serviceId,updateService.serviceCharged,updateService.estimatedTime)
                 updateService.serviceCharged = dataBinding.etServiceCharges.text.toString()
                 updateService.estimatedTime = dataBinding.etEstimatedTime.text.toString()
+                updateServiceViewModel.updateService(updateService.serviceId,updateService.serviceCharged,updateService.estimatedTime)
             }
             else
                 Toast.makeText(requireContext(), "no change found", Toast.LENGTH_SHORT).show()

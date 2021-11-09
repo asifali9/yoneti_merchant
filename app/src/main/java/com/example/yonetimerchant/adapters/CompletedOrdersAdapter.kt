@@ -33,7 +33,7 @@ class CompletedOrdersAdapter(
     }
 
     override fun onBindViewHolder(holder: CompletedOrdersViewHolder, position: Int) {
-        holder.bindingView.tvUserName.setText(completedOrdersList.get(position).customerName)
+        holder.bindingView.tvUserName.setText(completedOrdersList.get(position).userName)
         holder.bindingView.tvService.setText(completedOrdersList.get(position).orderDetails)
         holder.bindingView.tvRatingCount.setText(completedOrdersList.get(position).merchantRating)
         var progress = holder.bindingView.rateBar.progressDrawable
@@ -59,7 +59,7 @@ class CompletedOrdersAdapter(
             /**
              * opening fragment from list of orders
              */
-            instance?.openOrderDetail()
+//            instance?.openOrderDetail()
             /**
              * opening fragment from dashboard
              */

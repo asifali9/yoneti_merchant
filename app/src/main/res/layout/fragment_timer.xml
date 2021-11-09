@@ -78,12 +78,6 @@
                 android:visibility="gone"
                 tools:listitem="@layout/message_notification_single_item" />
 
-            <TimePicker
-                android:id="@+id/timepicker"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:timePickerMode="spinner"
-                app:layout_constraintTop_toTopOf="@id/tvViewed" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>
